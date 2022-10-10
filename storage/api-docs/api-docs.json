@@ -1,0 +1,4981 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Whatsapp Api",
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "http://official.whatsapp.loc/engine"
+        }
+    ],
+    "paths": {
+        "/messages/textBulk": {
+            "post": {
+                "tags": [
+                    "Group Messages With Interval"
+                ],
+                "summary": "group text message",
+                "description": "send group text message",
+                "operationId": "textBulk",
+                "parameters": [
+                    {
+                        "name": "phones",
+                        "in": "query",
+                        "description": "Phones to send to",
+                        "required": true
+                    },
+                    {
+                        "name": "interval",
+                        "in": "query",
+                        "description": "Interval between every message in seconds",
+                        "required": false
+                    },
+                    {
+                        "name": "body",
+                        "in": "query",
+                        "description": "Message Body to send",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/imageBulk": {
+            "post": {
+                "tags": [
+                    "Group Messages With Interval"
+                ],
+                "summary": "Group image message",
+                "description": "Group image message",
+                "operationId": "imageBulk",
+                "parameters": [
+                    {
+                        "name": "phones",
+                        "in": "query",
+                        "description": "Phones to send to",
+                        "required": true
+                    },
+                    {
+                        "name": "interval",
+                        "in": "query",
+                        "description": "Interval between every message in seconds",
+                        "required": false
+                    },
+                    {
+                        "name": "url",
+                        "in": "query",
+                        "description": "Image Url to send",
+                        "required": true
+                    },
+                    {
+                        "name": "caption",
+                        "in": "query",
+                        "description": "Caption to send",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/videoBulk": {
+            "post": {
+                "tags": [
+                    "Group Messages With Interval"
+                ],
+                "summary": "Group video message",
+                "description": "Group video message",
+                "operationId": "videoBulk",
+                "parameters": [
+                    {
+                        "name": "phones",
+                        "in": "query",
+                        "description": "Phones to send to",
+                        "required": true
+                    },
+                    {
+                        "name": "interval",
+                        "in": "query",
+                        "description": "Interval between every message in seconds",
+                        "required": false
+                    },
+                    {
+                        "name": "url",
+                        "in": "query",
+                        "description": "Video Url to send",
+                        "required": true
+                    },
+                    {
+                        "name": "caption",
+                        "in": "query",
+                        "description": "Caption to send",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/audioBulk": {
+            "post": {
+                "tags": [
+                    "Group Messages With Interval"
+                ],
+                "summary": "Group audio message",
+                "description": "Group audio message",
+                "operationId": "audioBulk",
+                "parameters": [
+                    {
+                        "name": "phones",
+                        "in": "query",
+                        "description": "Phones to send to",
+                        "required": true
+                    },
+                    {
+                        "name": "interval",
+                        "in": "query",
+                        "description": "Interval between every message in seconds",
+                        "required": false
+                    },
+                    {
+                        "name": "url",
+                        "in": "query",
+                        "description": "Audio Url to send",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/fileBulk": {
+            "post": {
+                "tags": [
+                    "Group Messages With Interval"
+                ],
+                "summary": "Group file message",
+                "description": "Group file message",
+                "operationId": "fileBulk",
+                "parameters": [
+                    {
+                        "name": "phones",
+                        "in": "query",
+                        "description": "Phones to send to",
+                        "required": true
+                    },
+                    {
+                        "name": "interval",
+                        "in": "query",
+                        "description": "Interval between every message in seconds",
+                        "required": false
+                    },
+                    {
+                        "name": "url",
+                        "in": "query",
+                        "description": "File Url to send",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/stickerBulk": {
+            "post": {
+                "tags": [
+                    "Group Messages With Interval"
+                ],
+                "summary": "Group sticker message",
+                "description": "Group sticker message",
+                "operationId": "stickerBulk",
+                "parameters": [
+                    {
+                        "name": "phones",
+                        "in": "query",
+                        "description": "Phones to send to",
+                        "required": true
+                    },
+                    {
+                        "name": "interval",
+                        "in": "query",
+                        "description": "Interval between every message in seconds",
+                        "required": false
+                    },
+                    {
+                        "name": "url",
+                        "in": "query",
+                        "description": "Sticker Url to send",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/gifBulk": {
+            "post": {
+                "tags": [
+                    "Group Messages With Interval"
+                ],
+                "summary": "Group gif message",
+                "description": "Group gif message",
+                "operationId": "gifBulk",
+                "parameters": [
+                    {
+                        "name": "phones",
+                        "in": "query",
+                        "description": "Phones to send to",
+                        "required": true
+                    },
+                    {
+                        "name": "interval",
+                        "in": "query",
+                        "description": "Interval between every message in seconds",
+                        "required": false
+                    },
+                    {
+                        "name": "url",
+                        "in": "query",
+                        "description": "Gif Url to send",
+                        "required": true
+                    },
+                    {
+                        "name": "caption",
+                        "in": "query",
+                        "description": "Caption to send",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/locationBulk": {
+            "post": {
+                "tags": [
+                    "Group Messages With Interval"
+                ],
+                "summary": "Group location message",
+                "description": "Group location message",
+                "operationId": "locationBulk",
+                "parameters": [
+                    {
+                        "name": "phones",
+                        "in": "query",
+                        "description": "Phones to send to",
+                        "required": true
+                    },
+                    {
+                        "name": "interval",
+                        "in": "query",
+                        "description": "Interval between every message in seconds",
+                        "required": false
+                    },
+                    {
+                        "name": "latitude",
+                        "in": "query",
+                        "description": "Location latitude to send",
+                        "required": true
+                    },
+                    {
+                        "name": "longitude",
+                        "in": "query",
+                        "description": "Location Longitude to send",
+                        "required": false
+                    },
+                    {
+                        "name": "address",
+                        "in": "query",
+                        "description": "Location Address Text to send",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/contactBulk": {
+            "post": {
+                "tags": [
+                    "Group Messages With Interval"
+                ],
+                "summary": "Group contact message",
+                "description": "Group contact message",
+                "operationId": "contactBulk",
+                "parameters": [
+                    {
+                        "name": "phones",
+                        "in": "query",
+                        "description": "Phones to send to",
+                        "required": true
+                    },
+                    {
+                        "name": "interval",
+                        "in": "query",
+                        "description": "Interval between every message in seconds",
+                        "required": false
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Contact Name to send",
+                        "required": true
+                    },
+                    {
+                        "name": "contact",
+                        "in": "query",
+                        "description": "Contact Phone to send",
+                        "required": false
+                    },
+                    {
+                        "name": "organization",
+                        "in": "query",
+                        "description": "Contact Organization to send",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/disappearingBulk": {
+            "post": {
+                "tags": [
+                    "Group Messages With Interval"
+                ],
+                "summary": "Group disappearing message",
+                "description": "Group disappearing message",
+                "operationId": "disappearingBulk",
+                "parameters": [
+                    {
+                        "name": "phones",
+                        "in": "query",
+                        "description": "Phones to send to",
+                        "required": true
+                    },
+                    {
+                        "name": "interval",
+                        "in": "query",
+                        "description": "Interval between every message in seconds",
+                        "required": false
+                    },
+                    {
+                        "name": "body",
+                        "in": "query",
+                        "description": "Message Body to send",
+                        "required": true
+                    },
+                    {
+                        "name": "expiration",
+                        "in": "query",
+                        "description": "Message Expiration in seconds",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/mentionBulk": {
+            "post": {
+                "tags": [
+                    "Group Messages With Interval"
+                ],
+                "summary": "Group mention message",
+                "description": "Group mention message",
+                "operationId": "mentionBulk",
+                "parameters": [
+                    {
+                        "name": "phones",
+                        "in": "query",
+                        "description": "Phones to send to",
+                        "required": true
+                    },
+                    {
+                        "name": "interval",
+                        "in": "query",
+                        "description": "Interval between every message in seconds",
+                        "required": false
+                    },
+                    {
+                        "name": "contact",
+                        "in": "query",
+                        "description": "Contact Mention to send",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/buttonsBulk": {
+            "post": {
+                "tags": [
+                    "Group Messages With Interval"
+                ],
+                "summary": "Group buttons message",
+                "description": "Group buttons message",
+                "operationId": "buttonsBulk",
+                "parameters": [
+                    {
+                        "name": "phones",
+                        "in": "query",
+                        "description": "Phones to send to",
+                        "required": true
+                    },
+                    {
+                        "name": "interval",
+                        "in": "query",
+                        "description": "Interval between every message in seconds",
+                        "required": false
+                    },
+                    {
+                        "name": "body",
+                        "in": "query",
+                        "description": "Message Body to send",
+                        "required": true
+                    },
+                    {
+                        "name": "footer",
+                        "in": "query",
+                        "description": "Message Footer to send",
+                        "required": true
+                    },
+                    {
+                        "name": "buttons",
+                        "in": "query",
+                        "description": "Message Buttons to send",
+                        "required": true
+                    },
+                    {
+                        "name": "image",
+                        "in": "query",
+                        "description": "Message Image URL to send",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/templateBulk": {
+            "post": {
+                "tags": [
+                    "Group Messages With Interval"
+                ],
+                "summary": "Group template message",
+                "description": "Group template message",
+                "operationId": "templateBulk",
+                "parameters": [
+                    {
+                        "name": "phones",
+                        "in": "query",
+                        "description": "Phones to send to",
+                        "required": true
+                    },
+                    {
+                        "name": "interval",
+                        "in": "query",
+                        "description": "Interval between every message in seconds",
+                        "required": false
+                    },
+                    {
+                        "name": "body",
+                        "in": "query",
+                        "description": "Message Body to send",
+                        "required": true
+                    },
+                    {
+                        "name": "footer",
+                        "in": "query",
+                        "description": "Message Footer to send",
+                        "required": true
+                    },
+                    {
+                        "name": "buttons",
+                        "in": "query",
+                        "description": "Message Buttons to send",
+                        "required": true
+                    },
+                    {
+                        "name": "image",
+                        "in": "query",
+                        "description": "Message Image URL to send",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/listBulk": {
+            "post": {
+                "tags": [
+                    "Group Messages With Interval"
+                ],
+                "summary": "Group list message",
+                "description": "Group list message",
+                "operationId": "listBulk",
+                "parameters": [
+                    {
+                        "name": "phones",
+                        "in": "query",
+                        "description": "Phones to send to",
+                        "required": true
+                    },
+                    {
+                        "name": "interval",
+                        "in": "query",
+                        "description": "Interval between every message in seconds",
+                        "required": false
+                    },
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "description": "Message Title to send",
+                        "required": true
+                    },
+                    {
+                        "name": "body",
+                        "in": "query",
+                        "description": "Message Body to send",
+                        "required": true
+                    },
+                    {
+                        "name": "footer",
+                        "in": "query",
+                        "description": "Message Footer to send",
+                        "required": true
+                    },
+                    {
+                        "name": "buttonText",
+                        "in": "query",
+                        "description": "Message View list button Text to send",
+                        "required": true
+                    },
+                    {
+                        "name": "sections",
+                        "in": "query",
+                        "description": "Message Sections to send",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/linkBulk": {
+            "post": {
+                "tags": [
+                    "Group Messages With Interval"
+                ],
+                "summary": "Group link with preview message",
+                "description": "Group link with preview message",
+                "operationId": "linkBulk",
+                "parameters": [
+                    {
+                        "name": "phones",
+                        "in": "query",
+                        "description": "Phones to send to",
+                        "required": true
+                    },
+                    {
+                        "name": "interval",
+                        "in": "query",
+                        "description": "Interval between every message in seconds",
+                        "required": false
+                    },
+                    {
+                        "name": "url",
+                        "in": "query",
+                        "description": "Message URL to send",
+                        "required": true
+                    },
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "description": "Message URL title to send",
+                        "required": true
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "Message URL description to send",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/groupInvitationBulk": {
+            "post": {
+                "tags": [
+                    "Group Messages With Interval"
+                ],
+                "summary": "Group group invitation message",
+                "description": "Group group invitation message",
+                "operationId": "groupInvitationBulk",
+                "parameters": [
+                    {
+                        "name": "phones",
+                        "in": "query",
+                        "description": "Phones to send to",
+                        "required": true
+                    },
+                    {
+                        "name": "interval",
+                        "in": "query",
+                        "description": "Interval between every message in seconds",
+                        "required": false
+                    },
+                    {
+                        "name": "groupId",
+                        "in": "query",
+                        "description": "Group Id to send",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/productBulk": {
+            "post": {
+                "tags": [
+                    "Group Messages With Interval"
+                ],
+                "summary": "Group product message",
+                "description": "Group product message",
+                "operationId": "productBulk",
+                "parameters": [
+                    {
+                        "name": "phones",
+                        "in": "query",
+                        "description": "Phones to send to",
+                        "required": true
+                    },
+                    {
+                        "name": "interval",
+                        "in": "query",
+                        "description": "Interval between every message in seconds",
+                        "required": false
+                    },
+                    {
+                        "name": "productId",
+                        "in": "query",
+                        "description": "Product Id to send",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/catalogBulk": {
+            "post": {
+                "tags": [
+                    "Group Messages With Interval"
+                ],
+                "summary": "Group catalog message",
+                "description": "Group catalog message",
+                "operationId": "catalogBulk",
+                "parameters": [
+                    {
+                        "name": "phones",
+                        "in": "query",
+                        "description": "Phones to send to",
+                        "required": true
+                    },
+                    {
+                        "name": "interval",
+                        "in": "query",
+                        "description": "Interval between every message in seconds",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/business/getBusinessProfile": {
+            "post": {
+                "tags": [
+                    "Whatsapp Business"
+                ],
+                "summary": "fetch user business profile",
+                "description": "fetch connected user business profile data",
+                "operationId": "getBusinessProfile",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to get business profile",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "returns profile object."
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/business/products": {
+            "post": {
+                "tags": [
+                    "Whatsapp Business"
+                ],
+                "summary": "fetch user business products",
+                "description": "fetch connected user business products data",
+                "operationId": "products",
+                "parameters": [
+                    {
+                        "name": "productId",
+                        "in": "query",
+                        "description": "Product Id to get specific product",
+                        "required": false
+                    },
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to get products for specific user",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/business/products/create": {
+            "post": {
+                "tags": [
+                    "Whatsapp Business"
+                ],
+                "summary": "create user business new product",
+                "description": "create connected user business new product",
+                "operationId": "createProduct",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Product Name",
+                        "required": true
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "Product Description",
+                        "required": true
+                    },
+                    {
+                        "name": "price",
+                        "in": "query",
+                        "description": "Product Price",
+                        "required": true
+                    },
+                    {
+                        "name": "currency",
+                        "in": "query",
+                        "description": "Product Currency",
+                        "required": true
+                    },
+                    {
+                        "name": "image",
+                        "in": "query",
+                        "description": "Product Image URL",
+                        "required": true
+                    },
+                    {
+                        "name": "isHidden",
+                        "in": "query",
+                        "description": "Product View Status (true | false)",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/business/products/update": {
+            "post": {
+                "tags": [
+                    "Whatsapp Business"
+                ],
+                "summary": "update user business product",
+                "description": "update connected user business product",
+                "operationId": "updateProduct",
+                "parameters": [
+                    {
+                        "name": "productId",
+                        "in": "query",
+                        "description": "Product ID",
+                        "required": true
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Product Name",
+                        "required": false
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "Product Description",
+                        "required": false
+                    },
+                    {
+                        "name": "price",
+                        "in": "query",
+                        "description": "Product Price",
+                        "required": false
+                    },
+                    {
+                        "name": "currency",
+                        "in": "query",
+                        "description": "Product Currency",
+                        "required": false
+                    },
+                    {
+                        "name": "image",
+                        "in": "query",
+                        "description": "Product Image URL",
+                        "required": false
+                    },
+                    {
+                        "name": "isHidden",
+                        "in": "query",
+                        "description": "Product View Status (true | false)",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/business/products/delete": {
+            "post": {
+                "tags": [
+                    "Whatsapp Business"
+                ],
+                "summary": "delete user business product",
+                "description": "delete connected user business product",
+                "operationId": "deleteProduct",
+                "parameters": [
+                    {
+                        "name": "productId",
+                        "in": "query",
+                        "description": "Product ID",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/business/sendProduct": {
+            "post": {
+                "tags": [
+                    "Whatsapp Business"
+                ],
+                "summary": "send user business product",
+                "description": "send connected user business product to specific phone",
+                "operationId": "sendProduct",
+                "parameters": [
+                    {
+                        "name": "productId",
+                        "in": "query",
+                        "description": "Product ID",
+                        "required": true
+                    },
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to send business product",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/business/getOrder": {
+            "post": {
+                "tags": [
+                    "Whatsapp Business"
+                ],
+                "summary": "get order",
+                "description": "get user specific order",
+                "operationId": "getOrder",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "Order ID",
+                        "required": true
+                    },
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "Order Token",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/business/collections": {
+            "post": {
+                "tags": [
+                    "Whatsapp Business"
+                ],
+                "summary": "get order",
+                "description": "get user specific order",
+                "operationId": "collections",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to get collections for specific user",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/business/sendCatalog": {
+            "post": {
+                "tags": [
+                    "Whatsapp Business"
+                ],
+                "summary": "send user business product",
+                "description": "send connected user business product to specific phone",
+                "operationId": "sendCatalog",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to send business product",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/business/labels": {
+            "get": {
+                "tags": [
+                    "Whatsapp Business"
+                ],
+                "summary": "fetch user business labels",
+                "description": "fetch connected user business labels data",
+                "operationId": "labels",
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/business/labelChat": {
+            "post": {
+                "tags": [
+                    "Whatsapp Business"
+                ],
+                "summary": "label chat",
+                "description": "label specific phone",
+                "operationId": "labelChat",
+                "parameters": [
+                    {
+                        "name": "labelId",
+                        "in": "query",
+                        "description": "Label ID",
+                        "required": true
+                    },
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to label",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/business/unlabelChat": {
+            "post": {
+                "tags": [
+                    "Whatsapp Business"
+                ],
+                "summary": "unlabel chat",
+                "description": "unlabel specific phone",
+                "operationId": "unlabelChat",
+                "parameters": [
+                    {
+                        "name": "labelId",
+                        "in": "query",
+                        "description": "Label ID",
+                        "required": true
+                    },
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to unlabel",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/business/labelMessage": {
+            "post": {
+                "tags": [
+                    "Whatsapp Business"
+                ],
+                "summary": "label message",
+                "description": "label specific message",
+                "operationId": "labelMessage",
+                "parameters": [
+                    {
+                        "name": "labelId",
+                        "in": "query",
+                        "description": "Label ID",
+                        "required": true
+                    },
+                    {
+                        "name": "messageId",
+                        "in": "query",
+                        "description": "Message ID to label",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/business/unlabelMessage": {
+            "post": {
+                "tags": [
+                    "Whatsapp Business"
+                ],
+                "summary": "unlabel message",
+                "description": "unlabel specific message",
+                "operationId": "unlabelMessage",
+                "parameters": [
+                    {
+                        "name": "labelId",
+                        "in": "query",
+                        "description": "Label ID",
+                        "required": true
+                    },
+                    {
+                        "name": "messageId",
+                        "in": "query",
+                        "description": "Message ID to label",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/business/labels/create": {
+            "post": {
+                "tags": [
+                    "Whatsapp Business"
+                ],
+                "summary": "create label",
+                "description": "create label",
+                "operationId": "createLabel",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Label Name",
+                        "required": true
+                    },
+                    {
+                        "name": "color",
+                        "in": "query",
+                        "description": "Label Color ID",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/business/labels/update": {
+            "post": {
+                "tags": [
+                    "Whatsapp Business"
+                ],
+                "summary": "update label",
+                "description": "update label",
+                "operationId": "updateLabel",
+                "parameters": [
+                    {
+                        "name": "labelId",
+                        "in": "query",
+                        "description": "Label ID",
+                        "required": true
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Label Name",
+                        "required": false
+                    },
+                    {
+                        "name": "color",
+                        "in": "query",
+                        "description": "Label Color ID",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/business/labels/delete": {
+            "post": {
+                "tags": [
+                    "Whatsapp Business"
+                ],
+                "summary": "delete label",
+                "description": "delete label",
+                "operationId": "deleteLabel",
+                "parameters": [
+                    {
+                        "name": "labelId",
+                        "in": "query",
+                        "description": "Label ID",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/business/replies": {
+            "get": {
+                "tags": [
+                    "Whatsapp Business"
+                ],
+                "summary": "fetch user business replies",
+                "description": "fetch connected user business replies data",
+                "operationId": "replies",
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/business/replies/create": {
+            "post": {
+                "tags": [
+                    "Whatsapp Business"
+                ],
+                "summary": "create quick reply",
+                "description": "create quick reply",
+                "operationId": "createReply",
+                "parameters": [
+                    {
+                        "name": "shortcut",
+                        "in": "query",
+                        "description": "Quick Reply Shortcut",
+                        "required": true
+                    },
+                    {
+                        "name": "message",
+                        "in": "query",
+                        "description": "Quick Reply Message",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/business/replies/update": {
+            "post": {
+                "tags": [
+                    "Whatsapp Business"
+                ],
+                "summary": "update quick reply",
+                "description": "update quick reply",
+                "operationId": "updateReply",
+                "parameters": [
+                    {
+                        "name": "reply_id",
+                        "in": "query",
+                        "description": "Quick Reply ID",
+                        "required": true
+                    },
+                    {
+                        "name": "shortcut",
+                        "in": "query",
+                        "description": "Quick Reply Shortcut",
+                        "required": false
+                    },
+                    {
+                        "name": "message",
+                        "in": "query",
+                        "description": "Quick Reply Message",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/business/replies/delete": {
+            "post": {
+                "tags": [
+                    "Whatsapp Business"
+                ],
+                "summary": "delete quick reply",
+                "description": "delete quick reply",
+                "operationId": "deleteReply",
+                "parameters": [
+                    {
+                        "name": "reply_id",
+                        "in": "query",
+                        "description": "Quick Reply ID",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/users/contacts": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "fetch user data",
+                "description": "fetch connected user data",
+                "operationId": "contacts",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Contact Id to get specific contact",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "returns contacts object."
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/users/checkPhone": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "check whatsapp availability",
+                "description": "check if phone has whatsapp or no",
+                "operationId": "checkPhone",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to get whatsapp availability",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/users/getUserStatus": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "fetch specific user status",
+                "description": "check if phone has whatsapp or no",
+                "operationId": "getUserStatus",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to get status",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/users/getUserPresence": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "fetch specific user presence",
+                "description": "check if phone has whatsapp or no",
+                "operationId": "getUserPresence",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to get presence",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/users/getUserPicture": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "fetch specific user profile picture",
+                "description": "check if phone has whatsapp or no",
+                "operationId": "getUserPicture",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to get profile picture",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/users/blockList": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "fetch specific user block list",
+                "description": "check if phone has whatsapp or no",
+                "operationId": "blockList",
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/users/blockUser": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "block user",
+                "description": "block specific user",
+                "operationId": "blockUser",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to block user",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/users/unblockUser": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "unblock user",
+                "description": "unblock specific user",
+                "operationId": "unblockUser",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to unblock user",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/users/rejectCall": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "reject call",
+                "description": "reject incoming call from specific user",
+                "operationId": "rejectCall",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to unblock user",
+                        "required": true
+                    },
+                    {
+                        "name": "callId",
+                        "in": "query",
+                        "description": "Call ID to reject",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/chats": {
+            "get": {
+                "tags": [
+                    "Chats"
+                ],
+                "summary": "fetch all chats",
+                "description": "fetch user all chats",
+                "operationId": "chats",
+                "parameters": [
+                    {
+                        "name": "chatId",
+                        "in": "query",
+                        "description": "Chat Id to get specific chat",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "returns array of chats."
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/chats/deleteChat": {
+            "post": {
+                "tags": [
+                    "Chats"
+                ],
+                "summary": "delete chat",
+                "description": "delete specific chat",
+                "operationId": "deleteChat",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "chat phone to be deleted",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/chats/readChat": {
+            "post": {
+                "tags": [
+                    "Chats"
+                ],
+                "summary": "read chat",
+                "description": "read specific chat",
+                "operationId": "readChat",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "chat phone to be read",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/chats/unreadChat": {
+            "post": {
+                "tags": [
+                    "Chats"
+                ],
+                "summary": "unread chat",
+                "description": "read specific chat",
+                "operationId": "unreadChat",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "chat phone to be unread",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/chats/archiveChat": {
+            "post": {
+                "tags": [
+                    "Chats"
+                ],
+                "summary": "archive chat",
+                "description": "archive specific chat",
+                "operationId": "archiveChat",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "chat phone to be archived",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/chats/unarchiveChat": {
+            "post": {
+                "tags": [
+                    "Chats"
+                ],
+                "summary": "unarchive chat",
+                "description": "unarchive specific chat",
+                "operationId": "unarchiveChat",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "chat phone to be unarchived",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/chats/pinChat": {
+            "post": {
+                "tags": [
+                    "Chats"
+                ],
+                "summary": "pin chat",
+                "description": "pin specific chat",
+                "operationId": "pinChat",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "chat phone to be pinned",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/chats/unpinChat": {
+            "post": {
+                "tags": [
+                    "Chats"
+                ],
+                "summary": "unpin chat",
+                "description": "unpin specific chat",
+                "operationId": "unpinChat",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "chat phone to be unpinned",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/chats/muteChat": {
+            "post": {
+                "tags": [
+                    "Chats"
+                ],
+                "summary": "mute chat",
+                "description": "mute specific chat",
+                "operationId": "muteChat",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "chat phone to be muted",
+                        "required": true
+                    },
+                    {
+                        "name": "duration",
+                        "in": "query",
+                        "description": "duration of seconds that chat would be muted",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/chats/unmuteChat": {
+            "post": {
+                "tags": [
+                    "Chats"
+                ],
+                "summary": "unmute chat",
+                "description": "unmute specific chat",
+                "operationId": "unmuteChat",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "chat phone to be unmuted",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/chats/typing": {
+            "post": {
+                "tags": [
+                    "Chats"
+                ],
+                "summary": "typing",
+                "description": "set typing status to specific chat",
+                "operationId": "typing",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "chat phone to be notified about your status",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/chats/recording": {
+            "post": {
+                "tags": [
+                    "Chats"
+                ],
+                "summary": "recording",
+                "description": "set recording status to specific chat",
+                "operationId": "recording",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "chat phone to be notified about your status",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/groups": {
+            "get": {
+                "tags": [
+                    "Groups"
+                ],
+                "summary": "fetch all groups",
+                "description": "fetch user all groups",
+                "operationId": "groups",
+                "parameters": [
+                    {
+                        "name": "groupId",
+                        "in": "query",
+                        "description": "Group Id to get specific group",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "returns array of groups."
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/groups/createGroup": {
+            "post": {
+                "tags": [
+                    "Groups"
+                ],
+                "summary": "create group",
+                "description": "create new group",
+                "operationId": "createGroup",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Group Name to be created",
+                        "required": true
+                    },
+                    {
+                        "name": "phones",
+                        "in": "query",
+                        "description": "Phones (Group Participants) to be created",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/groups/renameGroup": {
+            "post": {
+                "tags": [
+                    "Groups"
+                ],
+                "summary": "rename group",
+                "description": "rename specific group",
+                "operationId": "renameGroup",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Group Name to be updated",
+                        "required": true
+                    },
+                    {
+                        "name": "groupId",
+                        "in": "query",
+                        "description": "Group Id to update specific group",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/groups/updateDescription": {
+            "post": {
+                "tags": [
+                    "Groups"
+                ],
+                "summary": "update group description",
+                "description": "update specific group description",
+                "operationId": "updateDescription",
+                "parameters": [
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "Group Description to be updated",
+                        "required": true
+                    },
+                    {
+                        "name": "groupId",
+                        "in": "query",
+                        "description": "Group Id to update specific group",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/groups/updateSetting": {
+            "post": {
+                "tags": [
+                    "Groups"
+                ],
+                "summary": "update group settings",
+                "description": "update specific group settings",
+                "operationId": "updateSetting",
+                "parameters": [
+                    {
+                        "name": "setting",
+                        "in": "query",
+                        "description": "Group Setting to be updated ('announcement' | 'not_announcement' | 'locked' | 'unlocked')",
+                        "required": true
+                    },
+                    {
+                        "name": "groupId",
+                        "in": "query",
+                        "description": "Group Id to update specific group",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/groups/getParticipants": {
+            "post": {
+                "tags": [
+                    "Groups"
+                ],
+                "summary": "get group participants",
+                "description": "get specific group participants",
+                "operationId": "getParticipants",
+                "parameters": [
+                    {
+                        "name": "groupId",
+                        "in": "query",
+                        "description": "Group Id to get specific group participants",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/groups/addParticipants": {
+            "post": {
+                "tags": [
+                    "Groups"
+                ],
+                "summary": "add group participants",
+                "description": "add participants to specific group",
+                "operationId": "addParticipants",
+                "parameters": [
+                    {
+                        "name": "phones",
+                        "in": "query",
+                        "description": "Group participants phones to be updated",
+                        "required": true
+                    },
+                    {
+                        "name": "groupId",
+                        "in": "query",
+                        "description": "Group Id to update specific group",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/groups/removeParticipants": {
+            "post": {
+                "tags": [
+                    "Groups"
+                ],
+                "summary": "remove group participants",
+                "description": "remove participants to specific group",
+                "operationId": "removeParticipants",
+                "parameters": [
+                    {
+                        "name": "phones",
+                        "in": "query",
+                        "description": "Group participants phones to be updated",
+                        "required": true
+                    },
+                    {
+                        "name": "groupId",
+                        "in": "query",
+                        "description": "Group Id to update specific group",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/groups/promoteParticipants": {
+            "post": {
+                "tags": [
+                    "Groups"
+                ],
+                "summary": "promote group participants",
+                "description": "promote participants to specific group",
+                "operationId": "promoteParticipants",
+                "parameters": [
+                    {
+                        "name": "phones",
+                        "in": "query",
+                        "description": "Group participants phones to be promoted",
+                        "required": true
+                    },
+                    {
+                        "name": "groupId",
+                        "in": "query",
+                        "description": "Group Id to update specific group",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/groups/demoteParticipants": {
+            "post": {
+                "tags": [
+                    "Groups"
+                ],
+                "summary": "demote group participants",
+                "description": "demote participants to specific group",
+                "operationId": "demoteParticipants",
+                "parameters": [
+                    {
+                        "name": "phones",
+                        "in": "query",
+                        "description": "Group participants phones to be demoted",
+                        "required": true
+                    },
+                    {
+                        "name": "groupId",
+                        "in": "query",
+                        "description": "Group Id to update specific group",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/groups/joinGroup": {
+            "post": {
+                "tags": [
+                    "Groups"
+                ],
+                "summary": "join group by code",
+                "description": "join specific group by code",
+                "operationId": "joinGroup",
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "query",
+                        "description": "Group code to join group",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/groups/leaveGroup": {
+            "post": {
+                "tags": [
+                    "Groups"
+                ],
+                "summary": "leave group",
+                "description": "leave specific group by id",
+                "operationId": "leaveGroup",
+                "parameters": [
+                    {
+                        "name": "groupId",
+                        "in": "query",
+                        "description": "Group Id to leave group",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/groups/getInviteCode": {
+            "post": {
+                "tags": [
+                    "Groups"
+                ],
+                "summary": "get group invite code",
+                "description": "get specific group invite code",
+                "operationId": "getInviteCode",
+                "parameters": [
+                    {
+                        "name": "groupId",
+                        "in": "query",
+                        "description": "Group Id to get invite code",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/groups/getInviteInfo": {
+            "post": {
+                "tags": [
+                    "Groups"
+                ],
+                "summary": "get group invite info",
+                "description": "get specific group invite info",
+                "operationId": "getInviteInfo",
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "query",
+                        "description": "Group code to join group",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/groups/acceptInvite": {
+            "post": {
+                "tags": [
+                    "Groups"
+                ],
+                "summary": "accept group invite ",
+                "description": "accept group invitation message",
+                "operationId": "acceptInvite",
+                "parameters": [
+                    {
+                        "name": "messageId",
+                        "in": "query",
+                        "description": "Message ID of group invitation message",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/groups/revokeInvite": {
+            "post": {
+                "tags": [
+                    "Groups"
+                ],
+                "summary": "revoke group invite ",
+                "description": "revoke group invitation message",
+                "operationId": "revokeInvite",
+                "parameters": [
+                    {
+                        "name": "groupId",
+                        "in": "query",
+                        "description": "Group ID to revoke invitation",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/instances/qr": {
+            "get": {
+                "tags": [
+                    "Instances"
+                ],
+                "summary": "fetch qr",
+                "description": "fetch user a new qr or return connected as status if connection established",
+                "operationId": "qr",
+                "responses": {
+                    "200": {
+                        "description": "returns qr image base64 or connected."
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/instances/status": {
+            "get": {
+                "tags": [
+                    "Instances"
+                ],
+                "summary": "fetch qr",
+                "description": "fetch user connection status",
+                "operationId": "status",
+                "responses": {
+                    "200": {
+                        "description": "returns disconnected or connected."
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/instances/disconnect": {
+            "post": {
+                "tags": [
+                    "Instances"
+                ],
+                "summary": "disconnect connection",
+                "description": "disconnect user current connection",
+                "operationId": "disconnect",
+                "responses": {
+                    "200": {
+                        "description": "returns Disconnected."
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/instances/clearInstance": {
+            "post": {
+                "tags": [
+                    "Instances"
+                ],
+                "summary": "clear instance data",
+                "description": "clear instance data",
+                "operationId": "clearInstance",
+                "responses": {
+                    "200": {
+                        "description": "returns Disconnected."
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/instances/updateChannelSetting": {
+            "post": {
+                "tags": [
+                    "Instances"
+                ],
+                "summary": "update instance setting",
+                "description": "update instance settings like webhook urls",
+                "operationId": "updateChannelSetting",
+                "parameters": [
+                    {
+                        "name": "webhooks[messageNotifications]",
+                        "in": "query",
+                        "description": "Messages Webhook",
+                        "required": false
+                    },
+                    {
+                        "name": "webhooks[ackNotifications]",
+                        "in": "query",
+                        "description": "Messages status Ack Webhook",
+                        "required": false
+                    },
+                    {
+                        "name": "webhooks[chatNotifications]",
+                        "in": "query",
+                        "description": "Dialogs Webhook",
+                        "required": false
+                    },
+                    {
+                        "name": "webhooks[labelNotifications]",
+                        "in": "query",
+                        "description": "Labels Webhook",
+                        "required": false
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {}
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "returns channel setting object after modifications."
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/profiles/me": {
+            "get": {
+                "tags": [
+                    "Profiles"
+                ],
+                "summary": "fetch user data",
+                "description": "fetch connected user data",
+                "operationId": "me",
+                "responses": {
+                    "200": {
+                        "description": "returns me object."
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/profiles/updateProfilePicture": {
+            "post": {
+                "tags": [
+                    "Profiles"
+                ],
+                "summary": "Update Profile Picture",
+                "description": "update my profile picture or my groups",
+                "operationId": "updateProfilePicture",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone or group id",
+                        "required": true
+                    },
+                    {
+                        "name": "imageURL",
+                        "in": "query",
+                        "description": "Image Url",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "returns updateProfilePicture object."
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/profiles/updatePresence": {
+            "post": {
+                "tags": [
+                    "Profiles"
+                ],
+                "summary": "Update Presence for 10 seconds",
+                "description": "update target presence",
+                "operationId": "updatePresence",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone or group id",
+                        "required": true
+                    },
+                    {
+                        "name": "presence",
+                        "in": "query",
+                        "description": "User Presence",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "returns updatePresence object."
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/profiles/updateName": {
+            "post": {
+                "tags": [
+                    "Profiles"
+                ],
+                "summary": "Update Profile Name",
+                "description": "update profile name",
+                "operationId": "updateName",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Name",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "returns updateName object."
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/profiles/updateStatus": {
+            "post": {
+                "tags": [
+                    "Profiles"
+                ],
+                "summary": "Update Profile Status",
+                "description": "update profile status",
+                "operationId": "updateStatus",
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Status",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "returns updateStatus object."
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages": {
+            "get": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "fetch all messages",
+                "description": "fetch user all messages",
+                "operationId": "messages",
+                "parameters": [
+                    {
+                        "name": "messageId",
+                        "in": "query",
+                        "description": "Message Id to get specific message",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "returns array of messages."
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/sendMessage": {
+            "post": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "text message",
+                "description": "send text message",
+                "operationId": "sendMessage",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to send to",
+                        "required": true
+                    },
+                    {
+                        "name": "body",
+                        "in": "query",
+                        "description": "Message Body to send",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/sendImage": {
+            "post": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "send image message",
+                "description": "send image message",
+                "operationId": "sendImage",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to send to",
+                        "required": true
+                    },
+                    {
+                        "name": "url",
+                        "in": "query",
+                        "description": "Image Url to send",
+                        "required": true
+                    },
+                    {
+                        "name": "caption",
+                        "in": "query",
+                        "description": "Caption to send",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/sendVideo": {
+            "post": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "send video message",
+                "description": "send video message",
+                "operationId": "sendVideo",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to send to",
+                        "required": true
+                    },
+                    {
+                        "name": "url",
+                        "in": "query",
+                        "description": "Video Url to send",
+                        "required": true
+                    },
+                    {
+                        "name": "caption",
+                        "in": "query",
+                        "description": "Caption to send",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/sendAudio": {
+            "post": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "send audio message",
+                "description": "send audio message",
+                "operationId": "sendAudio",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to send to",
+                        "required": true
+                    },
+                    {
+                        "name": "url",
+                        "in": "query",
+                        "description": "Audio Url to send",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/sendFile": {
+            "post": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "send file message",
+                "description": "send file message",
+                "operationId": "sendFile",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to send to",
+                        "required": true
+                    },
+                    {
+                        "name": "url",
+                        "in": "query",
+                        "description": "File Url to send",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/sendSticker": {
+            "post": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "send sticker message",
+                "description": "send sticker message",
+                "operationId": "sendSticker",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to send to",
+                        "required": true
+                    },
+                    {
+                        "name": "url",
+                        "in": "query",
+                        "description": "Sticker Url to send",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/sendGif": {
+            "post": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "send gif message",
+                "description": "send gif message",
+                "operationId": "sendGif",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to send to",
+                        "required": true
+                    },
+                    {
+                        "name": "url",
+                        "in": "query",
+                        "description": "Gif Url to send",
+                        "required": true
+                    },
+                    {
+                        "name": "caption",
+                        "in": "query",
+                        "description": "Caption to send",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/sendLink": {
+            "post": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "send link with preview message",
+                "description": "send link with preview message",
+                "operationId": "sendLink",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to send to",
+                        "required": true
+                    },
+                    {
+                        "name": "url",
+                        "in": "query",
+                        "description": "Message URL to send to",
+                        "required": true
+                    },
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "description": "Message URL title to send to",
+                        "required": true
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "Message URL description to send to",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/sendLocation": {
+            "post": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "send location message",
+                "description": "send location message",
+                "operationId": "sendLocation",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to send to",
+                        "required": true
+                    },
+                    {
+                        "name": "latitude",
+                        "in": "query",
+                        "description": "Location latitude to send",
+                        "required": true
+                    },
+                    {
+                        "name": "longitude",
+                        "in": "query",
+                        "description": "Location Longitude to send",
+                        "required": false
+                    },
+                    {
+                        "name": "address",
+                        "in": "query",
+                        "description": "Location Address Text to send",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/sendContact": {
+            "post": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "send contact message",
+                "description": "send contact message",
+                "operationId": "sendContact",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to send to",
+                        "required": true
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Contact Name to send",
+                        "required": true
+                    },
+                    {
+                        "name": "contact",
+                        "in": "query",
+                        "description": "Contact Phone to send",
+                        "required": false
+                    },
+                    {
+                        "name": "organization",
+                        "in": "query",
+                        "description": "Contact Organization to send",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/sendDisappearingMessage": {
+            "post": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "send disappearing message",
+                "description": "send disappearing message",
+                "operationId": "sendDisappearingMessage",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to send to",
+                        "required": true
+                    },
+                    {
+                        "name": "body",
+                        "in": "query",
+                        "description": "Message Body to send",
+                        "required": true
+                    },
+                    {
+                        "name": "expiration",
+                        "in": "query",
+                        "description": "Message Expiration in seconds",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/sendMention": {
+            "post": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "send mention message",
+                "description": "send mention message",
+                "operationId": "sendMention",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to send to",
+                        "required": true
+                    },
+                    {
+                        "name": "contact",
+                        "in": "query",
+                        "description": "Contact Mention to send",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/sendReaction": {
+            "post": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "send reaction message",
+                "description": "send reaction message",
+                "operationId": "sendReaction",
+                "parameters": [
+                    {
+                        "name": "messageId",
+                        "in": "query",
+                        "description": "Message Id to react to (fromMe must be false)",
+                        "required": true
+                    },
+                    {
+                        "name": "reaction",
+                        "in": "query",
+                        "description": "Reaction Index to react to (1 == '👍' , 2 == '❤️' , 3 == '😂', 4 == '😮' , 5 == '😢' , 6 == '🙏')",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/sendButtons": {
+            "post": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "send buttons message",
+                "description": "send buttons message",
+                "operationId": "sendButtons",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to send to",
+                        "required": true
+                    },
+                    {
+                        "name": "body",
+                        "in": "query",
+                        "description": "Message Body to send",
+                        "required": true
+                    },
+                    {
+                        "name": "footer",
+                        "in": "query",
+                        "description": "Message Footer to send",
+                        "required": true
+                    },
+                    {
+                        "name": "buttons",
+                        "in": "query",
+                        "description": "Message Buttons to send",
+                        "required": true
+                    },
+                    {
+                        "name": "image",
+                        "in": "query",
+                        "description": "Message Image URL to send",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/sendTemplates": {
+            "post": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "send template message",
+                "description": "send template message",
+                "operationId": "sendTemplates",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to send to",
+                        "required": true
+                    },
+                    {
+                        "name": "body",
+                        "in": "query",
+                        "description": "Message Body to send",
+                        "required": true
+                    },
+                    {
+                        "name": "footer",
+                        "in": "query",
+                        "description": "Message Footer to send",
+                        "required": true
+                    },
+                    {
+                        "name": "buttons",
+                        "in": "query",
+                        "description": "Message Buttons to send",
+                        "required": true
+                    },
+                    {
+                        "name": "image",
+                        "in": "query",
+                        "description": "Message Image URL to send",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/sendList": {
+            "post": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "send list message",
+                "description": "send list message",
+                "operationId": "sendList",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to send to",
+                        "required": true
+                    },
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "description": "Message Title to send",
+                        "required": true
+                    },
+                    {
+                        "name": "body",
+                        "in": "query",
+                        "description": "Message Body to send",
+                        "required": true
+                    },
+                    {
+                        "name": "footer",
+                        "in": "query",
+                        "description": "Message Footer to send",
+                        "required": true
+                    },
+                    {
+                        "name": "buttonText",
+                        "in": "query",
+                        "description": "Message View list button Text to send",
+                        "required": true
+                    },
+                    {
+                        "name": "sections",
+                        "in": "query",
+                        "description": "Message Sections to send",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/sendGroupInvitation": {
+            "post": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "send group invitation message",
+                "description": "send group invitation message",
+                "operationId": "sendGroupInvitation",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to send to",
+                        "required": true
+                    },
+                    {
+                        "name": "groupId",
+                        "in": "query",
+                        "description": "Group Id to send",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/forwardMessage": {
+            "post": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "forward message",
+                "description": "forward specific message and formMe must be false",
+                "operationId": "forwardMessage",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to send to",
+                        "required": true
+                    },
+                    {
+                        "name": "messageId",
+                        "in": "query",
+                        "description": "Message Id to forward to (fromMe must be false)",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/starMessage": {
+            "post": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "star message",
+                "description": "star specific message",
+                "operationId": "starMessage",
+                "parameters": [
+                    {
+                        "name": "messageId",
+                        "in": "query",
+                        "description": "Message Id to be starred",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/unstarMessage": {
+            "post": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "unstar message",
+                "description": "unstar specific message",
+                "operationId": "unstarMessage",
+                "parameters": [
+                    {
+                        "name": "messageId",
+                        "in": "query",
+                        "description": "Message Id to be unstarred",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/deleteMessageForMe": {
+            "post": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "delete message for me",
+                "description": "delete specific message for me",
+                "operationId": "deleteMessageForMe",
+                "parameters": [
+                    {
+                        "name": "messageId",
+                        "in": "query",
+                        "description": "Message Id to be deleted for me",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/deleteMessageForAll": {
+            "post": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "delete message for everyone",
+                "description": "delete specific message for everyone",
+                "operationId": "deleteMessageForAll",
+                "parameters": [
+                    {
+                        "name": "messageId",
+                        "in": "query",
+                        "description": "Message Id to be deleted for everyone",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/repeatHook": {
+            "post": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "repeat message webhook",
+                "description": "repeat sending webhook for specific message",
+                "operationId": "repeatHook",
+                "parameters": [
+                    {
+                        "name": "messageId",
+                        "in": "query",
+                        "description": "Message Id to be deleted for everyone",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/textReply": {
+            "post": {
+                "tags": [
+                    "Reply With Message"
+                ],
+                "summary": "reply with text message",
+                "description": "reply with text message",
+                "operationId": "textReply",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to reply to",
+                        "required": true
+                    },
+                    {
+                        "name": "messageId",
+                        "in": "query",
+                        "description": "Message Id to reply to (fromMe must be false)",
+                        "required": true
+                    },
+                    {
+                        "name": "body",
+                        "in": "query",
+                        "description": "Body to reply with",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/imageReply": {
+            "post": {
+                "tags": [
+                    "Reply With Message"
+                ],
+                "summary": "reply with image message",
+                "description": "reply with image message",
+                "operationId": "imageReply",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to reply to",
+                        "required": true
+                    },
+                    {
+                        "name": "messageId",
+                        "in": "query",
+                        "description": "Message Id to reply to (fromMe must be false)",
+                        "required": true
+                    },
+                    {
+                        "name": "url",
+                        "in": "query",
+                        "description": "Image Url to reply with",
+                        "required": true
+                    },
+                    {
+                        "name": "caption",
+                        "in": "query",
+                        "description": "Caption to reply with",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/videoReply": {
+            "post": {
+                "tags": [
+                    "Reply With Message"
+                ],
+                "summary": "reply with video message",
+                "description": "reply with video message",
+                "operationId": "videoReply",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to reply to",
+                        "required": true
+                    },
+                    {
+                        "name": "messageId",
+                        "in": "query",
+                        "description": "Message Id to reply to (fromMe must be false)",
+                        "required": true
+                    },
+                    {
+                        "name": "url",
+                        "in": "query",
+                        "description": "Video Url to reply with",
+                        "required": true
+                    },
+                    {
+                        "name": "caption",
+                        "in": "query",
+                        "description": "Caption to reply with",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/audioReply": {
+            "post": {
+                "tags": [
+                    "Reply With Message"
+                ],
+                "summary": "reply with audio message",
+                "description": "reply with audio message",
+                "operationId": "audioReply",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to reply to",
+                        "required": true
+                    },
+                    {
+                        "name": "messageId",
+                        "in": "query",
+                        "description": "Message Id to reply to (fromMe must be false)",
+                        "required": true
+                    },
+                    {
+                        "name": "url",
+                        "in": "query",
+                        "description": "Audio Url to reply with",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/fileReply": {
+            "post": {
+                "tags": [
+                    "Reply With Message"
+                ],
+                "summary": "reply with file message",
+                "description": "reply with file message",
+                "operationId": "fileReply",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to reply to",
+                        "required": true
+                    },
+                    {
+                        "name": "messageId",
+                        "in": "query",
+                        "description": "Message Id to reply to (fromMe must be false)",
+                        "required": true
+                    },
+                    {
+                        "name": "url",
+                        "in": "query",
+                        "description": "File Url to reply with",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/stickerReply": {
+            "post": {
+                "tags": [
+                    "Reply With Message"
+                ],
+                "summary": "reply with sticker message",
+                "description": "reply with sticker message",
+                "operationId": "stickerReply",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to reply to",
+                        "required": true
+                    },
+                    {
+                        "name": "messageId",
+                        "in": "query",
+                        "description": "Message Id to reply to (fromMe must be false)",
+                        "required": true
+                    },
+                    {
+                        "name": "url",
+                        "in": "query",
+                        "description": "Sticker Url to reply with",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/gifReply": {
+            "post": {
+                "tags": [
+                    "Reply With Message"
+                ],
+                "summary": "reply with gif message",
+                "description": "reply with gif message",
+                "operationId": "gifReply",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to reply to",
+                        "required": true
+                    },
+                    {
+                        "name": "messageId",
+                        "in": "query",
+                        "description": "Message Id to reply to (fromMe must be false)",
+                        "required": true
+                    },
+                    {
+                        "name": "url",
+                        "in": "query",
+                        "description": "Video Url to reply with",
+                        "required": true
+                    },
+                    {
+                        "name": "caption",
+                        "in": "query",
+                        "description": "Caption to reply with",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/locationReply": {
+            "post": {
+                "tags": [
+                    "Reply With Message"
+                ],
+                "summary": "reply with location message",
+                "description": "reply with location message",
+                "operationId": "locationReply",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to reply to",
+                        "required": true
+                    },
+                    {
+                        "name": "messageId",
+                        "in": "query",
+                        "description": "Message Id to reply to (fromMe must be false)",
+                        "required": true
+                    },
+                    {
+                        "name": "latitude",
+                        "in": "query",
+                        "description": "Location latitude to reply with",
+                        "required": true
+                    },
+                    {
+                        "name": "longitude",
+                        "in": "query",
+                        "description": "Location Longitude to reply with",
+                        "required": false
+                    },
+                    {
+                        "name": "address",
+                        "in": "query",
+                        "description": "Location Address Text to reply with",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/contactReply": {
+            "post": {
+                "tags": [
+                    "Reply With Message"
+                ],
+                "summary": "reply with contact message",
+                "description": "reply with contact message",
+                "operationId": "contactReply",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to reply to",
+                        "required": true
+                    },
+                    {
+                        "name": "messageId",
+                        "in": "query",
+                        "description": "Message Id to reply to (fromMe must be false)",
+                        "required": true
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Contact Name to reply with",
+                        "required": true
+                    },
+                    {
+                        "name": "contact",
+                        "in": "query",
+                        "description": "Contact Phone to reply with",
+                        "required": false
+                    },
+                    {
+                        "name": "organization",
+                        "in": "query",
+                        "description": "Contact Organization to reply with",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/disappearingReply": {
+            "post": {
+                "tags": [
+                    "Reply With Message"
+                ],
+                "summary": "reply with disappearing message",
+                "description": "reply with disappearing message",
+                "operationId": "disappearingReply",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to reply to",
+                        "required": true
+                    },
+                    {
+                        "name": "messageId",
+                        "in": "query",
+                        "description": "Message Id to reply to (fromMe must be false)",
+                        "required": true
+                    },
+                    {
+                        "name": "body",
+                        "in": "query",
+                        "description": "Message Body to reply with",
+                        "required": true
+                    },
+                    {
+                        "name": "expiration",
+                        "in": "query",
+                        "description": "Message Expiration in seconds",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/mentionReply": {
+            "post": {
+                "tags": [
+                    "Reply With Message"
+                ],
+                "summary": "reply with mention message",
+                "description": "reply with mention message",
+                "operationId": "mentionReply",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to reply to",
+                        "required": true
+                    },
+                    {
+                        "name": "messageId",
+                        "in": "query",
+                        "description": "Message Id to reply to (fromMe must be false)",
+                        "required": true
+                    },
+                    {
+                        "name": "contact",
+                        "in": "query",
+                        "description": "Contact Mention to reply with",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/reactionReply": {
+            "post": {
+                "tags": [
+                    "Reply With Message"
+                ],
+                "summary": "reply with reaction message",
+                "description": "reply with reaction message",
+                "operationId": "reactionReply",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to reply to",
+                        "required": true
+                    },
+                    {
+                        "name": "messageId",
+                        "in": "query",
+                        "description": "Message Id to reply to (fromMe must be false)",
+                        "required": true
+                    },
+                    {
+                        "name": "reaction",
+                        "in": "query",
+                        "description": "Reaction Index to reply with (1 == '👍' , 2 == '❤️' , 3 == '😂', 4 == '😮' , 5 == '😢' , 6 == '🙏')",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/buttonsReply": {
+            "post": {
+                "tags": [
+                    "Reply With Message"
+                ],
+                "summary": "reply with buttons message",
+                "description": "reply with buttons message",
+                "operationId": "buttonsReply",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to reply to",
+                        "required": true
+                    },
+                    {
+                        "name": "messageId",
+                        "in": "query",
+                        "description": "Message Id to reply to (fromMe must be false)",
+                        "required": true
+                    },
+                    {
+                        "name": "body",
+                        "in": "query",
+                        "description": "Message Body to reply with",
+                        "required": true
+                    },
+                    {
+                        "name": "footer",
+                        "in": "query",
+                        "description": "Message Footer to reply with",
+                        "required": true
+                    },
+                    {
+                        "name": "buttons",
+                        "in": "query",
+                        "description": "Message Buttons to reply with",
+                        "required": true
+                    },
+                    {
+                        "name": "image",
+                        "in": "query",
+                        "description": "Message Image URL to reply with",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/templateReply": {
+            "post": {
+                "tags": [
+                    "Reply With Message"
+                ],
+                "summary": "reply with template message",
+                "description": "reply with template message",
+                "operationId": "templateReply",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to reply to",
+                        "required": true
+                    },
+                    {
+                        "name": "messageId",
+                        "in": "query",
+                        "description": "Message Id to reply to (fromMe must be false)",
+                        "required": true
+                    },
+                    {
+                        "name": "body",
+                        "in": "query",
+                        "description": "Message Body to reply with",
+                        "required": true
+                    },
+                    {
+                        "name": "footer",
+                        "in": "query",
+                        "description": "Message Footer to reply with",
+                        "required": true
+                    },
+                    {
+                        "name": "buttons",
+                        "in": "query",
+                        "description": "Message Buttons to reply with",
+                        "required": true
+                    },
+                    {
+                        "name": "image",
+                        "in": "query",
+                        "description": "Message Image URL to reply with",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/listReply": {
+            "post": {
+                "tags": [
+                    "Reply With Message"
+                ],
+                "summary": "reply with list message",
+                "description": "reply with list message",
+                "operationId": "listReply",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to reply to",
+                        "required": true
+                    },
+                    {
+                        "name": "messageId",
+                        "in": "query",
+                        "description": "Message Id to reply to (fromMe must be false)",
+                        "required": true
+                    },
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "description": "Message Title to reply with",
+                        "required": true
+                    },
+                    {
+                        "name": "body",
+                        "in": "query",
+                        "description": "Message Body to reply with",
+                        "required": true
+                    },
+                    {
+                        "name": "footer",
+                        "in": "query",
+                        "description": "Message Footer to reply with",
+                        "required": true
+                    },
+                    {
+                        "name": "buttonText",
+                        "in": "query",
+                        "description": "Message View list button Text to reply with",
+                        "required": true
+                    },
+                    {
+                        "name": "sections",
+                        "in": "query",
+                        "description": "Message Sections to reply with",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/linkReply": {
+            "post": {
+                "tags": [
+                    "Reply With Message"
+                ],
+                "summary": "reply with link with preview message",
+                "description": "reply with link with preview message",
+                "operationId": "linkReply",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to reply to",
+                        "required": true
+                    },
+                    {
+                        "name": "messageId",
+                        "in": "query",
+                        "description": "Message Id to reply to (fromMe must be false)",
+                        "required": true
+                    },
+                    {
+                        "name": "url",
+                        "in": "query",
+                        "description": "Message URL to reply with",
+                        "required": true
+                    },
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "description": "Message URL title to reply with",
+                        "required": true
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "Message URL description to reply with",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/groupInvitationReply": {
+            "post": {
+                "tags": [
+                    "Reply With Message"
+                ],
+                "summary": "reply with group invitation message",
+                "description": "reply with group invitation message",
+                "operationId": "groupInvitationReply",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to reply to",
+                        "required": true
+                    },
+                    {
+                        "name": "messageId",
+                        "in": "query",
+                        "description": "Message Id to reply to (fromMe must be false)",
+                        "required": true
+                    },
+                    {
+                        "name": "groupId",
+                        "in": "query",
+                        "description": "Group Id to reply with",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/productReply": {
+            "post": {
+                "tags": [
+                    "Reply With Message"
+                ],
+                "summary": "reply with product message",
+                "description": "reply with product message",
+                "operationId": "productReply",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to reply to",
+                        "required": true
+                    },
+                    {
+                        "name": "messageId",
+                        "in": "query",
+                        "description": "Message Id to reply to (fromMe must be false)",
+                        "required": true
+                    },
+                    {
+                        "name": "productId",
+                        "in": "query",
+                        "description": "Product Id to reply with",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/catalogReply": {
+            "post": {
+                "tags": [
+                    "Reply With Message"
+                ],
+                "summary": "reply with catalog message",
+                "description": "reply with catalog message",
+                "operationId": "catalogReply",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to reply to",
+                        "required": true
+                    },
+                    {
+                        "name": "messageId",
+                        "in": "query",
+                        "description": "Message Id to reply to (fromMe must be false)",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearer_token": {
+                "type": "apiKey",
+                "description": "Enter token in format (Bearer <token>)",
+                "name": "Authorization",
+                "in": "header"
+            },
+            "channel_id": {
+                "type": "apiKey",
+                "description": "Enter Your Channel ID",
+                "name": "CHANNELID",
+                "in": "header"
+            },
+            "channel_token": {
+                "type": "apiKey",
+                "description": "Enter Your Channel Token",
+                "name": "CHANNELTOKEN",
+                "in": "header"
+            }
+        }
+    }
+}

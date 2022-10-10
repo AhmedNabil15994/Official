@@ -1,0 +1,511 @@
+name: Messages
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: engine/messages/fetchMessages
+    metadata:
+      title: 'API for listing all messages'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"status":{"status":0,"code":401,"message":"Authorization Key is required"}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          set-cookie: 'laravel_session=fBDNuXcOs3r0shOpiazmdqyOUd0SDWhnYFUUpGkC; expires=Wed, 05-Oct-2022 09:24:07 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/sendMessage
+    metadata:
+      title: 'API for sending text message'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/sendImage
+    metadata:
+      title: 'API for sending image message'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/sendAudio
+    metadata:
+      title: 'API for sending audio message'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/sendVideo
+    metadata:
+      title: 'API for sending video message'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/sendFile
+    metadata:
+      title: 'API for sending file message'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/sendSticker
+    metadata:
+      title: 'API for sending sticker message'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/sendGif
+    metadata:
+      title: 'API for sending gif message'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/sendLink
+    metadata:
+      title: 'API for sending link message'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/sendLocation
+    metadata:
+      title: 'API for sending location message'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/sendContact
+    metadata:
+      title: 'API for sending contact message'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/sendDisappearingMessage
+    metadata:
+      title: 'API for sending disappearing message'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/sendMention
+    metadata:
+      title: 'API for sending mention message'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/sendReaction
+    metadata:
+      title: 'API for sending reaction on message'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/sendButtons
+    metadata:
+      title: 'API for sending buttons message'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/sendTemplates
+    metadata:
+      title: 'API for sending template message'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/sendList
+    metadata:
+      title: 'API for sending list message'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/forwardMessage
+    metadata:
+      title: 'API for forwarding specific message'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/sendReply
+    metadata:
+      title: 'API for sending a reply on message'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/sendBulk
+    metadata:
+      title: 'API for sending group messages with interval'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/deleteMessageForAll
+    metadata:
+      title: 'API for deleting message for all'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/deleteMessageForMe
+    metadata:
+      title: 'API for deleting message for me'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/repeatHook
+    metadata:
+      title: 'API for repeating message hook'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/starMessage
+    metadata:
+      title: 'API for starring specific message'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/unstarMessage
+    metadata:
+      title: 'API for unstarring specific message'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
