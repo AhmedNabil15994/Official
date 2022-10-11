@@ -1,12 +1,12 @@
-name: Chats
+name: Endpoints
 description: ''
 endpoints:
   -
     httpMethods:
       - GET
-    uri: engine/dialogs/fetchDialogs
+    uri: engine/instances/qr
     metadata:
-      title: 'API for listing all chats'
+      title: ''
       description: ''
       authenticated: true
       custom: []
@@ -26,15 +26,91 @@ endpoints:
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
-          set-cookie: 'laravel_session=yiO1gsfZ0yWnW2Ui3fbKCWIuwNLwDF83QxRqHyUj; expires=Wed, 05-Oct-2022 09:24:07 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+          set-cookie: 'laravel_session=q8IyLl79DgQOgeV24Z5OBTHWy7E8NbfPxIDmZHoc; expires=Mon, 10-Oct-2022 17:54:59 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: engine/users/contacts
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"status":{"status":0,"code":401,"message":"Authorization Key is required"}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          set-cookie: 'laravel_session=lq3luxXgFhEldday2irVWujFJH4nsyBasSJKN1Fd; expires=Mon, 10-Oct-2022 17:54:59 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
         description: null
     responseFields: []
   -
     httpMethods:
       - POST
-    uri: engine/dialogs/readChat
+    uri: engine/messages/sendMessage
     metadata:
-      title: 'API for reading chat'
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: engine/instances/status
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"status":{"status":0,"code":401,"message":"Authorization Key is required"}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          set-cookie: 'laravel_session=WCX0ZWbS8UbMuldT1hEfGnvkT2Uo1XHJ2182OPvS; expires=Mon, 10-Oct-2022 17:54:59 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/channels/createChannel
+    metadata:
+      title: ''
       description: ''
       authenticated: true
       custom: []
@@ -52,9 +128,9 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: engine/dialogs/unreadChat
+    uri: engine/instances/disconnect
     metadata:
-      title: 'API for unreading chat'
+      title: ''
       description: ''
       authenticated: true
       custom: []
@@ -72,9 +148,9 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: engine/dialogs/archiveChat
+    uri: engine/users/getUserStatus
     metadata:
-      title: 'API for archiving chat'
+      title: ''
       description: ''
       authenticated: true
       custom: []
@@ -92,9 +168,9 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: engine/dialogs/unarchiveChat
+    uri: engine/messages/sendImage
     metadata:
-      title: 'API for unarchiving chat'
+      title: ''
       description: ''
       authenticated: true
       custom: []
@@ -112,9 +188,9 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: engine/dialogs/pinChat
+    uri: engine/users/getUserPresence
     metadata:
-      title: 'API for pinning chat'
+      title: ''
       description: ''
       authenticated: true
       custom: []
@@ -132,9 +208,9 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: engine/dialogs/unpinChat
+    uri: engine/instances/clearInstance
     metadata:
-      title: 'API for unpinning chat'
+      title: ''
       description: ''
       authenticated: true
       custom: []
@@ -152,9 +228,9 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: engine/dialogs/muteChat
+    uri: engine/messages/sendAudio
     metadata:
-      title: 'API for muting chat'
+      title: ''
       description: ''
       authenticated: true
       custom: []
@@ -172,9 +248,9 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: engine/dialogs/unmuteChat
+    uri: engine/instances/updateChannelSetting
     metadata:
-      title: 'API for unmuting chat'
+      title: ''
       description: ''
       authenticated: true
       custom: []
@@ -192,9 +268,9 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: engine/dialogs/typing
+    uri: engine/messages/sendVideo
     metadata:
-      title: 'API for sending typing status to specific chat'
+      title: ''
       description: ''
       authenticated: true
       custom: []
@@ -212,9 +288,2461 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: engine/dialogs/recording
+    uri: engine/messages/sendFile
     metadata:
-      title: 'API for sending recording status to specific chat'
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/users/blockUser
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/sendSticker
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/users/unblockUser
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/sendGif
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/users/checkPhone
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/sendLink
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/sendLocation
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/sendContact
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/sendDisappearingMessage
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/sendMention
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/sendReaction
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/sendButtons
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/sendTemplates
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/sendList
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/forwardMessage
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/deleteMessageForAll
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/deleteMessageForMe
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/repeatHook
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/starMessage
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/unstarMessage
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/groups/getInviteCode
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/groups/leaveGroup
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/groups/revokeInvite
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/groups/getInviteInfo
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/groups/acceptInvite
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/groups/joinGroup
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: engine/queues/getMessagesQueue
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"status":{"status":0,"code":401,"message":"Authorization Key is required"}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          set-cookie: 'laravel_session=44ux0BhaRfRM6QbmraswkJHx2Jvz9EnSfCLwSJWO; expires=Mon, 10-Oct-2022 17:54:59 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/groups/demoteParticipants
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/groups/promoteParticipants
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/groups/removeParticipants
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/groups/addParticipants
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/groups/getParticipants
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/users/getUserPicture
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/groups/updateDescription
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/groups/renameGroup
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/groups/createGroup
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: engine/groups
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"status":{"status":0,"code":401,"message":"Authorization Key is required"}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          set-cookie: 'laravel_session=HoEXl8QzxPHuHniArpXpKMt1642RGXBh71aVQhDZ; expires=Mon, 10-Oct-2022 17:54:59 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/chats/recording
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/chats/typing
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/groups/updateSetting
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/business/sendCatalog
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: engine/users/blockList
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"status":{"status":0,"code":401,"message":"Authorization Key is required"}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          set-cookie: 'laravel_session=h3So5RQ8phXUrcjOf7RCG0uF9QL1rZam9WSCMFRC; expires=Mon, 10-Oct-2022 17:54:59 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/business/unlabelChat
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: engine/channels
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"status":{"status":0,"code":401,"message":"Authorization Key is required"}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          set-cookie: 'laravel_session=5WRZaATg4ocsLG6mwK0xkv7veeT0pfhCZM3EfcuO; expires=Mon, 10-Oct-2022 17:54:59 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/business/replies/delete
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/business/replies/update
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/business/replies/create
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: engine/business/replies
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"status":{"status":0,"code":401,"message":"Authorization Key is required"}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          set-cookie: 'laravel_session=vDT32ypMFtYi0ggdoNIHd0TY763P0eC8Ur7YTd1Y; expires=Mon, 10-Oct-2022 17:54:59 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/business/labels/delete
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/business/labels/update
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/business/labels/create
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/business/unlabelMessage
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/business/labelMessage
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/business/labelChat
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/users/rejectCall
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: engine/business/labels
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"status":{"status":0,"code":401,"message":"Authorization Key is required"}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          set-cookie: 'laravel_session=yBEXZc5I2t8QOjFLVs2TKqhUJce5GGlNZ5Wd19Wg; expires=Mon, 10-Oct-2022 17:54:59 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/chats/muteChat
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/business/collections
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/business/getOrder
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/business/sendProduct
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/business/products/delete
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/business/products/update
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/business/products/create
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/business/products
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/business/getBusinessProfile
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/chats/unmuteChat
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/linkBulk
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/chats/unpinChat
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/fileReply
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/listReply
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/templateReply
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/buttonsReply
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/reactionReply
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/mentionReply
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/disappearingReply
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/contactReply
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/locationReply
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/gifReply
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/stickerReply
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/audioReply
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/groupInvitationReply
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/videoReply
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/imageReply
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/textReply
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/sendGroupInvitation
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: engine/messages
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"status":{"status":0,"code":401,"message":"Authorization Key is required"}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          set-cookie: 'laravel_session=2g7bbl0OwOSXS3AbAIu3gIawdUHui9dinAAZTdg1; expires=Mon, 10-Oct-2022 17:54:59 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/profiles/updateStatus
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/profiles/updateName
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/profiles/updatePresence
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/profiles/updateProfilePicture
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: engine/profiles/me
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"status":{"status":0,"code":401,"message":"Authorization Key is required"}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          set-cookie: 'laravel_session=dyaVCIh1cPhXx9bGeHeQXq7YWf2qL5b3aqaWWFOn; expires=Mon, 10-Oct-2022 17:54:59 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/linkReply
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/productReply
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/chats/pinChat
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/listBulk
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/chats/unarchiveChat
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/chats/archiveChat
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/chats/unreadChat
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/chats/readChat
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/chats/deleteChat
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: engine/chats
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"status":{"status":0,"code":401,"message":"Authorization Key is required"}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          set-cookie: 'laravel_session=wRgiTewj8pK1abXL9C5vNoyavQ3zG0GOS6mV7wlF; expires=Mon, 10-Oct-2022 17:54:59 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/catalogBulk
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/productBulk
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/groupInvitationBulk
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/queues/clearMessagesQueue
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/templateBulk
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/catalogReply
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/mentionBulk
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/disappearingBulk
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/contactBulk
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/locationBulk
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/gifBulk
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/stickerBulk
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/fileBulk
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/audioBulk
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/videoBulk
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/imageBulk
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/textBulk
+    metadata:
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      CHANNELID: '7420'
+      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: engine/messages/buttonsBulk
+    metadata:
+      title: ''
       description: ''
       authenticated: true
       custom: []

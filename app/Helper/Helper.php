@@ -57,8 +57,12 @@ class Helper
                     $v = $newValueToReplace;
                 }else{
                     foreach($v as $oneKey => $one){
-                        $newIndex = array_keys($one)[0];
-                        $newValueToReplace[$oneKey][$newIndex] = $one[$newIndex];
+                        if(is_array($one)){
+                            $newIndex =  array_keys($one)[0];
+                            $newValueToReplace[$oneKey][$newIndex] = $one[$newIndex];
+                        }else{
+                            $newValueToReplace[$key][$oneKey] = $one;
+                        }
                     }
                     $v = $newValueToReplace;
                 }

@@ -19,6 +19,7 @@ class CreateOfflineMessagesTable extends Migration
             $table->string('chatId');
             $table->integer('sent_time');
             $table->text('message');
+            $table->string('type')->nullable();
             $table->string('status')->default('PENDING');
             $table->integer('is_sent')->default(0);
             $table->dateTime('created_at')->nullable();

@@ -123,6 +123,7 @@ class MessagesControllers extends Controller {
                 $queuedMessageObj = new OfflineMessage;
             }
             $queuedMessageObj->sessionId = $sessionId;
+            $queuedMessageObj->type = 'text';
             $queuedMessageObj->message = json_encode((object)$myData);
             $queuedMessageObj->chatId = $chatId;
             $queuedMessageObj->sent_time = $queuedTime;
@@ -193,6 +194,7 @@ class MessagesControllers extends Controller {
             }
             $queuedMessageObj->sessionId = $sessionId;
             $queuedMessageObj->message = json_encode((object)$myData);
+            $queuedMessageObj->type = 'image';
             $queuedMessageObj->chatId = $chatId;
             $queuedMessageObj->sent_time = $queuedTime;
             $queuedMessageObj->created_at = DATE_TIME;
@@ -270,6 +272,7 @@ class MessagesControllers extends Controller {
             $queuedMessageObj->sessionId = $sessionId;
             $queuedMessageObj->message = json_encode((object)$myData);
             $queuedMessageObj->chatId = $chatId;
+            $queuedMessageObj->type = 'video';
             $queuedMessageObj->sent_time = $queuedTime;
             $queuedMessageObj->created_at = DATE_TIME;
             $queuedMessageObj->save();
@@ -357,6 +360,7 @@ class MessagesControllers extends Controller {
             $queuedMessageObj->message = json_encode((object)$myData);
             $queuedMessageObj->chatId = $chatId;
             $queuedMessageObj->sent_time = $queuedTime;
+            $queuedMessageObj->type = 'audio';
             $queuedMessageObj->created_at = DATE_TIME;
             $queuedMessageObj->save();
             $mimetype = 'audio/ogg';
@@ -436,6 +440,7 @@ class MessagesControllers extends Controller {
             $queuedMessageObj->sessionId = $sessionId;
             $queuedMessageObj->message = json_encode((object)$myData);
             $queuedMessageObj->chatId = $chatId;
+            $queuedMessageObj->type = 'file';
             $queuedMessageObj->sent_time = $queuedTime;
             $queuedMessageObj->created_at = DATE_TIME;
             $queuedMessageObj->save();
@@ -511,6 +516,7 @@ class MessagesControllers extends Controller {
             $queuedMessageObj->sessionId = $sessionId;
             $queuedMessageObj->message = json_encode((object)$myData);
             $queuedMessageObj->chatId = $chatId;
+            $queuedMessageObj->type = 'sticker';
             $queuedMessageObj->sent_time = $queuedTime;
             $queuedMessageObj->created_at = DATE_TIME;
             $queuedMessageObj->save();
@@ -596,6 +602,7 @@ class MessagesControllers extends Controller {
             }
             $queuedMessageObj->sessionId = $sessionId;
             $queuedMessageObj->message = json_encode((object)$myData);
+            $queuedMessageObj->type = 'gif';
             $queuedMessageObj->chatId = $chatId;
             $queuedMessageObj->sent_time = $queuedTime;
             $queuedMessageObj->created_at = DATE_TIME;
@@ -681,6 +688,7 @@ class MessagesControllers extends Controller {
             }
             $queuedMessageObj->sessionId = $sessionId;
             $queuedMessageObj->message = json_encode((object)$myData);
+            $queuedMessageObj->type = 'link';
             $queuedMessageObj->chatId = $chatId;
             $queuedMessageObj->sent_time = $queuedTime;
             $queuedMessageObj->created_at = DATE_TIME;
@@ -757,6 +765,7 @@ class MessagesControllers extends Controller {
             }
             $queuedMessageObj->sessionId = $sessionId;
             $queuedMessageObj->message = json_encode((object)$myData);
+            $queuedMessageObj->type = 'location';
             $queuedMessageObj->chatId = $chatId;
             $queuedMessageObj->sent_time = $queuedTime;
             $queuedMessageObj->created_at = DATE_TIME;
@@ -837,6 +846,7 @@ class MessagesControllers extends Controller {
             }
             $queuedMessageObj->sessionId = $sessionId;
             $queuedMessageObj->message = json_encode((object)$myData);
+            $queuedMessageObj->type = 'contact';
             $queuedMessageObj->chatId = $chatId;
             $queuedMessageObj->sent_time = $queuedTime;
             $queuedMessageObj->created_at = DATE_TIME;
@@ -915,6 +925,7 @@ class MessagesControllers extends Controller {
             }
             $queuedMessageObj->sessionId = $sessionId;
             $queuedMessageObj->message = json_encode((object)$myData);
+            $queuedMessageObj->type = 'disappearing';
             $queuedMessageObj->chatId = $chatId;
             $queuedMessageObj->sent_time = $queuedTime;
             $queuedMessageObj->created_at = DATE_TIME;
@@ -984,6 +995,7 @@ class MessagesControllers extends Controller {
             }
             $queuedMessageObj->sessionId = $sessionId;
             $queuedMessageObj->message = json_encode((object)$myData);
+            $queuedMessageObj->type = 'mention';
             $queuedMessageObj->chatId = $chatId;
             $queuedMessageObj->sent_time = $queuedTime;
             $queuedMessageObj->created_at = DATE_TIME;
@@ -1063,6 +1075,7 @@ class MessagesControllers extends Controller {
             }
             $queuedMessageObj->sessionId = $sessionId;
             $queuedMessageObj->message = json_encode((object)$myData);
+            $queuedMessageObj->type = 'reaction';
             $queuedMessageObj->chatId = $chatId;
             $queuedMessageObj->sent_time = $queuedTime;
             $queuedMessageObj->created_at = DATE_TIME;
@@ -1187,6 +1200,7 @@ class MessagesControllers extends Controller {
             $queuedMessageObj->sessionId = $sessionId;
             $queuedMessageObj->message = json_encode((object)$myData);
             $queuedMessageObj->chatId = $chatId;
+            $queuedMessageObj->type = 'buttons';
             $queuedMessageObj->sent_time = $queuedTime;
             $queuedMessageObj->created_at = DATE_TIME;
             $queuedMessageObj->save();
@@ -1299,6 +1313,7 @@ class MessagesControllers extends Controller {
             $queuedMessageObj->sessionId = $sessionId;
             $queuedMessageObj->message = json_encode((object)$myData);
             $queuedMessageObj->chatId = $chatId;
+            $queuedMessageObj->type = 'template';
             $queuedMessageObj->sent_time = $queuedTime;
             $queuedMessageObj->created_at = DATE_TIME;
             $queuedMessageObj->save();
@@ -1409,6 +1424,7 @@ class MessagesControllers extends Controller {
             $queuedMessageObj->sessionId = $sessionId;
             $queuedMessageObj->message = json_encode((object)$myData);
             $queuedMessageObj->chatId = $chatId;
+            $queuedMessageObj->type = 'list';
             $queuedMessageObj->sent_time = $queuedTime;
             $queuedMessageObj->created_at = DATE_TIME;
             $queuedMessageObj->save();
@@ -1480,6 +1496,7 @@ class MessagesControllers extends Controller {
             }
             $queuedMessageObj->sessionId = $sessionId;
             $queuedMessageObj->message = json_encode((object)$myData);
+            $queuedMessageObj->type = 'groupInvitation';
             $queuedMessageObj->chatId = $chatId;
             $queuedMessageObj->sent_time = $queuedTime;
             $queuedMessageObj->created_at = DATE_TIME;

@@ -4,46 +4,6 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: engine/channels
-    metadata:
-      title: 'API for listing all user channels'
-      description: ''
-      authenticated: true
-      custom: []
-    headers:
-      Authorization: 'Bearer {YOUR_AUTH_KEY}'
-      Content-Type: application/json
-      Accept: application/json
-      CHANNELID: '7420'
-      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
-    urlParameters: []
-    queryParameters: []
-    bodyParameters: []
-    responses: []
-    responseFields: []
-  -
-    httpMethods:
-      - POST
-    uri: engine/channels/createChannel
-    metadata:
-      title: 'API for creating new channel'
-      description: ''
-      authenticated: true
-      custom: []
-    headers:
-      Authorization: 'Bearer {YOUR_AUTH_KEY}'
-      Content-Type: application/json
-      Accept: application/json
-      CHANNELID: '7420'
-      CHANNELTOKEN: 2240e354c21899584a46ddd7653f7c66
-    urlParameters: []
-    queryParameters: []
-    bodyParameters: []
-    responses: []
-    responseFields: []
-  -
-    httpMethods:
-      - POST
     uri: engine/channels/deleteChannel
     metadata:
       title: 'API for deleteing specific channel by id'

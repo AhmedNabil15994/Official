@@ -9,6 +9,12 @@
         Route::post('/updateChannelSetting', [$controller,'updateChannelSetting']);
     });
 
+    Route::group(['prefix' => '/queues','middleware'=>'InstanceMiddleware'] , function () {
+        $controller = App\Http\Controllers\InstancesControllers::class;
+        Route::get('/getMessagesQueue', [$controller,'getMessagesQueue']);
+        Route::post('/clearMessagesQueue', [$controller,'clearMessagesQueue']);
+    });
+
     Route::group(['prefix' => '/profiles','middleware'=>'InstanceMiddleware'] , function () {
         $controller = App\Http\Controllers\InstancesControllers::class;
         Route::get('/me', [$controller,'me']);

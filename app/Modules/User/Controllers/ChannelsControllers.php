@@ -21,10 +21,16 @@ class ChannelsControllers extends Controller {
     }
 
     /**
-     * @group Channels
-     *
-     * API for listing all user channels
-    */
+     * @OA\Get(
+     *     path="/channels",
+     *     tags={"Channels"},
+     *     operationId="channels",
+     *     summary="fetch user channels",
+     *     description="fetch user all channels",
+     *     security={ {"bearer_token": {}}},
+     *     @OA\Response(response="200", description="")
+     * )
+     */
     public function channels(){
         $dataList['data'] = Device::dataList(USER_ID)['data'];
         $dataList['status'] = \TraitsFunc::SuccessResponse();
@@ -32,10 +38,16 @@ class ChannelsControllers extends Controller {
     }
     
     /**
-     * @group Channels
-     *
-     * API for creating new channel
-    */
+     * @OA\Post(
+     *     path="/channels/createChannel",
+     *     tags={"Channels"},
+     *     operationId="createChannel",
+     *     summary="create new user channel",
+     *     description="create new user channel",
+     *     security={ {"bearer_token": {}}},
+     *     @OA\Response(response="200", description="")
+     * )
+     */
     public function createChannel(){
         $input = \Request::all();
 
@@ -50,41 +62,39 @@ class ChannelsControllers extends Controller {
         $deviceObj->name = isset($input['wlChannelName']) && !empty($input['wlChannelName']) ? 'wlChannel'.$input['wlChannelName'] : 'wlChannel'.$deviceObj->id;
         $deviceObj->save();
 
-        $cekMD = Device::NotDeleted()->where('name',$deviceObj->name)->first();
-        if($cekMD->multidevice == "YES"){
-            $islegacy = "false"; 
-        }else{
-            $islegacy = "true"; 
-        }
-
-        $response = Http::post(env('URL_WA_SERVER').'/sessions/add', ['id' => $deviceObj->name, 'isLegacy' => $islegacy]);
+        $response = Http::post(env('URL_WA_SERVER').'/sessions/add', ['id' => $deviceObj->name, 'isLegacy' => 'false']);
         $res = json_decode($response->getBody());
         $image = "";
-        if(isset($res->success) && $res->success == true){
-            $image = $res->data->qr;
-        }
 
         $instance = Channel::generateNewKey($deviceObj->name);
-        $instance->qrImage = $image;
 
         Device::NotDeleted()->where('name',$deviceObj->name)->update([
             'channel_id' => isset($input['wlChannelName']) && !empty($input['wlChannelName']) ? $input['wlChannelName'] : $deviceObj->id,
             'channel_token' => $instance->token,
             'image' => $image,
+            'valid_until' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
         ]);
         $instance->id =  isset($input['wlChannelName']) && !empty($input['wlChannelName']) ? $input['wlChannelName'] : $deviceObj->id;
-
+        $instance->days = 0;
+        $instance->paidUntil = date('Y-m-d H:i:s');
         $dataList['data']['instance'] = $instance; 
         $dataList['status'] = \TraitsFunc::SuccessResponse();
         return \Response::json((object) $dataList);        
     }
 
     /**
-     * @group Channels
-     *
-     * API for deleteing specific channel by id
-    */
+     * @OA\Post(
+     *     path="/channels/deleteChannel",
+     *     tags={"Channels"},
+     *     operationId="deleteChannel",
+     *     summary="delete new user channel",
+     *     description="delete new user channel",
+     *     security={ {"bearer_token": {}}},
+     *     @OA\Response(response="200", description=""),
+     *     @OA\Parameter(description="Channel ID",in="query",name="channel_id", required=true),
+     * )
+     */
     public function deleteChannel(){
         $input = \Request::all();
         if(!isset($input['channel_id']) || empty($input['channel_id'])){
@@ -107,10 +117,19 @@ class ChannelsControllers extends Controller {
     }
 
     /**
-     * @group Channels
-     *
-     * API for transfering days from a channel to another
-    */
+     * @OA\Post(
+     *     path="/channels/transferDays",
+     *     tags={"Channels"},
+     *     operationId="transferDays",
+     *     summary="transfer days",
+     *     description="transfer days from a channel to another",
+     *     security={ {"bearer_token": {}}},
+     *     @OA\Response(response="200", description=""),
+     *     @OA\Parameter(description="Sender Channel ID",in="query",name="sender", required=true),
+     *     @OA\Parameter(description="Receiver Channel ID",in="query",name="receiver", required=true),
+     *     @OA\Parameter(description="Number of days",in="query",name="days", required=true),
+     * )
+     */
     public function transferDays(){
         $input = \Request::all();
 
@@ -152,7 +171,7 @@ class ChannelsControllers extends Controller {
         $receiverCheckObj->valid_until = date('Y-m-d H:i:s',strtotime('+'.$input['days'].' days',strtotime( $receiverCheckObj->valid_until != null ? $receiverCheckObj->valid_until : date('Y-m-d H:i:s') )));
         $receiverCheckObj->save();
 
-        $dataList['data'] = "deleted";
+        $dataList['data'] = "transferred";
         $dataList['status'] = \TraitsFunc::SuccessResponse("Transfered ".$input['days']." day to :".$input['receiver']." Successfully !!!");
         return \Response::json((object) $dataList);        
     }

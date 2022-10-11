@@ -8,6 +8,7 @@ use App\Models\Device;
 use App\Models\Dialog;
 use App\Models\Message;
 use App\Models\DeviceSetting;
+use App\Models\OfflineMessage;
 use App\Models\Channel;
 use App\Events\QRScanned;
 use Illuminate\Support\Facades\Http;
@@ -469,5 +470,68 @@ class InstancesControllers extends Controller {
         }else{
             return \TraitsFunc::ErrorMessage($res->message);
         }
+    }
+
+
+    /**
+     * @OA\Get(
+     *     path="/queues/getMessagesQueue",
+     *     tags={"Queues"},
+     *     operationId="getMessagesQueue",
+     *     summary="fetch user messages queue",
+     *     description="fetch user messages queue",
+     *     security={ {"bearer_token": {} , "channel_id": {} , "channel_token": {} }},
+     *     @OA\Response(response="200", description="")
+     * )
+     */
+    
+    public function getMessagesQueue(){
+        $name = NAME;
+        $input = Request::all();
+        $deviceObj = Device::NotDeleted()->where('name', $name)->first();
+        if(!$deviceObj){
+            return \TraitsFunc::ErrorMessage("Channel isn't Found !!");
+        }
+
+        $messages = OfflineMessage::where('sessionId',$name)->where('is_sent',0)->get();
+
+        foreach($messages as $key => $message){
+            $details = json_decode($message->message);
+            unset($messages[$key]->message);
+            $messages[$key]->messageId = $details->key->id;
+        }
+
+        $data['data']['messages'] = $messages;
+        $data['data']['count'] = count($messages);
+        $data['status'] = \TraitsFunc::SuccessResponse();
+        return \Response::json((object) $data);        
+    }
+
+    /**
+     * @OA\Post(
+     *     path="/queues/clearMessagesQueue",
+     *     tags={"Queues"},
+     *     operationId="clearMessagesQueue",
+     *     summary="clear user messages queue",
+     *     description="clear user messages queue",
+     *     security={ {"bearer_token": {} , "channel_id": {} , "channel_token": {} }},
+     *     @OA\Response(response="200", description="")
+     * )
+     */
+    
+    public function clearMessagesQueue(){
+        $name = NAME;
+        $input = Request::all();
+        $deviceObj = Device::NotDeleted()->where('name', $name)->first();
+        if(!$deviceObj){
+            return \TraitsFunc::ErrorMessage("Channel isn't Found !!");
+        }
+
+        $messages = OfflineMessage::where('sessionId',$name)->where('is_sent',0);
+        $count = $messages->count();
+        $messages->delete();
+        $data['data']['count'] = $count;
+        $data['status'] = \TraitsFunc::SuccessResponse('Messages Queue is empty now');
+        return \Response::json((object) $data);        
     }
 }

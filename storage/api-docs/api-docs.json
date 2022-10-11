@@ -1513,8 +1513,8 @@
                 "tags": [
                     "Whatsapp Business"
                 ],
-                "summary": "fetch user business replies",
-                "description": "fetch connected user business replies data",
+                "summary": "fetch user business quick replies",
+                "description": "fetch connected user business quick replies data",
                 "operationId": "replies",
                 "responses": {
                     "200": {
@@ -3084,6 +3084,50 @@
                 "responses": {
                     "200": {
                         "description": "returns updateStatus object."
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/queues/getMessagesQueue": {
+            "get": {
+                "tags": [
+                    "Queues"
+                ],
+                "summary": "fetch user messages queue",
+                "description": "fetch user messages queue",
+                "operationId": "getMessagesQueue",
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/queues/clearMessagesQueue": {
+            "post": {
+                "tags": [
+                    "Queues"
+                ],
+                "summary": "clear user messages queue",
+                "description": "clear user messages queue",
+                "operationId": "clearMessagesQueue",
+                "responses": {
+                    "200": {
+                        "description": ""
                     }
                 },
                 "security": [
@@ -4951,6 +4995,114 @@
                         "bearer_token": [],
                         "channel_id": [],
                         "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/channels": {
+            "get": {
+                "tags": [
+                    "Channels"
+                ],
+                "summary": "fetch user channels",
+                "description": "fetch user all channels",
+                "operationId": "channels",
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/channels/createChannel": {
+            "post": {
+                "tags": [
+                    "Channels"
+                ],
+                "summary": "create new user channel",
+                "description": "create new user channel",
+                "operationId": "createChannel",
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/channels/deleteChannel": {
+            "post": {
+                "tags": [
+                    "Channels"
+                ],
+                "summary": "delete new user channel",
+                "description": "delete new user channel",
+                "operationId": "deleteChannel",
+                "parameters": [
+                    {
+                        "name": "channel_id",
+                        "in": "query",
+                        "description": "Channel ID",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/channels/transferDays": {
+            "post": {
+                "tags": [
+                    "Channels"
+                ],
+                "summary": "transfer days",
+                "description": "transfer days from a channel to another",
+                "operationId": "transferDays",
+                "parameters": [
+                    {
+                        "name": "sender",
+                        "in": "query",
+                        "description": "Sender Channel ID",
+                        "required": true
+                    },
+                    {
+                        "name": "receiver",
+                        "in": "query",
+                        "description": "Receiver Channel ID",
+                        "required": true
+                    },
+                    {
+                        "name": "days",
+                        "in": "query",
+                        "description": "Number of days",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
                     }
                 ]
             }

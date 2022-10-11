@@ -22,7 +22,7 @@ class BusinessControllers extends Controller {
         }
         return $message;
     }
-
+    
     /**
      * @OA\Post(
      *     path="/business/getBusinessProfile",
@@ -717,8 +717,8 @@ class BusinessControllers extends Controller {
      *     path="/business/replies",
      *     tags={"Whatsapp Business"},
      *     operationId="replies",
-     *     summary="fetch user business replies",
-     *     description="fetch connected user business replies data",
+     *     summary="fetch user business quick replies",
+     *     description="fetch connected user business quick replies data",
      *     security={ {"bearer_token": {} , "channel_id": {} , "channel_token": {} }},
      *     @OA\Response(response="200", description=""),
      * )
