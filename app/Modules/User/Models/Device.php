@@ -49,7 +49,7 @@ class  Device extends Model{
         ])->first();
     }
 
-    static function dataList($id_users=null) {
+    static function dataList($id_users=null,$withPaginate=null) {
         $input = \Request::all();
 
         $source = self::NotDeleted()->where(function ($query) use ($input) {
@@ -62,19 +62,21 @@ class  Device extends Model{
             if (isset($input['name']) && !empty($input['name'])) {
                 $query->where('name', 'LIKE', '%' . $input['name'] . '%');
             } 
-
-            
         });
 
         if($id_users != null){
             $source->where('id_users',$id_users);
         }
         $source->orderBy('id','DESC');
-        return self::getObj($source);
+        return self::getObj($source,$withPaginate);
     }
 
-    static function getObj($source) {
-        $sourceArr = $source->paginate(config('app.pagination_no'));
+    static function getObj($source,$withPaginate) {
+        if($withPaginate == null){
+            $sourceArr = $source->paginate(config('app.pagination_no'));
+        }else{
+            $sourceArr = $source->get();
+        }
 
         $list = [];
         foreach ($sourceArr as $key => $value) {
@@ -83,7 +85,9 @@ class  Device extends Model{
         }
 
         $data['data'] = $list;
-        $data['pagination'] = \Helper::GeneratePagination($sourceArr);
+        if($withPaginate == null){
+            $data['pagination'] = \Helper::GeneratePagination($sourceArr);
+        }
         return $data;
     }
 

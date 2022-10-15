@@ -67,17 +67,19 @@ class InstancesControllers extends Controller {
             $deviceObj->save();
         }
 
-        $fileName = $name.time().'.png';
-        file_put_contents(public_path().'/uploads/qrImages/'.$fileName, file_get_contents($image));
-        $url = \URL::to('/').'/uploads/qrImages/'.$fileName;
+        // $fileName = $name.time().'.png';
+        // file_put_contents(public_path().'/uploads/qrImages/'.$fileName, file_get_contents($image));
+        // $url = \URL::to('/').'/uploads/qrImages/'.$fileName;
 
-        $logo = \URL::to('/').'/uploads/logo.png';
+        // $logo = \URL::to('/').'/uploads/logo.png';
 
-        $newUrl = \ImageHelper::changeQR([
-            'qr' => $url,
-            'logo' => $logo, 
-        ]);
-        $image = $newUrl;
+        // $newUrl = \ImageHelper::changeQR([
+        //     'qr' => $url,
+        //     'logo' => $logo, 
+        // ]);
+        // $image = $newUrl;
+        
+
         $data['data']['qr'] = $image;        
         $data['status'] = \TraitsFunc::SuccessResponse();
         return \Response::json((object) $data);        
@@ -265,6 +267,30 @@ class InstancesControllers extends Controller {
             }else{
                 $settingObj->webhooks = json_encode($input['webhooks']);
             }
+        }
+
+        if(isset($input['sendDelay']) && !empty($input['sendDelay'])){
+            $settingObj->sendDelay = $input['sendDelay'];
+        }
+
+        if(isset($input['statusNotificationsOn']) && !empty($input['statusNotificationsOn'])){
+            $settingObj->statusNotificationsOn = $input['statusNotificationsOn'] == 'on' ? 1 : 0;
+        }
+
+        if(isset($input['filesUploadOn']) && !empty($input['filesUploadOn'])){
+            $settingObj->filesUploadOn = $input['filesUploadOn'] == 'on' ? 1 : 0;
+        }
+
+        if(isset($input['ignoreOldMessages']) && !empty($input['ignoreOldMessages'])){
+            $settingObj->ignoreOldMessages = $input['ignoreOldMessages'] == 'on' ? 1 : 0;
+        }
+
+        if(isset($input['disableGroupsArchive']) && !empty($input['disableGroupsArchive'])){
+            $settingObj->disableGroupsArchive = $input['disableGroupsArchive'] == 'on' ? 1 : 0;
+        }
+
+        if(isset($input['disableDialogsArchive']) && !empty($input['disableDialogsArchive'])){
+            $settingObj->disableDialogsArchive = $input['disableDialogsArchive'] == 'on' ? 1 : 0;
         }
 
         $settingObj->updated_at = date('Y-m-d H:i:s');

@@ -1652,6 +1652,18 @@
                         "in": "query",
                         "description": "Contact Id to get specific contact",
                         "required": false
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page Number",
+                        "required": false
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "Page Size",
+                        "required": false
                     }
                 ],
                 "responses": {
@@ -1919,6 +1931,18 @@
                         "name": "chatId",
                         "in": "query",
                         "description": "Chat Id to get specific chat",
+                        "required": false
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page Number",
+                        "required": false
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "Page Size",
                         "required": false
                     }
                 ],
@@ -3152,6 +3176,18 @@
                         "name": "messageId",
                         "in": "query",
                         "description": "Message Id to get specific message",
+                        "required": false
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page Number",
+                        "required": false
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "Page Size",
                         "required": false
                     }
                 ],

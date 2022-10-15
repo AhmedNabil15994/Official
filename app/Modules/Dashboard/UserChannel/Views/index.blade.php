@@ -26,28 +26,6 @@
     <!-- end page title --> 
 
     <div class="row">
-        <div class="col-12">
-            <div class="card-box">
-                <div class="row">
-                    <div class="col-lg-10">
-                        <form class="form-inline">
-                            <div class="form-group">
-                                <label for="inputPassword2" class="sr-only">{{trans('main.search')}}</label>
-                                <input type="search" class="form-control" id="inputPassword2" placeholder="{{trans('main.search')}}...">
-                            </div>
-                        </form>
-                    </div>
-                    <div class="col-lg-2">
-                        <div class="text-lg-right mt-3 mt-lg-0">
-                            <button type="button" class="btn btn-danger waves-effect waves-light mr-1"><i class="mdi mdi-plus-circle mr-1"></i> {{trans('main.addNew')}}</button>
-                        </div>
-                    </div><!-- end col-->
-                </div> <!-- end row -->
-            </div> <!-- end card-box -->
-        </div><!-- end col-->
-    </div>
-
-    <div class="row">
         @foreach($data->data as $oneChannel)
         <div class="col-lg-3">
             <div class="card-box bg-pattern">

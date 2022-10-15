@@ -13,19 +13,19 @@
                 <div class="dropdown-menu user-pro-dropdown">
 
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                    <a href="{{URL::to('/profile')}}" class="dropdown-item notify-item">
                         <i class="fe-user mr-1"></i>
                         <span>{{ trans('main.myAccount') }}</span>
                     </a>
 
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                    <a href="{{ URL::to('/channels') }}" class="dropdown-item notify-item">
                         <i class="fe-settings mr-1"></i>
-                        <span>{{ trans('main.settings') }}</span>
+                        <span>{{ trans('main.channels') }}</span>
                     </a>
 
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                    <a href="{{URL::to('/logout')}}" class="dropdown-item notify-item">
                         <i class="fe-log-out mr-1"></i>
                         <span>{{ trans('main.logout') }}</span>
                     </a>
@@ -46,8 +46,15 @@
 
                 <li>
                     <a href="{{ URL::to('/channels') }}">
-                        <i class="mdi mdi-account-details"></i>
+                        <i class="mdi mdi-whatsapp"></i>
                         <span> {{ trans('main.channels') }} </span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ URL::to('/apiDocs') }}">
+                        <i class="mdi mdi-file-alert-outline"></i>
+                        <span> {{ trans('main.apiDocs') }} </span>
                     </a>
                 </li>
     

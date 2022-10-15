@@ -34,6 +34,8 @@ class ChatUserControllers extends Controller {
      *     security={ {"bearer_token": {} , "channel_id": {} , "channel_token": {} }},
      *     @OA\Response(response="200", description="returns contacts object."),
      *     @OA\Parameter(description="Contact Id to get specific contact",in="query",name="phone", required=false),
+     *     @OA\Parameter(description="Page Number",in="query",name="page", required=false),
+     *     @OA\Parameter(description="Page Size",in="query",name="page_size", required=false),
      * )
      */
     public function contacts(){
@@ -49,7 +51,14 @@ class ChatUserControllers extends Controller {
         if(isset($input['phone']) && !empty($input['phone'])){
             $response = Http::post(env('URL_WA_SERVER').'/instances/contacts/getContactByID?id='.$name,$input);
         }else{
-            $response = Http::get(env('URL_WA_SERVER').'/instances/contacts?id='.$name);
+            $queryString = '';
+            if(isset($input['page']) && !empty($input['page'])){
+                $queryString.= '&page='.$input['page'];
+            }
+            if(isset($input['page_size']) && !empty($input['page_size'])){
+                $queryString.= '&page_size='.$input['page_size'];
+            }
+            $response = Http::get(env('URL_WA_SERVER').'/instances/contacts?id='.$name.$queryString);
         }
 
         $res = json_decode($response->getBody());
@@ -59,19 +68,21 @@ class ChatUserControllers extends Controller {
 
         $messages = [];
         if(isset($res->success) && $res->success){
-            if(is_array($res->data)){
-                foreach($res->data as $oneMessage){
+            if(isset($res->data->data) && is_array($res->data->data)){
+                foreach($res->data->data as $oneMessage){
                     if(isset($oneMessage->id)){
                         $messages[] = \Helper::formatArrayShape((array)$oneMessage);
                     }
                 }
+                $data['data'] = $messages;
+                $data['pagination'] = $res->data->pagination;
             }else{
                 if(isset($res->data->id)){
                     $messages[] = \Helper::formatArrayShape((array)$res->data);
                 }
+                $data['data'] = $messages;
             }
 
-            $data['data'] = $messages;
             $data['status'] = \TraitsFunc::SuccessResponse();
             return \Response::json((object) $data);        
         }else{

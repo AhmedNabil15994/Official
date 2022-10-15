@@ -34,6 +34,8 @@ class DialogsControllers extends Controller {
      *     security={ {"bearer_token": {} , "channel_id": {} , "channel_token": {} }},
      *     @OA\Response(response="200", description="returns array of chats."),
      *     @OA\Parameter(description="Chat Id to get specific chat",in="query",name="chatId", required=false),
+     *     @OA\Parameter(description="Page Number",in="query",name="page", required=false),
+     *     @OA\Parameter(description="Page Size",in="query",name="page_size", required=false),
      * )
      */
     public function fetchDialogs(){
@@ -47,7 +49,14 @@ class DialogsControllers extends Controller {
         if(isset($input['phone']) && !empty($input['phone'])){
             $response = Http::post(env('URL_WA_SERVER').'/chats/getChatByID?id='.$name,$input);
         }else{
-            $response = Http::get(env('URL_WA_SERVER').'/chats?id='.$name);
+            $queryString = '';
+            if(isset($input['page']) && !empty($input['page'])){
+                $queryString.= '&page='.$input['page'];
+            }
+            if(isset($input['page_size']) && !empty($input['page_size'])){
+                $queryString.= '&page_size='.$input['page_size'];
+            }
+            $response = Http::get(env('URL_WA_SERVER').'/chats?id='.$name.$queryString);
         }
 
         $res = json_decode($response->getBody());
@@ -57,19 +66,21 @@ class DialogsControllers extends Controller {
 
         $dialogs = [];
         if(isset($res->success) && $res->success){
-            if(is_array($res->data)){
-                foreach($res->data as $oneMessage){
+            if(isset($res->data->data) && is_array($res->data->data)){
+                foreach($res->data->data as $oneMessage){
                     if(isset($oneMessage->id)){
                         $dialogs[] = \Helper::formatArrayShape((array)$oneMessage);
                     }
                 }
+                $data['data'] = $dialogs;
+                $data['pagination'] = $res->data->pagination;
             }else{
                 if(isset($res->data->id)){
                     $dialogs[] = \Helper::formatArrayShape((array)$res->data);
                 }
+                $data['data'] = $dialogs;
             }
 
-            $data['data'] = $dialogs;
             $data['status'] = \TraitsFunc::SuccessResponse();
             return \Response::json((object) $data);        
         }else{

@@ -403,6 +403,30 @@ class BusinessControllers extends Controller {
         return \Response::json((object) $data);   
     }
 
+    // color: '#A52C71',
+    // color: '#8FA840',
+    // color: '#C1A03F',
+    // color: '#772237',
+    // color: '#AC8671', 
+    // 
+    // color: '#EFB32F', 
+    // color: '#B4B227', 
+    // color: '#C79DCD', 
+    // color: '#8B6890', 
+    // color: '#FF898D', 
+    // 
+    // color: '#54C166', 
+    // color: '#FF7B6C', 
+    // color: '#28C4DB', 
+    // color: '#56C9FF', 
+    // color: '#72666A', 
+    // 
+    // color: '#7D8FA5', 
+    // color: '#5796FF', 
+    // color: '#6C267E', 
+    // color: '#7ACCA4', 
+    // color: '#23353F', 
+
     /**
      * @OA\Get(
      *     path="/business/labels",
@@ -741,7 +765,7 @@ class BusinessControllers extends Controller {
         $data['status'] = \TraitsFunc::SuccessResponse();
         return \Response::json((object) $data);        
     }
-
+    
     /**
      * @OA\Post(
      *     path="/business/replies/create",

@@ -25,10 +25,11 @@ class SendOfflineMessages implements ShouldQueue
     public function handle(QRScanned $event)
     {
         $sessionId = $event->device->name;
+        sleep(60);
         $chunks = 50;
         $queuedMessages = OfflineMessage::where('sessionId',$sessionId)->where('is_sent',0)->chunk($chunks,function($data){
             try {
-                dispatch(new OfflineMessageJob(reset($data)))->onConnection('redis');
+                dispatch(new OfflineMessageJob(reset($data)))->onConnection('database');
             } catch (Exception $e) {}
         });
         return 1;

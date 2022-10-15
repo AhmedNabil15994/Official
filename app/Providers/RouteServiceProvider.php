@@ -54,6 +54,7 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(function (){
                     require base_path('app/Modules/Dashboard/Dashboard/routes.php');
                     require base_path('app/Modules/Dashboard/UserChannel/routes.php');
+                    require base_path('app/Modules/Dashboard/Profile/routes.php');
                 });
 
             Route::middleware('withAuth')->prefix('engine')->namespace($this->namespace)->group(function (){

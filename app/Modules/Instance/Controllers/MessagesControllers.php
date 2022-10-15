@@ -28,6 +28,8 @@ class MessagesControllers extends Controller {
      *     security={ {"bearer_token": {} , "channel_id": {} , "channel_token": {} }},
      *     @OA\Response(response="200", description="returns array of messages."),
      *     @OA\Parameter(description="Message Id to get specific message",in="query",name="messageId", required=false),
+     *     @OA\Parameter(description="Page Number",in="query",name="page", required=false),
+     *     @OA\Parameter(description="Page Size",in="query",name="page_size", required=false),
      * )
      */
     public function fetchMessages(){
@@ -41,29 +43,36 @@ class MessagesControllers extends Controller {
         if(isset($input['messageId']) && !empty($input['messageId'])){
             $response = Http::post(env('URL_WA_SERVER').'/messages/getMessageByID?id='.$name,$input);
         }else{
-            $response = Http::get(env('URL_WA_SERVER').'/messages?id='.$name);
+            $queryString = '';
+            if(isset($input['page']) && !empty($input['page'])){
+                $queryString.= '&page='.$input['page'];
+            }
+            if(isset($input['page_size']) && !empty($input['page_size'])){
+                $queryString.= '&page_size='.$input['page_size'];
+            }
+            $response = Http::get(env('URL_WA_SERVER').'/messages?id='.$name.$queryString);
         }
 
         $res = json_decode($response->getBody());
         if(!$res->success){
             return \TraitsFunc::ErrorMessage("System Error, Contact Your System Adminstrator !!");
         }
-        
         $messages = [];
         if(isset($res->success) && $res->success){
-            if(is_array($res->data)){
-                foreach($res->data as $oneMessage){
+            if(isset($res->data->data) && is_array($res->data->data)){
+                foreach($res->data->data as $oneMessage){
                     if(isset($oneMessage->id)){
                         $messages[] = \Helper::formatArrayShape((array)$oneMessage);
                     }
                 }
+                $data['data'] = $messages;
+                $data['pagination'] = $res->data->pagination;
             }else{
                 if(isset($res->data->id)){
                     $messages[] = \Helper::formatArrayShape((array)$res->data);
                 }
+                $data['data'] = $messages;
             }
-
-            $data['data'] = $messages;
             $data['status'] = \TraitsFunc::SuccessResponse();
             return \Response::json((object) $data);        
         }else{

@@ -726,7 +726,6 @@ body[data-layout-width="boxed"] .content-page .content .container-fluid .row:nth
 img.qrImage{
   width: 300px;
   height: 300px;
-  margin-top: -50px;
 }
 .content-page{
   background: #F1F5F9;
