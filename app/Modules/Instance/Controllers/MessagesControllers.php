@@ -788,6 +788,7 @@ class MessagesControllers extends Controller {
             'id' => 'true_'.str_replace('@s.whatsapp.net','@c.us',$res->data->key->remoteJid).'_'.$res->data->key->id,
             'latitude' => $input['lat'],
             'longitude' => $input['lng'],
+            'address' => isset($input['address']) && !empty($input['address']) ? $input['address'] : '',
         ];
         $data['status'] = \TraitsFunc::SuccessResponse($messageText);
         return \Response::json((object) $data);        

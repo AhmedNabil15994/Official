@@ -78,13 +78,15 @@
         <div class="col-lg-5 col-xl-5">
             <div class="card-box text-center">
 
-                <h4 class="mb-0">{{$data->device->id}}</h4>
+                <h4 class="mb-0">{{$data->device->name}}</h4>
                 <p class="text-muted channelStatus">{{$data->device->status}}</p>
 
                 <div class="text-left mt-3">
                     <p class="text-muted mb-2 font-13"><strong>ID :</strong> <span class="ml-2">{{$data->device->id}}</span></p>
 
-                    <p class="text-muted mb-2 font-13"><strong>TOKEN :</strong><span class="ml-2">{{$data->device->token}}</span></p>
+                    <p class="text-muted mb-2 font-13"><strong>{{trans('main.token')}} :</strong><span class="ml-2">{{$data->device->token}}</span></p>
+
+                    <p class="text-muted mb-2 font-13"><strong>{{trans('main.identifier')}} :</strong><span class="ml-2">{{IDENTIFIER}}</span></p>
 
                     <p class="text-muted mb-2 font-13"><strong>{{trans('main.days')}} :</strong> <span class="ml-2 ">{{$data->device->days}}</span></p>
 

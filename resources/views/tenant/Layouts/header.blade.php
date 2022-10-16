@@ -65,7 +65,7 @@
                     <!-- <span class="logo-lg-text-light">UBold</span> -->
                 </span>
                 <span class="logo-lg">
-                    <img src="{{ asset('assets/images/logo-dark.png') }}" alt="" height="35">
+                    <img src="{{ asset('assets/images/HtmlToSvg.png') }}" alt="" height="35">
                     <!-- <span class="logo-lg-text-light">U</span> -->
                 </span>
             </a>
@@ -75,7 +75,7 @@
                     <img src="{{ asset('assets/images/favicon.ico') }}" alt="" height="22">
                 </span>
                 <span class="logo-lg">
-                    <img src="{{ asset('assets/images/logo-dark.png') }}" alt="" height="35">
+                    <img src="{{ asset('assets/images/HtmlToSvg.png') }}" alt="" height="35">
                 </span>
             </a>
         </div>

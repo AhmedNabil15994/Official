@@ -67,17 +67,17 @@ class InstancesControllers extends Controller {
             $deviceObj->save();
         }
 
-        // $fileName = $name.time().'.png';
-        // file_put_contents(public_path().'/uploads/qrImages/'.$fileName, file_get_contents($image));
-        // $url = \URL::to('/').'/uploads/qrImages/'.$fileName;
+        $fileName = $name.time().'.png';
+        file_put_contents(public_path().'/uploads/qrImages/'.$fileName, file_get_contents($image));
+        $url = \URL::to('/').'/uploads/qrImages/'.$fileName;
 
-        // $logo = \URL::to('/').'/uploads/logo.png';
+        $logo = asset('assets/images/HtmlToSvg.png');
 
-        // $newUrl = \ImageHelper::changeQR([
-        //     'qr' => $url,
-        //     'logo' => $logo, 
-        // ]);
-        // $image = $newUrl;
+        $newUrl = \ImageHelper::changeQR([
+            'qr' => $url,
+            'logo' => $logo, 
+        ]);
+        $image = $newUrl;
         
 
         $data['data']['qr'] = $image;        

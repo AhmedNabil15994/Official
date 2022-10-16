@@ -80,6 +80,11 @@ class Helper
                 unset($array[$k]);
                 $array[$newK] = $v;
             }
+
+            if(is_object($v)) {
+                $array[$k] = is_object($v) ? (array) $v : str_replace('(object)','',$v) ;
+            }
+
             if(is_array($v)) {
                 self::removeFromArray($v);
             }

@@ -47,6 +47,7 @@ class RouteServiceProvider extends ServiceProvider
                 ->namespace($this->namespace)
                 ->group(function (){
                     require base_path('app/Modules/Dashboard/Auth/routes.php');
+                    require base_path('routes/web.php');
                 });
 
             Route::middleware('webAuth')

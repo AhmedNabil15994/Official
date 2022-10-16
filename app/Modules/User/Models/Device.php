@@ -119,7 +119,6 @@ class  Device extends Model{
                 $days = round((strtotime($source->valid_until) - strtotime(date('Y-m-d H:i:s'))) / (60 * 60 * 24));
             }
         }
-
         $source->days = $days;
         return $source;
     }
