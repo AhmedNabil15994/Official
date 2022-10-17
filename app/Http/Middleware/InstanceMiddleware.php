@@ -28,6 +28,10 @@ class InstanceMiddleware
         if ($checkChannel == null || $checkChannel->id_users != USER_ID) {
             return \TraitsFunc::ErrorMessage("Invalid Channel, Please Check Your Credentials", 401);
         }
+        
+        if ($checkChannel->valid_until < date('Y-m-d H:i:s')) {
+            return \TraitsFunc::ErrorMessage("Invalid Channel Days, Please Pay or transfer days from another channel to increase paid until date", 401);
+        }
 
         define('CHANNEL_ID', $checkChannel->channel_id);
         define('CHANNEL_TOKEN', $checkChannel->channel_token);

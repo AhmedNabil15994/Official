@@ -285,23 +285,24 @@ class UserChannelsControllers extends Controller {
 
         $history = [];
         $count = 0;
-        $find = Http::get(env('URL_WA_SERVER').'/messages?id='.$channelObj->name.$queryString);
-
-        $result = $find->json();
-        if($result && isset($result['data']) && isset($result['data']['data'])){
-            if(is_array($result['data']['data'])){
-                foreach($result['data']['data'] as $oneMessage){
-                    if(isset($oneMessage['id'])){
-                        $newObj = \Helper::formatMessages(\Helper::formatArrayShape((array)$oneMessage),$channelObj->name,true);
-                        if(!empty($newObj)){
-                            $history[] = $newObj;
+        try {
+            $find = Http::get(env('URL_WA_SERVER').'/messages?id='.$channelObj->name.$queryString);
+            $result = $find->json();
+            if($result && isset($result['data']) && isset($result['data']['data'])){
+                if(is_array($result['data']['data'])){
+                    foreach($result['data']['data'] as $oneMessage){
+                        if(isset($oneMessage['id'])){
+                            $newObj = \Helper::formatMessages(\Helper::formatArrayShape((array)$oneMessage),$channelObj->name,true);
+                            if(!empty($newObj)){
+                                $history[] = $newObj;
+                            }
                         }
                     }
                 }
+                $history = $history;
+                $count = $result['data']['pagination']['totalCount'];
             }
-            $history = $history;
-            $count = $result['data']['pagination']['totalCount'];
-        }
+        } catch (\Illuminate\Http\Client\ConnectionException $e) {}
 
         $dataList['draw'] = isset($input['draw']) && !empty($input['draw']) ? $input['draw'] : 1;
         $dataList['recordsTotal'] = $count;
