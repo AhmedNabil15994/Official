@@ -3715,7 +3715,7 @@
                     {
                         "name": "reaction",
                         "in": "query",
-                        "description": "Reaction Index to react to (1 == '👍' , 2 == '❤️' , 3 == '😂', 4 == '😮' , 5 == '😢' , 6 == '🙏')",
+                        "description": "Reaction Index to react to (1 == '👍' , 2 == '❤️' , 3 == '😂', 4 == '😮' , 5 == '😢' , 6 == '🙏', 7 == to removed messages reactions)",
                         "required": true
                     }
                 ],
@@ -4657,7 +4657,7 @@
                     {
                         "name": "reaction",
                         "in": "query",
-                        "description": "Reaction Index to reply with (1 == '👍' , 2 == '❤️' , 3 == '😂', 4 == '😮' , 5 == '😢' , 6 == '🙏')",
+                        "description": "Reaction Index to reply with (1 == '👍' , 2 == '❤️' , 3 == '😂', 4 == '😮' , 5 == '😢' , 6 == '🙏' , 7 == to removed messages reactions)",
                         "required": true
                     }
                 ],

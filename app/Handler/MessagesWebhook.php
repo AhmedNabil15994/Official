@@ -43,46 +43,15 @@ class MessagesWebhook extends ProcessWebhookJob{
 	   	$msgData = (array) json_decode($mainData['conversation']['lastMessage']);
 	   	$msgData = \Helper::formatArrayShape($msgData);
 
+	   	$item = \Helper::formatMessages($msgData,$sessionId);
 
-	   	$author = !boolval($msgData['fromMe']) && $msgData['author'] != $msgData['pushName'] ? $msgData['pushName'] : (boolval($msgData['fromMe']) ? 'Me' : '');
-		$author = is_numeric($author) ? $author.'@c.us' : $author;
-		$convData['id'] = str_replace('s.whatsapp.net','c.us',$convData['id']);
-		$id = ( boolval($msgData['fromMe']) ? 'true_' : 'false_') . $convData['id'] . '_'  . $msgData['id'];
-
-		if(isset($msgData['metadata']) && isset($msgData['metadata']['quotedMessageId'])){
-	   		$msgData['metadata']['quotedMessageId'] = ( boolval($msgData['metadata']['quotedMessage']['fromMe']) ? 'true_' : 'false_') . $convData['id'] . '_'  . $msgData['metadata']['quotedMessageId'];
-	   	}
-		
-	   	if($msgData['body'] != '' || ($msgData['body'] == '' && in_array($msgData['messageType'],['locationMessage']))){
-	   		$item = [
-	   			'id' => $id,
-	   			'body'=> isset($msgData['body']) && !empty($msgData['body']) ? $msgData['body'] : '',
-	   			'type' => $this->getType($msgData['messageType']),
-	   			'fromMe' => boolval($msgData['fromMe']),
-	   			'chatId' => $convData['id'],
-		   		'author' => $author,
-	   			'chatName' => $msgData['chatName'],
-	   			'pushName' => $msgData['pushName'],
-	   			'time' => $msgData['time'],
-	   			'timeFormatted' => $msgData['timeFormatted'],
-	   			'status' => $msgData['status'],
-	   			'statusText' => $msgData['statusText'],
-	   			'deviceSentFrom' => $msgData['deviceSentFrom'],
-	   			'fileName' => isset($msgData['fileName']) ? $msgData['fileName'] : '',
-		   		'caption' => isset($msgData['caption']) ? $msgData['caption'] : '',
-	   			'channel' => str_replace('wlChannel','',$mainData['sessionId']),
-	   			'senderName' =>  boolval($msgData['fromMe']) == 1 ? $author : $msgData['pushName'],
-	   			'metadata' => isset($msgData['metadata']) ? $msgData['metadata'] : [],
-	   		];
-	   		$webhooks = $this->getWebhooksURL($mainData['sessionId']);
-
-	   		if($webhooks != null && isset($webhooks->messageNotifications) && !empty($webhooks->messageNotifications)){
-	   			$this->fireWebhook([
-	   				'event' => 'message-new',
-	   				'messages' => [$item]
-	   			],$webhooks->messageNotifications);
-	   		}	   		
-	   	}
+	   	$webhooks = $this->getWebhooksURL($mainData['sessionId']);
+   		if($webhooks != null && isset($webhooks->messageNotifications) && !empty($webhooks->messageNotifications)){
+   			$this->fireWebhook([
+   				'event' => 'message-new',
+   				'messages' => $item,
+   			],$webhooks->messageNotifications);
+   		}	  
 	   	return 1;
 	}
 
@@ -217,22 +186,5 @@ class MessagesWebhook extends ProcessWebhookJob{
 			   ->payload($data)
 			   ->doNotSign()
 			   ->dispatch();
-	}
-
-	//'document','video','ptt','image','vcard','location','chat'
-	public function getType($type){
-		$type = str_replace('Message','',$type);
-		if($type == 'text'){
-		 	return 'chat';
-		}else{
-			$type = str_replace('Message','',$type);
-			if($type == 'audio'){
-				return 'ptt';
-			}else if($type == 'contact'){
-				return 'vcard';
-			}else{
-				return $type;
-			}
-		}
 	}
 }

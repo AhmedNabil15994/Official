@@ -47,6 +47,7 @@ class ReplyControllers extends Controller {
         if(!isset($input['messageId']) || empty($input['messageId'])){
             return \TraitsFunc::ErrorMessage("Message ID field is required !!");
         }
+        $input['messageId'] = explode('.us_',$input['messageId'])[1];
 
         if(!isset($input['body']) || empty($input['body'])){
             return \TraitsFunc::ErrorMessage("Message Body field is required !!");
@@ -105,6 +106,7 @@ class ReplyControllers extends Controller {
         if(!isset($input['messageId']) || empty($input['messageId'])){
             return \TraitsFunc::ErrorMessage("Message ID field is required !!");
         }
+        $input['messageId'] = explode('.us_',$input['messageId'])[1];
 
         if(!isset($input['url']) || empty($input['url'])){
             return \TraitsFunc::ErrorMessage("Image Url field is required !!");
@@ -170,6 +172,7 @@ class ReplyControllers extends Controller {
         if(!isset($input['messageId']) || empty($input['messageId'])){
             return \TraitsFunc::ErrorMessage("Message ID field is required !!");
         }
+        $input['messageId'] = explode('.us_',$input['messageId'])[1];
 
         if(!isset($input['url']) || empty($input['url'])){
             return \TraitsFunc::ErrorMessage("Video Url field is required !!");
@@ -234,6 +237,7 @@ class ReplyControllers extends Controller {
         if(!isset($input['messageId']) || empty($input['messageId'])){
             return \TraitsFunc::ErrorMessage("Message ID field is required !!");
         }
+        $input['messageId'] = explode('.us_',$input['messageId'])[1];
 
         if(!isset($input['url']) || empty($input['url'])){
             return \TraitsFunc::ErrorMessage("Video Url field is required !!");
@@ -310,6 +314,7 @@ class ReplyControllers extends Controller {
         if(!isset($input['messageId']) || empty($input['messageId'])){
             return \TraitsFunc::ErrorMessage("Message ID field is required !!");
         }
+        $input['messageId'] = explode('.us_',$input['messageId'])[1];
 
         if(!isset($input['url']) || empty($input['url'])){
             return \TraitsFunc::ErrorMessage("Video Url field is required !!");
@@ -372,6 +377,7 @@ class ReplyControllers extends Controller {
         if(!isset($input['messageId']) || empty($input['messageId'])){
             return \TraitsFunc::ErrorMessage("Message ID field is required !!");
         }
+        $input['messageId'] = explode('.us_',$input['messageId'])[1];
 
         if(!isset($input['url']) || empty($input['url'])){
             return \TraitsFunc::ErrorMessage("Video Url field is required !!");
@@ -436,6 +442,7 @@ class ReplyControllers extends Controller {
         if(!isset($input['messageId']) || empty($input['messageId'])){
             return \TraitsFunc::ErrorMessage("Message ID field is required !!");
         }
+        $input['messageId'] = explode('.us_',$input['messageId'])[1];
 
         if(!isset($input['url']) || empty($input['url'])){
             return \TraitsFunc::ErrorMessage("Video Url field is required !!");
@@ -512,6 +519,7 @@ class ReplyControllers extends Controller {
         if(!isset($input['messageId']) || empty($input['messageId'])){
             return \TraitsFunc::ErrorMessage("Message ID field is required !!");
         }
+        $input['messageId'] = explode('.us_',$input['messageId'])[1];
 
         if(!isset($input['latitude']) || empty($input['latitude'])){
             return \TraitsFunc::ErrorMessage("Location latitude field is required !!");
@@ -582,6 +590,7 @@ class ReplyControllers extends Controller {
         if(!isset($input['messageId']) || empty($input['messageId'])){
             return \TraitsFunc::ErrorMessage("Message ID field is required !!");
         }
+        $input['messageId'] = explode('.us_',$input['messageId'])[1];
 
         if(!isset($input['name']) || empty($input['name'])){
             return \TraitsFunc::ErrorMessage("Contact Name field is required !!");
@@ -651,6 +660,7 @@ class ReplyControllers extends Controller {
         if(!isset($input['messageId']) || empty($input['messageId'])){
             return \TraitsFunc::ErrorMessage("Message ID field is required !!");
         }
+        $input['messageId'] = explode('.us_',$input['messageId'])[1];
 
         if(!isset($input['body']) || empty($input['body'])){
             return \TraitsFunc::ErrorMessage("Message Body field is required !!");
@@ -715,6 +725,7 @@ class ReplyControllers extends Controller {
         if(!isset($input['messageId']) || empty($input['messageId'])){
             return \TraitsFunc::ErrorMessage("Message ID field is required !!");
         }
+        $input['messageId'] = explode('.us_',$input['messageId'])[1];
 
         if(!isset($input['contact']) || empty($input['contact'])){
             return \TraitsFunc::ErrorMessage("Contact Mention field is required !!");
@@ -757,7 +768,7 @@ class ReplyControllers extends Controller {
      *     @OA\Response(response="200",description=""),
      *     @OA\Parameter(description="Phone to reply to",in="query",name="phone", required=true),
      *     @OA\Parameter(description="Message Id to reply to (fromMe must be false)",in="query",name="messageId", required=true),
-     *     @OA\Parameter(description="Reaction Index to reply with (1 == '👍' , 2 == '❤️' , 3 == '😂', 4 == '😮' , 5 == '😢' , 6 == '🙏')",in="query",name="reaction", required=true),
+     *     @OA\Parameter(description="Reaction Index to reply with (1 == '👍' , 2 == '❤️' , 3 == '😂', 4 == '😮' , 5 == '😢' , 6 == '🙏' , 7 == to removed messages reactions)",in="query",name="reaction", required=true),
      * )
     */
     public function reactionReply(){
@@ -779,6 +790,7 @@ class ReplyControllers extends Controller {
         if(!isset($input['messageId']) || empty($input['messageId'])){
             return \TraitsFunc::ErrorMessage("Message ID field is required !!");
         }
+        $input['messageId'] = explode('.us_',$input['messageId'])[1];
 
         $forwardResponse = Http::post(env('URL_WA_SERVER').'/messages/sendReply?id='.$name, [
             'phone' => $input['phone'],
@@ -857,6 +869,7 @@ class ReplyControllers extends Controller {
         if(!isset($input['messageId']) || empty($input['messageId'])){
             return \TraitsFunc::ErrorMessage("Message ID field is required !!");
         }
+        $input['messageId'] = explode('.us_',$input['messageId'])[1];
 
         if(!isset($input['body']) || empty($input['body'])){
             return \TraitsFunc::ErrorMessage("Message Body field is required !!");
@@ -957,6 +970,7 @@ class ReplyControllers extends Controller {
         if(!isset($input['messageId']) || empty($input['messageId'])){
             return \TraitsFunc::ErrorMessage("Message ID field is required !!");
         }
+        $input['messageId'] = explode('.us_',$input['messageId'])[1];
 
         if(!isset($input['body']) || empty($input['body'])){
             return \TraitsFunc::ErrorMessage("Message Body field is required !!");
@@ -1064,6 +1078,7 @@ class ReplyControllers extends Controller {
         if(!isset($input['messageId']) || empty($input['messageId'])){
             return \TraitsFunc::ErrorMessage("Message ID field is required !!");
         }
+        $input['messageId'] = explode('.us_',$input['messageId'])[1];
 
         if(!isset($input['body']) || empty($input['body'])){
             return \TraitsFunc::ErrorMessage("Message Body field is required !!");
@@ -1162,6 +1177,7 @@ class ReplyControllers extends Controller {
         if(!isset($input['messageId']) || empty($input['messageId'])){
             return \TraitsFunc::ErrorMessage("Message ID field is required !!");
         }
+        $input['messageId'] = explode('.us_',$input['messageId'])[1];
 
         if(!isset($input['url']) || empty($input['url'])){
             return \TraitsFunc::ErrorMessage("URL field is required !!");
@@ -1227,6 +1243,7 @@ class ReplyControllers extends Controller {
         if(!isset($input['messageId']) || empty($input['messageId'])){
             return \TraitsFunc::ErrorMessage("Message ID field is required !!");
         }
+        $input['messageId'] = explode('.us_',$input['messageId'])[1];
 
         if(!isset($input['groupId']) || empty($input['groupId'])){
             return \TraitsFunc::ErrorMessage("Group Id field is required !!");
@@ -1287,6 +1304,7 @@ class ReplyControllers extends Controller {
         if(!isset($input['messageId']) || empty($input['messageId'])){
             return \TraitsFunc::ErrorMessage("Message ID field is required !!");
         }
+        $input['messageId'] = explode('.us_',$input['messageId'])[1];
 
         if(!isset($input['productId']) || empty($input['productId'])){
             return \TraitsFunc::ErrorMessage("URL field is required !!");
@@ -1345,6 +1363,7 @@ class ReplyControllers extends Controller {
         if(!isset($input['messageId']) || empty($input['messageId'])){
             return \TraitsFunc::ErrorMessage("Message ID field is required !!");
         }
+        $input['messageId'] = explode('.us_',$input['messageId'])[1];
 
         $forwardResponse = Http::post(env('URL_WA_SERVER').'/messages/sendReply?id='.$name, [
             'phone' => $input['phone'],

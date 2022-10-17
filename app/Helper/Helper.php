@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Support\Arr;
 
 class Helper
 {   
@@ -10,44 +11,114 @@ class Helper
     // x = 100 * 15/115
 
 
-    public static function formatArrayShape(array $array, $delimiter = '.') { 
-        $result = [];
-        $arr = [];
-        foreach ($array as $notations => $value) {
-            $keys = explode($delimiter, $notations);
-            $keys = array_reverse($keys);
-            $lastVal = $value;
+    public static function formatMessages($msgData,$sessionId,$noChannel=false){
+        $author = $msgData['fromMe'] == 'false' && $msgData['author'] != $msgData['pushName'] ? $msgData['pushName'] : ($msgData['fromMe'] == 'true' ? 'Me' : '');
+        $author = is_numeric($author) ? $author.'@c.us' : $author;
+        $remoteJid = $msgData['remoteJid'];
+        $remoteJid = str_replace('s.whatsapp.net','c.us',$remoteJid);
+        $id = ( $msgData['fromMe'] == 'true' ? 'true_' : 'false_') . $remoteJid . '_'  . $msgData['id'];
 
-            foreach ($keys as $keyIndex => $key) {
-                if(is_numeric($key) && is_array($lastVal)){
-                    if(isset($keys[$keyIndex + 3])){
-                        $arr[$keys[$keyIndex + 3]][$keys[$keyIndex + 2]][$keys[$keyIndex + 1]][$key][array_keys($lastVal)[0]] = $lastVal[array_keys($lastVal)[0]];
-                    }else{
-                        $arr[$keys[$keyIndex + 2]][$keys[$keyIndex + 1]][$key][array_keys($lastVal)[0]] = $lastVal[array_keys($lastVal)[0]];
-                    }
-                }else{
-                    $lastVal = [
-                        $key => $lastVal
-                    ];
-                }
-            }            
-            $result = array_merge_recursive($result, $lastVal);
+        if(isset($msgData['metadata']) && isset($msgData['metadata']['quotedMessageId']) && isset($msgData['metadata']['quotedMessage']['fromMe'])){
+            $msgData['metadata']['quotedMessageId'] = ( $msgData['metadata']['quotedMessage']['fromMe'] == 'true' ? 'true_' : 'false_') . $remoteJid . '_'  . $msgData['metadata']['quotedMessageId'];
         }
-    
-        if(is_array($result)){
-            for ($i=0; $i <10 ; $i++) { 
-                $result = self::removeFromArray($result);
+        $messages = [];
+        if($msgData['body'] != '' || ($msgData['body'] == '' && in_array($msgData['messageType'],['locationMessage']))){
+            $messages = [
+                'id' => $id,
+                'body'=> isset($msgData['body']) && !empty($msgData['body']) ? $msgData['body'] : '',
+                'type' => self::getType($msgData['messageType']),
+                'fromMe' => $msgData['fromMe'],
+                'chatId' => $remoteJid,
+                'author' => $author,
+                'chatName' => $msgData['chatName'],
+                'pushName' => $msgData['pushName'],
+                'senderName' =>  $msgData['fromMe'] == 'true' ? $author : $msgData['pushName'],
+                'time' => $msgData['time'],
+                'status' => $msgData['status'],
+                'statusText' => $msgData['statusText'],
+                'deviceSentFrom' => $msgData['deviceSentFrom'],
+                'fileName' => isset($msgData['fileName']) ? $msgData['fileName'] : '',
+                'caption' => isset($msgData['caption']) ? $msgData['caption'] : '',
+                'dateObj' => [
+                    'date' => date('Y-m-d H:i:s',strtotime($msgData['timeFormatted'])),
+                    'dateTimeZone' => $msgData['timeFormatted'],
+                ],
+                'metadata' => isset($msgData['metadata']) ? $msgData['metadata'] : [],
+                'channel' => str_replace('wlChannel','',$sessionId),
+            ];     
+            if($noChannel){
+                unset($messages['channel']);
+            }  
+        }
+        return $messages;
+    }
+
+    //'document','video','ptt','image','vcard','location','chat'
+    public static function getType($type){
+        $type = str_replace('Message','',$type);
+        if($type == 'text'){
+            return 'chat';
+        }else{
+            $type = str_replace('Message','',$type);
+            if($type == 'audio'){
+                return 'ptt';
+            }else if($type == 'contact'){
+                return 'vcard';
+            }else{
+                return $type;
             }
         }
-        $removed = $result;
-       
-        $i = 0;
-        foreach ($arr as $key => $value) {
-            $removed = self::reGenerateArray($removed,$key,$value,$i);
-            $i++;
+    }
+
+    public static function formatArrayShape(array $array, $delimiter = '.') { 
+        if(is_array($array)){
+            for ($i=0; $i <10 ; $i++) { 
+                $array = self::removeFromArray($array);
+            }
         }
+        $multiDimensionalArray = [];
+        foreach ($array as $key => $value) {
+            Arr::set($multiDimensionalArray , $key, $value);
+        }
+        return $multiDimensionalArray;
+        // $result = [];
+        // $arr = [];
+        // foreach ($array as $notations => $value) {
+        //     $keys = explode($delimiter, $notations);
+        //     $keys = array_reverse($keys);
+        //     $lastVal = $value;
+
+        //     foreach ($keys as $keyIndex => $key) {
+        //         if(is_numeric($key) && is_array($lastVal)){
+        //             if(isset($keys[$keyIndex + 3])){
+        //                 $arr[$keys[$keyIndex + 3]][$keys[$keyIndex + 2]][$keys[$keyIndex + 1]][$key][array_keys($lastVal)[0]] = $lastVal[array_keys($lastVal)[0]];
+        //             }else{
+        //                 $arr[$keys[$keyIndex + 2]][$keys[$keyIndex + 1]][$key][array_keys($lastVal)[0]] = $lastVal[array_keys($lastVal)[0]];
+        //             }
+        //         }else{
+        //             $lastVal = [
+        //                 $key => $lastVal
+        //             ];
+        //         }
+        //     }            
+        //     $result = array_merge_recursive($result, $lastVal);
+        // }
+
+        // if(is_array($result)){
+        //     for ($i=0; $i <10 ; $i++) { 
+        //         $result = self::removeFromArray($result);
+        //     }
+        // }
         
-        return $removed;
+        // $removed = $result;
+       
+        // $i = 0;
+        // foreach ($arr as $key => $value) {
+        //     $removed = self::reGenerateArray($removed,$key,$value,$i);
+        //     $i++;
+        // }
+        
+        // return $removed;
     }
 
     public static function reGenerateArray(&$arr,$key,$newValueToReplace,$type){

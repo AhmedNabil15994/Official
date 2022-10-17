@@ -30,13 +30,13 @@ class OfflineMessage extends Model
         return self::generateObj($source);
     }
 
-    static function generateObj($source){
+    static function generateObj($source,$setID=false){
         $sourceArr = $source->get();
         $list = [];
         
         foreach($sourceArr as $key => $value) {
             $list[$key] = new \stdClass();
-            $list[$key] = self::getData($value);
+            $list[$key] = self::getData($value,$setID);
         }
 
         $data['data'] = $list;
@@ -44,9 +44,16 @@ class OfflineMessage extends Model
     }
 
 
-    static function getData($source){
+    static function getData($source,$setID=false){
         $dataObj = new \stdClass();
-        $dataObj->id =  $source->message != null ? json_decode($source->message)->key->id : '';
+        if($setID){
+            if($source->message != null){
+                $msgObj = json_decode($source->message);
+                $dataObj->id =  ($msgObj->key->fromMe ? 'true_':'false_').str_replace('@s.whatsapp.net','@c.us', $msgObj->key->remoteJid).'_'. $msgObj->key->id;
+            }
+        }else{
+            $dataObj->id =  $source->message != null ? json_decode($source->message)->key->id : '';
+        }
         $dataObj->type = $source->type;
         $dataObj->chatId = str_replace('@s.whatsapp.net','',$source->chatId);
         $dataObj->is_sent = $source->is_sent == 1 ? trans('main.yes') : trans('main.no');

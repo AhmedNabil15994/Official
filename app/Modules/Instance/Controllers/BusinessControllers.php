@@ -286,7 +286,13 @@ class BusinessControllers extends Controller {
             return \TraitsFunc::ErrorMessage("System Error, Contact Your System Adminstrator !!");
         }
 
-        $data['data'] = $res->data;
+        $chatId = str_replace('@s.whatsapp.net','@c.us',isset($res->data->key) ? $res->data->key->remoteJid : $input['phone'].'@s.whatsapp.net');
+
+        $data['data'] = [
+            'success' => true,
+            'chatId' => $chatId,
+            'id' => 'true_'.str_replace('@s.whatsapp.net','@c.us',$chatId).'_'.(isset($res->data->key) ? $res->data->key->id : $res->data ),
+        ];
         $data['status'] = \TraitsFunc::SuccessResponse();
         return \Response::json((object) $data);   
     }
@@ -398,7 +404,13 @@ class BusinessControllers extends Controller {
             return \TraitsFunc::ErrorMessage("System Error, Contact Your System Adminstrator !!");
         }
 
-        $data['data'] = $res->data;
+        $chatId = str_replace('@s.whatsapp.net','@c.us',isset($res->data->key) ? $res->data->key->remoteJid : $input['phone'].'@s.whatsapp.net');
+
+        $data['data'] = [
+            'success' => true,
+            'chatId' => $chatId,
+            'id' => 'true_'.str_replace('@s.whatsapp.net','@c.us',$chatId).'_'.(isset($res->data->key) ? $res->data->key->id : $res->data ),
+        ];
         $data['status'] = \TraitsFunc::SuccessResponse();
         return \Response::json((object) $data);   
     }
@@ -563,6 +575,7 @@ class BusinessControllers extends Controller {
         if((!isset($input['messageId']) || empty($input['messageId']))){
             return \TraitsFunc::ErrorMessage("Message ID field is required !!");
         }
+        $input['messageId'] = explode('.us_',$input['messageId'])[1];
 
         if(!isset($input['labelId']) && !empty($input['labelId'])){
             return \TraitsFunc::ErrorMessage("Label ID field is required !!");
@@ -604,6 +617,7 @@ class BusinessControllers extends Controller {
         if((!isset($input['messageId']) || empty($input['messageId']))){
             return \TraitsFunc::ErrorMessage("Message ID field is required !!");
         }
+        $input['messageId'] = explode('.us_',$input['messageId'])[1];
 
         if(!isset($input['labelId']) && !empty($input['labelId'])){
             return \TraitsFunc::ErrorMessage("Label ID field is required !!");

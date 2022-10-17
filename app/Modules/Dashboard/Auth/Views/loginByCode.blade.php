@@ -13,6 +13,7 @@
         <link rel="stylesheet" href="{{ asset('assets/css/intlTelInput.css') }}">
         <link href="{{ asset('assets/css/toastr.min.css') }}" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="{{ asset('assets/css/login-style.css') }}">
+        <link rel="shortcut icon" href="{{ asset('assets/images/groupImage.jpeg') }}">
     </head>
     <body class="authPages loading authentication-bg authentication-bg-pattern">
         <section class="main--page">
@@ -20,7 +21,7 @@
                 <div class="row login-page">
                     <div class="col-lg-12 col-xl-6 control-side">
                         <div class="logo">
-                            <img src="{{ asset('assets/images/logo-dark.png') }}" alt="logo">
+                            <img src="{{ asset('assets/images/HtmlToSvg.png') }}" alt="logo">
                         </div>
                         <div class="user-form">
                             <form action="">

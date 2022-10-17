@@ -41,6 +41,7 @@ class MessagesControllers extends Controller {
         }
 
         if(isset($input['messageId']) && !empty($input['messageId'])){
+            $input['messageId'] = explode('.us_',$input['messageId'])[1];
             $response = Http::post(env('URL_WA_SERVER').'/messages/getMessageByID?id='.$name,$input);
         }else{
             $queryString = '';
@@ -62,14 +63,20 @@ class MessagesControllers extends Controller {
             if(isset($res->data->data) && is_array($res->data->data)){
                 foreach($res->data->data as $oneMessage){
                     if(isset($oneMessage->id)){
-                        $messages[] = \Helper::formatArrayShape((array)$oneMessage);
+                        $message = \Helper::formatMessages(\Helper::formatArrayShape((array)$oneMessage),$name,true);
+                        if(!empty($message)){
+                            $messages[] = $message;
+                        }
                     }
                 }
                 $data['data'] = $messages;
                 $data['pagination'] = $res->data->pagination;
             }else{
                 if(isset($res->data->id)){
-                    $messages[] = \Helper::formatArrayShape((array)$res->data);
+                    $message = \Helper::formatMessages(\Helper::formatArrayShape((array)$res->data),$name,true);
+                    if(!empty($message)){
+                        $messages[] = $message;
+                    }
                 }
                 $data['data'] = $messages;
             }
@@ -1034,7 +1041,7 @@ class MessagesControllers extends Controller {
      *     security={ {"bearer_token": {} , "channel_id": {} , "channel_token": {} }},
      *     @OA\Response(response="200",description=""),
      *     @OA\Parameter(description="Message Id to react to (fromMe must be false)",in="query",name="messageId", required=true),
-     *     @OA\Parameter(description="Reaction Index to react to (1 == '👍' , 2 == '❤️' , 3 == '😂', 4 == '😮' , 5 == '😢' , 6 == '🙏')",in="query",name="reaction", required=true),
+     *     @OA\Parameter(description="Reaction Index to react to (1 == '👍' , 2 == '❤️' , 3 == '😂', 4 == '😮' , 5 == '😢' , 6 == '🙏', 7 == to removed messages reactions)",in="query",name="reaction", required=true),
      * )
      */
     public function sendReaction(){
@@ -1052,6 +1059,7 @@ class MessagesControllers extends Controller {
         if(!isset($input['messageId']) || empty($input['messageId'])){
             return \TraitsFunc::ErrorMessage("Message ID field is required !!");
         }
+        $input['messageId'] = explode('.us_',$input['messageId'])[1];
 
         if(!isset($input['reaction']) || empty($input['reaction'])){
             return \TraitsFunc::ErrorMessage("R field is required !!");
@@ -1105,6 +1113,8 @@ class MessagesControllers extends Controller {
             $reaction = '😢';
         }else if($input['reaction'] == 6){
             $reaction = '🙏';
+        }else{
+            $reaction = '';
         }
 
         $data['data'] = [
@@ -1552,6 +1562,7 @@ class MessagesControllers extends Controller {
         if(!isset($input['messageId']) || empty($input['messageId'])){
             return \TraitsFunc::ErrorMessage("Message ID field is required !!");
         }
+        $input['messageId'] = explode('.us_',$input['messageId'])[1];
 
         $forwardResponse = Http::post(env('URL_WA_SERVER').'/messages/forwardMessage?id='.$name, [
             'phone' => $input['phone'],
@@ -1594,6 +1605,7 @@ class MessagesControllers extends Controller {
         if(!isset($input['messageId']) || empty($input['messageId'])){
             return \TraitsFunc::ErrorMessage("Message ID field is required !!");
         }
+        $input['messageId'] = explode('.us_',$input['messageId'])[1];
 
         $forwardResponse = Http::post(env('URL_WA_SERVER').'/messages/starMessage?id='.$name, [
             'messageId' => $input['messageId'],
@@ -1633,6 +1645,7 @@ class MessagesControllers extends Controller {
         if(!isset($input['messageId']) || empty($input['messageId'])){
             return \TraitsFunc::ErrorMessage("Message ID field is required !!");
         }
+        $input['messageId'] = explode('.us_',$input['messageId'])[1];
 
         $forwardResponse = Http::post(env('URL_WA_SERVER').'/messages/unstarMessage?id='.$name, [
             'messageId' => $input['messageId'],
@@ -1672,6 +1685,7 @@ class MessagesControllers extends Controller {
         if(!isset($input['messageId']) || empty($input['messageId'])){
             return \TraitsFunc::ErrorMessage("Message ID field is required !!");
         }
+        $input['messageId'] = explode('.us_',$input['messageId'])[1];
 
         $forwardResponse = Http::post(env('URL_WA_SERVER').'/messages/deleteMessageForMe?id='.$name, [
             'messageId' => $input['messageId'],
@@ -1714,6 +1728,7 @@ class MessagesControllers extends Controller {
         if(!isset($input['messageId']) || empty($input['messageId'])){
             return \TraitsFunc::ErrorMessage("Message ID field is required !!");
         }
+        $input['messageId'] = explode('.us_',$input['messageId'])[1];
 
         $forwardResponse = Http::post(env('URL_WA_SERVER').'/messages/deleteMessage?id='.$name, [
             'messageId' => $input['messageId'],
@@ -1755,6 +1770,7 @@ class MessagesControllers extends Controller {
         if(!isset($input['messageId']) || empty($input['messageId'])){
             return \TraitsFunc::ErrorMessage("Message ID field is required !!");
         }
+        $input['messageId'] = explode('.us_',$input['messageId'])[1];
 
         $response = Http::post(env('URL_WA_SERVER').'/messages/getMessageByID?id='.$name, [
             'messageId' => $input['messageId'],

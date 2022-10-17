@@ -524,7 +524,7 @@ class InstancesControllers extends Controller {
         foreach($messages as $key => $message){
             $details = json_decode($message->message);
             unset($messages[$key]->message);
-            $messages[$key]->messageId = $details->key->id;
+            $messages[$key]->messageId =  'true_'.str_replace('@s.whatsapp.net','@c.us', $details->key->remoteJid).'_'. $details->key->id;
         }
 
         $data['data']['messages'] = $messages;

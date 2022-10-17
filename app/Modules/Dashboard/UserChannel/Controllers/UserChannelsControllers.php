@@ -292,8 +292,10 @@ class UserChannelsControllers extends Controller {
             if(is_array($result['data']['data'])){
                 foreach($result['data']['data'] as $oneMessage){
                     if(isset($oneMessage['id'])){
-                        $newObj = \Helper::formatArrayShape($oneMessage);
-                        $history[] = $newObj;
+                        $newObj = \Helper::formatMessages(\Helper::formatArrayShape((array)$oneMessage),$channelObj->name,true);
+                        if(!empty($newObj)){
+                            $history[] = $newObj;
+                        }
                     }
                 }
             }
@@ -342,7 +344,7 @@ class UserChannelsControllers extends Controller {
         $records = OfflineMessage::where('sessionId',$channelObj->name)->orderBy('id','DESC')
            ->skip($start)
            ->take($rowperpage);
-        $data = OfflineMessage::generateObj($records);
+        $data = OfflineMessage::generateObj($records,true);
         
 
         $dataList['draw'] = isset($input['draw']) && !empty($input['draw']) ? $input['draw'] : 1;

@@ -581,6 +581,7 @@ class GroupsControllers extends Controller {
         if(!isset($input['messageId']) || empty($input['messageId'])){
             return \TraitsFunc::ErrorMessage("Message ID field is required !!");
         }
+        $input['messageId'] = explode('.us_',$input['messageId'])[1];
 
         $forwardResponse = Http::post(env('URL_WA_SERVER').'/groups/acceptGroupInvite?id='.$name, $input);
         $res = json_decode($forwardResponse->getBody());
