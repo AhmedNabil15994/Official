@@ -15,7 +15,8 @@
         "livewire/livewire": "^2.10",
         "predis/predis": "^2.0",
         "spatie/laravel-webhook-client": "^2.8",
-        "spatie/laravel-webhook-server": "^2.0"
+        "spatie/laravel-webhook-server": "^2.0",
+        "watson/active": "^6.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

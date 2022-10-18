@@ -20,7 +20,7 @@
     .attention i {
         position: absolute;
         right: 15px;
-        top: 10px;
+        top: 7px;
         width: 35px;
         height: 35px;
         text-align: center;
@@ -355,12 +355,12 @@
                 </div>
                 <div class="modal-body p-4" style="height: 100vh;position:relative">
                     @if($data->device->status == 'connected')
-                        @include('whatsweb.index2')
+                        {{-- @include('whatsweb.index2') --}}
                     @else
                         @if($data->device->validStatus  != trans('main.active'))
-                            @include('whatsweb.index3')
+                            {{-- @include('whatsweb.index3') --}}
                         @else
-                            @include('whatsweb.index',['qr' => $data->device->image])
+                            {{-- @include('whatsweb.index',['qr' => $data->device->image]) --}}
                         @endif
                     @endif
                 </div>

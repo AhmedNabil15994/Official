@@ -141,8 +141,8 @@
       }
     </style>
     <link href="{{asset('assets/whatsweb/style.css')}}" rel="stylesheet">
-      <link href="{{asset('assets/whatsweb/bootstrap.css')}}" rel="stylesheet">
-      <link rel="stylesheet" type="text/css" href="{{asset('/assets/whatsweb/bootstrap-main.css')}}">
+    <link href="{{asset('assets/whatsweb/bootstrap.css')}}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{asset('/assets/whatsweb/bootstrap-main.css')}}">
     <style id="asset-style" type="text/css"></style>
     <link rel="stylesheet" type="text/css" href="{{asset('/assets/whatsweb/lazy1.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('/assets/whatsweb/lazy2.css')}}">

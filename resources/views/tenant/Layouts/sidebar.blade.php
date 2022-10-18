@@ -44,8 +44,8 @@
                     </a>
                 </li>
 
-                <li>
-                    <a href="{{ URL::to('/channels') }}">
+                <li class="{{Active(URL::to('/channels*'),'menuitem-active')}}">
+                    <a href="{{ URL::to('/channels') }}" class="{{Active(URL::to('/channels*'))}}">
                         <i class="mdi mdi-whatsapp"></i>
                         <span> {{ trans('main.channels') }} </span>
                     </a>

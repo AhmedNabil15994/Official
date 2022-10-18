@@ -62,10 +62,12 @@ class UserChannelsControllers extends Controller {
             return redirect()->back();
         }
 
-        $find = Http::delete(env('URL_WA_SERVER').'/sessions/delete/'.$channelObj->name);
-        $channelObj->status = 'disconnected';
-        $channelObj->image = null;
-        $channelObj->save();
+        try {
+            $find = Http::delete(env('URL_WA_SERVER').'/sessions/delete/'.$channelObj->name);
+            $channelObj->status = 'disconnected';
+            $channelObj->image = null;
+            $channelObj->save();
+        } catch (\Illuminate\Http\Client\ConnectionException $e) {}
         
         Session::flash('success', trans('main.logoutSuccess'));
         return redirect()->back();
@@ -90,10 +92,12 @@ class UserChannelsControllers extends Controller {
             return redirect()->back();
         }
 
-        $find = Http::delete(env('URL_WA_SERVER').'/sessions/clearInstance/'.$channelObj->name);
-        $channelObj->status = '';
-        $channelObj->image = null;
-        $channelObj->save();
+        try {
+            $find = Http::delete(env('URL_WA_SERVER').'/sessions/clearInstance/'.$channelObj->name);
+            $channelObj->status = '';
+            $channelObj->image = null;
+            $channelObj->save();
+        } catch (\Illuminate\Http\Client\ConnectionException $e) {}
         
         Session::flash('success', trans('main.clearSuccess'));
         return redirect()->back();
