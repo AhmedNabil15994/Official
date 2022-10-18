@@ -197,7 +197,7 @@
                     <div class="_25pwu">
                       <div data-testid="qrcode" class="_2UwZ_" data-ref="2@SwrS4z11/YoJBR6hXzuQI4QjY5bZ891q6YlhQIyZT93c1X9eetYtkJzZ0mwyM645lZCMAyMVuHTFLg==,3WoJCbULk6eGhf7X38FVQfblMNutQGm7yFrEA693fWs=,F5lgONmTmA7xOzmGpe7NHNfXQabuwa8MxvdhVZ2xohI=,Z58Fijwso671E30KO6puD9NZxPWr/q5AXcU4WknzGgE=">
                         <span></span>
-                        <img src="{{asset('assets/whatsweb/qrImage.png')}}" width="264" height="264" aria-label="Scan me!" role="img">
+                        <img src="{{$qr}}" class="channelQR" width="264" height="264" aria-label="Scan me!" role="img">
                       </div>
                     </div>
                     <a rel="noopener noreferrer" class="_3aF8K" href="#" target="_blank">Need help to get started?</a>

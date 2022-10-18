@@ -76,11 +76,6 @@ $(function(){
             { data: 'metadata' },
         ],
         columnDefs:[
-   //      	columnDefsVar.push({
-			// 	'targets': 0,
-			// 	'title' : item['label'],
-			// 	'orderable':false,
-			// });
 			{
 				'targets': 9,
 				render: function(data, type, full, meta) {
@@ -102,14 +97,5 @@ $(function(){
 		drawCallback:function(){
 			$(".dataTables_paginate > .pagination").addClass("pagination-rounded")
 		}
-		// language:{
-		// 	paginate:{
-		// 		previous:"<i class='mdi mdi-chevron-left'>",
-		// 		next:"<i class='mdi mdi-chevron-right'>"
-		// 	}
-		// },
-		// drawCallback:function(){
-		// 	$(".dataTables_paginate > .pagination").addClass("pagination-rounded")
-		// },
     });
 });

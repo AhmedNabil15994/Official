@@ -103,6 +103,7 @@ class  Device extends Model{
         $dataObj->description = $source->description;
         $dataObj->multidevice = $source->multidevice;
         $dataObj->status = $source->status == null ? 'got QR and ready to scan' : $source->status;
+        $dataObj->image = $source->image;
         $dataObj->days = $source->days;
         $dataObj->valid_until = $source->valid_until;
         $dataObj->created_at = $source->created_at;

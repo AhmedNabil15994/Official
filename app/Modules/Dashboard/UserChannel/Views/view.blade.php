@@ -113,7 +113,7 @@
                         <a href="#history-modal" data-toggle="modal" data-target="#history-modal"  class="btn btn-light waves-effect waves-light"><i class="mdi mdi-history"></i> {{trans('main.messagesHistory')}}</a>
                     </li>
                     <li class="list-inline-item mb-2">
-                        <a href="javascript: void(0);" class="btn btn-light waves-effect waves-light"><i class="mdi mdi-cellphone-screenshot"></i> {{trans('main.screenshot')}}</a>
+                        <a href="#screenshot-modal" data-toggle="modal" data-target="#screenshot-modal" class="btn btn-light waves-effect waves-light"><i class="mdi mdi-cellphone-screenshot"></i> {{trans('main.screenshot')}}</a>
                     </li>
                 </ul>
             </div> <!-- end card-box -->
@@ -345,6 +345,28 @@
             </div>
         </div>
     </div>
+
+    <div id="screenshot-modal" class="modal fade">
+        <div class="modal-dialog modal-full-width">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">{{trans('main.screenshot')}}</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body p-4" style="height: 100vh;position:relative">
+                    @if($data->device->status == 'connected')
+                        @include('whatsweb.index2')
+                    @else
+                        @if($data->device->validStatus  != trans('main.active'))
+                            @include('whatsweb.index3')
+                        @else
+                            @include('whatsweb.index',['qr' => $data->device->image])
+                        @endif
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
 </div> <!-- container -->
 @endsection
 
@@ -370,7 +392,8 @@
 
 <script>
 Livewire.on('statusChanged', qrData => {
-    $('p.channelStatus').html(qrData.channelStatus)
+    $('p.channelStatus').html(qrData.channelStatus);
+    $(document).find($('#app img.channelQR').attr('src',qrData.image))
 })
 </script>
 @endsection
