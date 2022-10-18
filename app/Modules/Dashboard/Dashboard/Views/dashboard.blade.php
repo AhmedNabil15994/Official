@@ -118,7 +118,7 @@
                             <div class="inbox-item-img"><img src="{{ asset('assets/images/groupImage.jpeg') }}" class="rounded-circle" alt=""></div>
                             <p class="inbox-item-author">{{$oneQueue->sessionId}}</p>
                             <p class="inbox-item-date">
-                                <a href="{{URL::to('/channels/view/'.str_replace('wlChannel','',$oneQueue->sessionId))}}" class="btn btn-sm btn-link text-info font-13"> {{$oneQueue->total .' '.trans('main.message')}} </a>
+                                <a href="{{URL::to('/channels/'.str_replace('wlChannel','',$oneQueue->sessionId))}}" class="btn btn-sm btn-link text-info font-13"> {{$oneQueue->total .' '.trans('main.message')}} </a>
                             </p>
                         </div>
                     </div> <!-- end inbox-widget -->
@@ -138,7 +138,7 @@
                             <div class="inbox-item-img"><img src="{{ asset('assets/images/groupImage.jpeg') }}" class="rounded-circle" alt=""></div>
                             <p class="inbox-item-author">{{$oneDay->name}}</p>
                             <p class="inbox-item-date">
-                                <a href="{{URL::to('/channels/view/'.str_replace('wlChannel','',$oneDay->name))}}" class="btn btn-sm btn-link text-info font-13"> {{$oneDay->actualDays .' '.trans('main.day')}} </a>
+                                <a href="{{URL::to('/channels/'.str_replace('wlChannel','',$oneDay->name))}}" class="btn btn-sm btn-link text-info font-13"> {{$oneDay->actualDays .' '.trans('main.day')}} </a>
                             </p>
                         </div>
                     </div> <!-- end inbox-widget -->
@@ -159,7 +159,7 @@
                             <div class="inbox-item-img"><img src="{{ asset('assets/images/groupImage.jpeg') }}" class="rounded-circle" alt=""></div>
                             <p class="inbox-item-author">{{'wlChannel'.$oneStorage['id']}}</p>
                             <p class="inbox-item-date">
-                                <a href="{{URL::to('/channels/view/'.$oneStorage['id'])}}" class="btn btn-sm btn-link text-info font-13"> {{$oneStorage['size'] .' '.$data->storageText}} </a>
+                                <a href="{{URL::to('/channels/'.$oneStorage['id'])}}" class="btn btn-sm btn-link text-info font-13"> {{$oneStorage['size'] .' '.$data->storageText}} </a>
                             </p>
                         </div>
                     </div> <!-- end inbox-widget -->
