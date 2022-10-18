@@ -180,27 +180,22 @@ class UserChannelsControllers extends Controller {
             $settingObj->sessionId = NAME;              
         }
 
-        if(isset($input['webhooks']) && !empty($input['webhooks'])){
-            $oldUrls = (array) json_decode($settingObj->webhooks);
-            if(!empty($oldUrls)){
-                if(isset($input['webhooks']['messageNotifications']) && !empty($input['webhooks']['messageNotifications'])){
-                    $oldUrls['messageNotifications'] = $input['webhooks']['messageNotifications'];
-                }
-                if(isset($input['webhooks']['ackNotifications']) && !empty($input['webhooks']['ackNotifications'])){
-                    $oldUrls['ackNotifications'] = $input['webhooks']['ackNotifications'];
-                }
-                if(isset($input['webhooks']['chatNotifications']) && !empty($input['webhooks']['chatNotifications'])){
-                    $oldUrls['chatNotifications'] = $input['webhooks']['chatNotifications'];
-                }
-                if(isset($input['webhooks']['labelNotifications']) && !empty($input['webhooks']['labelNotifications'])){
-                    $oldUrls['labelNotifications'] = $input['webhooks']['labelNotifications'];
-                }
-                $settingObj->webhooks = json_encode($oldUrls);
-            }else{
-                $settingObj->webhooks = json_encode($input['webhooks']);
-            }
-        }
+        $oldUrls = (array) json_decode($settingObj->webhooks);
 
+        if(isset($input['messageNotifications']) && !empty($input['messageNotifications'])){
+            $oldUrls['messageNotifications'] = $input['messageNotifications'];
+        }
+        if(isset($input['ackNotifications']) && !empty($input['ackNotifications'])){
+            $oldUrls['ackNotifications'] = $input['ackNotifications'];
+        }
+        if(isset($input['chatNotifications']) && !empty($input['chatNotifications'])){
+            $oldUrls['chatNotifications'] = $input['chatNotifications'];
+        }
+        if(isset($input['labelNotifications']) && !empty($input['labelNotifications'])){
+            $oldUrls['labelNotifications'] = $input['labelNotifications'];
+        }
+        $settingObj->webhooks = json_encode($oldUrls);
+        
         if(isset($input['sendDelay']) && !empty($input['sendDelay'])){
             $settingObj->sendDelay = $input['sendDelay'];
         }

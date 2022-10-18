@@ -17,6 +17,7 @@ class  Device extends Model{
         'id_users',
         'number',
         'name',
+        'image',
         'description',
         'channel_id',
         'channel_token',

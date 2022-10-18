@@ -105,7 +105,7 @@ class InstancesControllers extends Controller {
 
         if(isset($input['status']) && !empty($input['status']) && in_array($input['status'], ['connected','authenticated','disconnected'])){
             $devObj = Device::NotDeleted()->where('name', $name)->first();
-            $devObj->update(['status' => $input['status'],'updated_at' => date('Y-m-d H:i:s')]);
+            $devObj->update(['status' => $input['status'],'updated_at' => date('Y-m-d H:i:s'),'image' => null]);
             if(in_array($input['status'], ['connected','authenticated'])){
                 QRScanned::dispatch($devObj);
             }
@@ -113,17 +113,17 @@ class InstancesControllers extends Controller {
             $find = Http::get(env('URL_WA_SERVER').'/sessions/status/'.$name);
             $cek = json_decode($find->getBody());
             if($cek->message == "" && in_array($cek->data->status , ['connected','authenticated'])){
-                Device::NotDeleted()->where('name', $name)->update(['status' => 'connected','updated_at' => date('Y-m-d H:i:s')]);
+                Device::NotDeleted()->where('name', $name)->update(['status' => 'connected','updated_at' => date('Y-m-d H:i:s'),'image' => null]);
                 $data['data']['status'] = 'connected';        
             }else{
                 $find = Http::get(env('URL_WA_SERVER').'/sessions/find/'.$name);
                 $cek = json_decode($find->getBody());
                 if($cek->message == "Session found."){
                     $data['data']['status'] = 'got QR and ready to scan';        
-                    Device::NotDeleted()->where('name', $name)->update(['status' => 'got QR and ready to scan','updated_at' => date('Y-m-d H:i:s')]);
+                    Device::NotDeleted()->where('name', $name)->update(['status' => 'got QR and ready to scan','updated_at' => date('Y-m-d H:i:s'),'image' => null]);
                 }else{
                     $data['data']['status'] = 'disconnected';        
-                    Device::NotDeleted()->where('name', $name)->update(['status' => 'disconnected','updated_at' => date('Y-m-d H:i:s')]);
+                    Device::NotDeleted()->where('name', $name)->update(['status' => 'disconnected','updated_at' => date('Y-m-d H:i:s'),'image' => null]);
                     $response = Http::post(env('URL_WA_SERVER').'/sessions/add', ['id' => $name, 'isLegacy' => 'true']);
                     $res = json_decode($response->getBody());
                 }
