@@ -40,10 +40,10 @@ class QrImage extends Component
                     'image' => $result['data']['qr']
                 ]); 
             }else if($result['data']['qr'] == 'connected'){
-                $data['url'] = asset('assets/images/qr-load.png');
+                $data['url'] = asset('assets/images/connected.png');
                 $this->emit('statusChanged',[
                     'channelStatus' => 'connected',
-                    'image' => asset('assets/images/qr-load.png'),
+                    'image' => asset('assets/images/connected.png'),
                 ]); 
             }
         }        

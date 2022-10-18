@@ -168,7 +168,7 @@ class ChannelsControllers extends Controller {
         $senderCheckObj->save();
 
         $receiverCheckObj->days = $receiverCheckObj->days + $input['days'];
-        $receiverCheckObj->valid_until = date('Y-m-d H:i:s',strtotime('+'.$input['days'].' days',strtotime( $receiverCheckObj->valid_until != null ? $receiverCheckObj->valid_until : date('Y-m-d H:i:s') )));
+        $receiverCheckObj->valid_until = date('Y-m-d H:i:s',strtotime('+'.$input['days'].' days',strtotime( $receiverCheckObj->valid_until != null && $receiverCheckObj->valid_until >= date('Y-m-d H:i:s') ? $receiverCheckObj->valid_until : date('Y-m-d H:i:s') )));
         $receiverCheckObj->save();
 
         $dataList['data'] = "transferred";
