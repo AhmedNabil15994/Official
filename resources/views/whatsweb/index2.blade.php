@@ -4,6 +4,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>WhatsApp</title>
     <style>
+      html[dir] .app-wrapper-web ._1XkO3{
+        margin: 0 !important;
+      }
+      .app-wrapper-web ._1XkO3{
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+      ._1ADa8:after{
+        content: " " !important;
+        background: transparent !important;
+        width: 0 !important;
+      }
       #initial_startup {
         --startup-background: #f0f2f5;
         --startup-background-rgb: 240, 242, 245;
@@ -24,9 +36,7 @@
         --progress-background: #233138
       }
 
-      #app,
-      body,
-      html {
+      #app{
         width: 100%;
         height: 100%;
         padding: 0;
@@ -150,11 +160,6 @@
   <body class="web">     
     <div id="app">
       <div class="_1ADa8 _3Nsgw app-wrapper-web font-fix">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
         <div tabindex="-1" class="_1XkO3 two _22rDB">
           <div class="snyj76hw an6tjemt jbm6vef4 bbl9m3t3 ora14ekb nv3qcefw"></div>
           <div class="_3ArsE">
@@ -169,7 +174,7 @@
             <header data-testid="chatlist-header" class="g0rxnol2 ercejckq cm280p3y p357zi0d gndfcl4n kcgo1i74 ln8gz9je e8h85j61 emrlamx0 aiput80m lyvj5e2u l9g3jx6n f6ipylw5">
               <div class="YtmXM">
                 <div class="_3GlyB" style="height: 40px; width: 40px; cursor: pointer;">
-                  <img src="https://pps.whatsapp.net/v/t61.24694-24/307733494_133444572774959_6285646928270256220_n.jpg?stp=dst-jpg_s96x96&amp;ccb=11-4&amp;oh=01_AVyg5ocYQP_VrxpHfCJ4g5DY8a02f9pm_t-TMCDQ7Cof4A&amp;oe=634D4A40" alt="" draggable="false" class="_8hzr9 M0JmA i0jNr" style="visibility: visible;">
+                  <img src="{{$profPic}}" alt="" draggable="false" class="_8hzr9 M0JmA i0jNr" style="visibility: visible;">
                 </div>
               </div>
               <div class="_3yZPA">
@@ -291,15 +296,16 @@
               <div class="_3Bc7H _20c87" id="pane-side">
                 <div tabindex="-1" data-tab="4">
                   <div class="" data-testid="chat-list">
-                    <div aria-label="Chat list" class="_3uIPm WYyr1" role="grid" aria-rowcount="15" style="height: 1080px;">
-                        <div class="lhggkp7q ln8gz9je rx9719la" style="z-index: 14; transition: none 0s ease 0s; height: 72px;">
+                    <div aria-label="Chat list" class="_3uIPm WYyr1" role="grid" aria-rowcount="30" style="height: 3600px;">
+                      @foreach($pinned as $key => $onePinned)
+                        <div class="lhggkp7q ln8gz9je rx9719la" style="z-index: {{$key+14}}; transition: none 0s ease 0s; height: 72px;top:{{$key*72}}px">
                           <div class="_1Oe6M">
                             <div tabindex="-1" aria-selected="false" role="row">
                               <div data-testid="cell-frame-container" class="_2nY6U vq6sj">
                                 <div class="_2EU3r">
                                   <div class="HONz8">
                                     <div class="_3GlyB" style="height: 49px; width: 49px;">
-                                      <img src="https://pps.whatsapp.net/v/t61.24694-24/301991596_657406035809415_3899513341680550369_n.jpg?stp=dst-jpg_s96x96&amp;ccb=11-4&amp;oh=01_AVy544i4aq91Y9cyXpNEw_Yu3AYQI5Ex8Ati_Z0mo_kYoA&amp;oe=634D4D28" alt="" draggable="false" class="_8hzr9 M0JmA i0jNr" style="visibility: visible;">
+                                      <img src="{{$onePinned['image'] != '' ? $onePinned['image'] : asset('assets/images/avatar.png')}}" alt="" draggable="false" class="_8hzr9 M0JmA i0jNr" style="visibility: visible;">
                                     </div>
                                   </div>
                                 </div>
@@ -307,25 +313,94 @@
                                   <div role="gridcell" aria-colindex="2" class="_3vPI2">
                                     <div class="zoWT4">
                                       <span class="_3q9s6">
-                                        <span dir="auto" title="ay 7aga" class="ggj6brxn gfz4du6o r7fjleex g0rxnol2 lhj4utae le5p0ye3 l7jjieqr i0jNr">ay 7aga</span>
+                                        <span dir="auto" title="ay 7aga" class="ggj6brxn gfz4du6o r7fjleex g0rxnol2 lhj4utae le5p0ye3 l7jjieqr i0jNr">{{isset($onePinned['contact']['name']) ? $onePinned['contact']['name'] : (isset($onePinned['contact']['notify']) ? $onePinned['contact']['notify'] : explode('@', $onePinned['contact']['id'])[0])  }}</span>
                                         <div class="_3dulN"></div>
                                       </span>
                                     </div>
-                                    <div class="_1i_wG">Tuesday</div>
+                                    <div class="_1i_wG">{{isset($onePinned['lastMessage']) && isset($onePinned['lastMessage']['time']) ? \Helper::reformDate($onePinned['lastMessage']['time'])  : ''}}</div>
                                   </div>
                                   <div class="_37FrU">
                                     <div class="_1qB8f">
-                                      <span class="Hy9nV" title="&#x202B;انا لسه 😂&#x202C;" data-testid="last-msg-status">
-                                        <div class="_2qo4q _3NIfV">
-                                          <span data-testid="status-dblcheck" class="">
-                                            <svg viewBox="0 0 18 18" width="18" height="18" class="">
-                                              <path fill="currentColor" d="m17.394 5.035-.57-.444a.434.434 0 0 0-.609.076l-6.39 8.198a.38.38 0 0 1-.577.039l-.427-.388a.381.381 0 0 0-.578.038l-.451.576a.497.497 0 0 0 .043.645l1.575 1.51a.38.38 0 0 0 .577-.039l7.483-9.602a.436.436 0 0 0-.076-.609zm-4.892 0-.57-.444a.434.434 0 0 0-.609.076l-6.39 8.198a.38.38 0 0 1-.577.039l-2.614-2.556a.435.435 0 0 0-.614.007l-.505.516a.435.435 0 0 0 .007.614l3.887 3.8a.38.38 0 0 0 .577-.039l7.483-9.602a.435.435 0 0 0-.075-.609z"></path>
-                                            </svg>
-                                          </span>
-                                        </div>
-                                        <span dir="auto" class="l7jjieqr i0jNr">You</span>
-                                        <span>:&nbsp;</span>
-                                        <span dir="rtl" class="ggj6brxn gfz4du6o r7fjleex g0rxnol2 lhj4utae le5p0ye3 f804f6gw ln8gz9je i0jNr">انا لسه 😂
+                                      <span class="Hy9nV" title="" data-testid="last-msg-status">
+                                        @if(isset($onePinned['lastMessage']) && isset($onePinned['lastMessage']['messageType']))
+                                          @if(in_array($onePinned['lastMessage']['messageType'], ['text','disappearingMessage','mentionMessage','buttonsMessage','templateMessage','listMessage','linkWithPreview','groupInvitationMessage','catalogMessage']) == 'text')
+                                            @if($onePinned['lastMessage']['status'] == 4)
+                                            <div class="_2qo4q _3NIfV">
+                                              <span data-testid="status-dblcheck" class="">
+                                                <svg viewBox="0 0 18 18" width="18" height="18" class="">
+                                                  <path fill="currentColor" d="m17.394 5.035-.57-.444a.434.434 0 0 0-.609.076l-6.39 8.198a.38.38 0 0 1-.577.039l-.427-.388a.381.381 0 0 0-.578.038l-.451.576a.497.497 0 0 0 .043.645l1.575 1.51a.38.38 0 0 0 .577-.039l7.483-9.602a.436.436 0 0 0-.076-.609zm-4.892 0-.57-.444a.434.434 0 0 0-.609.076l-6.39 8.198a.38.38 0 0 1-.577.039l-2.614-2.556a.435.435 0 0 0-.614.007l-.505.516a.435.435 0 0 0 .007.614l3.887 3.8a.38.38 0 0 0 .577-.039l7.483-9.602a.435.435 0 0 0-.075-.609z"></path>
+                                                </svg>
+                                              </span>
+                                            </div>
+                                            @elseif($onePinned['lastMessage']['status'] == 3)
+                                            <div class="_2qo4q">
+                                              <span data-testid="status-dblcheck" class=""><svg viewBox="0 0 18 18" width="18" height="18" class=""><path fill="currentColor" d="m17.394 5.035-.57-.444a.434.434 0 0 0-.609.076l-6.39 8.198a.38.38 0 0 1-.577.039l-.427-.388a.381.381 0 0 0-.578.038l-.451.576a.497.497 0 0 0 .043.645l1.575 1.51a.38.38 0 0 0 .577-.039l7.483-9.602a.436.436 0 0 0-.076-.609zm-4.892 0-.57-.444a.434.434 0 0 0-.609.076l-6.39 8.198a.38.38 0 0 1-.577.039l-2.614-2.556a.435.435 0 0 0-.614.007l-.505.516a.435.435 0 0 0 .007.614l3.887 3.8a.38.38 0 0 0 .577-.039l7.483-9.602a.435.435 0 0 0-.075-.609z"></path></svg></span>
+                                            </div>
+                                            @elseif($onePinned['lastMessage']['status'] == 2)
+                                            <div class="_2qo4q">
+                                              <span data-testid="status-check" class=""><svg viewBox="0 0 14 18" width="14" height="18" class=""><path fill="currentColor" d="m12.502 5.035-.57-.444a.434.434 0 0 0-.609.076l-6.39 8.198a.38.38 0 0 1-.577.039l-2.614-2.556a.435.435 0 0 0-.614.007l-.505.516a.435.435 0 0 0 .007.614l3.887 3.8a.38.38 0 0 0 .577-.039l7.483-9.602a.435.435 0 0 0-.075-.609z"></path></svg></span>
+                                            </div>  
+                                            @endif
+                                          @elseif($onePinned['lastMessage']['messageType'] == 'image')
+                                          <div class="_2tHs0 status-image _3Bn0t">
+                                            <span data-testid="status-image" class="">
+                                              <svg viewBox="0 0 16 20" width="16" height="20" class=""><path fill="currentColor" d="M13.822 4.668H7.14l-1.068-1.09a1.068 1.068 0 0 0-.663-.278H3.531c-.214 0-.51.128-.656.285L1.276 5.296c-.146.157-.266.46-.266.675v1.06l-.001.003v6.983c0 .646.524 1.17 1.17 1.17h11.643a1.17 1.17 0 0 0 1.17-1.17v-8.18a1.17 1.17 0 0 0-1.17-1.169zm-5.982 8.63a3.395 3.395 0 1 1 0-6.79 3.395 3.395 0 0 1 0 6.79zm0-5.787a2.392 2.392 0 1 0 0 4.784 2.392 2.392 0 0 0 0-4.784z"></path></svg>
+                                            </span>
+                                          </div>
+                                          @elseif($onePinned['lastMessage']['messageType'] == 'video')
+                                          <div class="_2tHs0 status-video _3Bn0t">
+                                            <span data-testid="status-video" class="">
+                                              <svg viewBox="0 0 16 20" width="16" height="20" class=""><path fill="currentColor" d="m15.243 5.868-3.48 3.091v-2.27c0-.657-.532-1.189-1.189-1.189H1.945c-.657 0-1.189.532-1.189 1.189v7.138c0 .657.532 1.189 1.189 1.189h8.629c.657 0 1.189-.532 1.189-1.189v-2.299l3.48 3.09v-8.75z"></path></svg>
+                                            </span>
+                                          </div>
+                                          @elseif($onePinned['lastMessage']['messageType'] == 'audio')
+                                          <div class="_2tHs0 status-audio _3Bn0t">
+                                            <span data-testid="status-audio" class="">
+                                              <svg viewBox="0 0 14 17" width="14" height="17" class="" version="1.1" id="_x39_7d25ebd-827b-4b31-aacf-70732ab74202" x="0" y="0"><path fill="currentColor" d="M7 2.33a5.983 5.983 0 0 0-6 5.96V13c-.02 1.09.85 1.98 1.94 2H5V9.67H2.33V8.33c0-2.58 2.09-4.67 4.67-4.67s4.67 2.09 4.67 4.67v1.33H9v5.33h2c1.09.02 1.98-.85 2-1.94V8.33c.01-3.3-2.66-5.99-5.96-6H7z"></path></svg>
+                                            </span>
+                                          </div>
+                                          @elseif($onePinned['lastMessage']['messageType'] == 'document')
+                                          <div class="_2tHs0 status-document _3Bn0t">
+                                            <span data-testid="status-document" class="">
+                                              <svg viewBox="0 0 13 20" width="13" height="20" class=""><path fill="currentColor" d="M10.2 3H2.5C1.7 3 1 3.7 1 4.5v10.1c0 .7.7 1.4 1.5 1.4h7.7c.8 0 1.5-.7 1.5-1.5v-10C11.6 3.7 11 3 10.2 3zm-2.6 9.7H3.5v-1.3h4.1v1.3zM9.3 10H3.5V8.7h5.8V10zm0-2.7H3.5V6h5.8v1.3z"></path></svg>
+                                            </span>
+                                          </div>
+                                          @elseif($onePinned['lastMessage']['messageType'] == 'sticker')
+                                          <div class="_2tHs0 status-sticker _3Bn0t">
+                                            <span data-testid="status-sticker" class=""><svg viewBox="0 0 16 16" width="16" height="16" class=""><path fill="currentColor" d="M9.179 14.637c.061-.14.106-.29.135-.45.031-.171.044-.338.049-.543a9.05 9.05 0 0 0 .003-.233l.001-.067v-.072l.002-.216c.01-.364.032-1.205.08-1.473.052-.287.136-.538.255-.771a2.535 2.535 0 0 1 1.125-1.111 2.8 2.8 0 0 1 .786-.255c.27-.048 1.098-.07 1.487-.08l.152.001h.047l.325-.004a3.63 3.63 0 0 0 .554-.048 2.06 2.06 0 0 0 .494-.151 4.766 4.766 0 0 1-1.359 2.429 143.91 143.91 0 0 1-2.057 1.924 4.782 4.782 0 0 1-2.079 1.12zm-1.821.16-.474.012a9.023 9.023 0 0 1-1.879-.11 4.747 4.747 0 0 1-1.314-.428 4.376 4.376 0 0 1-1.123-.807 4.354 4.354 0 0 1-.816-1.11 4.584 4.584 0 0 1-.434-1.303 8.783 8.783 0 0 1-.12-1.356 29.156 29.156 0 0 1-.009-.617c-.002-.206-.002-.37-.002-.736v-.674l.001-.549.001-.182c.001-.223.004-.426.009-.62a8.69 8.69 0 0 1 .121-1.358c.087-.476.229-.903.434-1.301a4.399 4.399 0 0 1 1.936-1.916 4.7 4.7 0 0 1 1.315-.429 8.926 8.926 0 0 1 1.379-.12c.72-.009.989-.011 1.359-.011h.528c.896.003 1.143.005 1.366.011.55.015.959.046 1.371.12.482.085.913.226 1.314.428a4.396 4.396 0 0 1 1.937 1.915c.206.4.348.827.434 1.302.075.412.107.819.121 1.356.006.198.009.402.01.619v.024c0 .069-.001.132-.003.194a2.61 2.61 0 0 1-.033.391.902.902 0 0 1-.494.677 1.05 1.05 0 0 1-.29.094 2.734 2.734 0 0 1-.395.033l-.311.004h-.039l-.163-.001c-.453.012-1.325.036-1.656.096a3.81 3.81 0 0 0-1.064.348 3.541 3.541 0 0 0-.911.655c-.267.263-.49.566-.661.899-.166.324-.281.67-.351 1.054-.06.33-.085 1.216-.096 1.636l-.002.23v.069l-.001.067c0 .074-.001.143-.003.213-.004.158-.014.28-.033.388a.902.902 0 0 1-.494.676 1.054 1.054 0 0 1-.289.093 1.335 1.335 0 0 1-.176.024z"></path></svg>
+                                            </span>
+                                          </div>
+                                          @elseif($onePinned['lastMessage']['messageType'] == 'gif')
+                                          <div class="_2tHs0 status-gif _3Bn0t">
+                                            <span data-testid="status-gif" class="">
+                                              <svg viewBox="0 0 20 20" width="20" height="20" class=""><path fill="currentColor" d="M4.878 3.9h10.285c1.334 0 1.818.139 2.306.4s.871.644 1.131 1.131c.261.488.4.972.4 2.306v4.351c0 1.334-.139 1.818-.4 2.306a2.717 2.717 0 0 1-1.131 1.131c-.488.261-.972.4-2.306.4H4.878c-1.334 0-1.818-.139-2.306-.4s-.871-.644-1.131-1.131-.4-.972-.4-2.306V7.737c0-1.334.139-1.818.4-2.306s.643-.87 1.131-1.131.972-.4 2.306-.4zm6.193 5.936c-.001-.783.002-1.567-.003-2.35a.597.597 0 0 0-.458-.577.59.59 0 0 0-.683.328.907.907 0 0 0-.062.352c-.004 1.492-.003 2.984-.002 4.476 0 .06.002.121.008.181a.592.592 0 0 0 .468.508c.397.076.728-.196.731-.611.004-.768.001-1.537.001-2.307zm-3.733.687c0 .274-.005.521.002.768.003.093-.031.144-.106.19a2.168 2.168 0 0 1-.905.292c-.819.097-1.572-.333-1.872-1.081a2.213 2.213 0 0 1-.125-1.14 1.76 1.76 0 0 1 1.984-1.513c.359.05.674.194.968.396a.616.616 0 0 0 .513.112.569.569 0 0 0 .448-.464c.055-.273-.055-.484-.278-.637-.791-.545-1.677-.659-2.583-.464-2.006.432-2.816 2.512-2.08 4.196.481 1.101 1.379 1.613 2.546 1.693.793.054 1.523-.148 2.2-.56.265-.161.438-.385.447-.698.014-.522.014-1.045.001-1.568-.007-.297-.235-.549-.51-.557a37.36 37.36 0 0 0-1.64-.001c-.21.004-.394.181-.446.385a.494.494 0 0 0 .217.559.714.714 0 0 0 .313.088c.296.011.592.004.906.004zm6.477-2.519h.171c.811 0 1.623.002 2.434-.001.383-.001.632-.286.577-.654-.041-.274-.281-.455-.611-.455h-3.074c-.474 0-.711.237-.711.713v4.479c0 .243.096.436.306.56.41.241.887-.046.896-.545.009-.504.002-1.008.002-1.511v-.177h.169c.7 0 1.4.001 2.1-.001a.543.543 0 0 0 .535-.388c.071-.235-.001-.488-.213-.611a.87.87 0 0 0-.407-.105c-.667-.01-1.335-.005-2.003-.005h-.172V8.004z"></path></svg>
+                                            </span>
+                                          </div>
+                                          @elseif($onePinned['lastMessage']['messageType'] == 'locationMessage')
+                                          <div class="_2tHs0 status-location _3Bn0t">
+                                            <span data-testid="status-location" class="">
+                                              <svg viewBox="0 0 13 20" width="13" height="20" class=""><path fill="currentColor" d="M6.487 3.305A4.659 4.659 0 0 0 1.8 7.992c0 3.482 4.687 8.704 4.687 8.704s4.687-5.222 4.687-8.704a4.659 4.659 0 0 0-4.687-4.687zm0 6.36c-.937 0-1.674-.737-1.674-1.674s.736-1.674 1.674-1.674 1.674.737 1.674 1.674c0 .938-.737 1.674-1.674 1.674z"></path></svg>
+                                            </span>
+                                          </div>
+                                          @elseif($onePinned['lastMessage']['messageType'] == 'contactMessage')
+                                          <div class="_2tHs0 status-vcard _3Bn0t">
+                                            <span data-testid="status-vcard" class="">
+                                              <svg viewBox="0 0 14 20" width="14" height="20" class=""><path fill="currentColor" d="M6.844 9.975a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm5.759 3.087c-.884-.845-3.136-1.587-5.721-1.587-2.584 0-4.739.742-5.622 1.587-.203.195-.26.464-.26.746v1.679h12v-1.679c0-.282-.193-.552-.397-.746z"></path></svg>
+                                            </span>
+                                          </div>
+                                          @elseif($onePinned['lastMessage']['messageType'] == 'product')
+                                          <div class="_2tHs0 business-description _3Bn0t">
+                                            <span data-testid="business-description" class=""><svg width="24" height="24" viewBox="0 0 24 24" class=""><g fill="none" fill-rule="evenodd"><path d="M3.555 5.111h16.888V3H3.555v2.111Zm0 1.057L2.5 11.447v2.111h1.055v6.332H14.11v-6.332h4.224v6.332h2.111v-6.332H21.5v-2.111l-1.055-5.28H3.555ZM5.666 17.78h6.332v-4.223H5.666v4.223Z" id="Page-1-Copy" fill="currentColor"></path></g></svg>
+                                            </span>
+                                          </div>
+                                          @endif
+                                          @else
+                                            <div class="_2qo4q">
+                                              <span data-testid="status-time" class=""><svg viewBox="0 0 14 18" width="14" height="18" class=""><path fill="currentColor" d="M8.906 10.132h-1.64V7.569c0-.3-.243-.545-.545-.545h-.102c-.3 0-.545.243-.545.545v3.21c0 .3.243.545.545.545h.102l.003-.001.003.001h2.178c.3 0 .545-.243.545-.545v-.102a.544.544 0 0 0-.544-.545zm0-5.732H5.094A3.598 3.598 0 0 0 1.5 7.994v3.812A3.598 3.598 0 0 0 5.094 15.4h3.812a3.598 3.598 0 0 0 3.594-3.594V7.994A3.598 3.598 0 0 0 8.906 4.4zm2.178 7.406a2.178 2.178 0 0 1-2.178 2.178H5.094a2.178 2.178 0 0 1-2.178-2.178V7.994c0-1.203.975-2.178 2.178-2.178h3.812c1.203 0 2.178.975 2.178 2.178v3.812z"></path></svg></span>
+                                            </div>
+                                          @endif
+                                        <span dir="auto" class="l7jjieqr i0jNr">{{isset($onePinned['lastMessage']) && isset($onePinned['lastMessage']['fromMe']) && $onePinned['lastMessage']['fromMe'] == 'true' ? 'You:' : ''}}</span>
+                                        <span dir="rtl" class="ggj6brxn gfz4du6o r7fjleex g0rxnol2 lhj4utae le5p0ye3 f804f6gw ln8gz9je i0jNr">{{isset($onePinned['lastMessage']) && isset($onePinned['lastMessage']['body'])}}
                                         </span>
                                       </span>
                                     </div>
@@ -340,6 +415,128 @@
                             </div>
                           </div>
                         </div>
+                      @endforeach
+
+                      @foreach($notPinned as $notKey => $oneNotPinned)
+                        <div class="lhggkp7q ln8gz9je rx9719la" style="z-index: {{$notKey+50}}; transition: none 0s ease 0s; height: 72px;top:{{      ($notKey*72) + (72*count($pinned))    }}px">
+                          <div class="_1Oe6M">
+                            <div tabindex="-1" aria-selected="false" role="row">
+                              <div data-testid="cell-frame-container" class="_2nY6U vq6sj">
+                                <div class="_2EU3r">
+                                  <div class="HONz8">
+                                    <div class="_3GlyB" style="height: 49px; width: 49px;">
+                                      <img src="{{$oneNotPinned['image'] != '' ? $oneNotPinned['image'] : asset('assets/images/avatar.png')}}" alt="" draggable="false" class="_8hzr9 M0JmA i0jNr" style="visibility: visible;">
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="_3OvU8">
+                                  <div role="gridcell" aria-colindex="2" class="_3vPI2">
+                                    <div class="zoWT4">
+                                      <span class="_3q9s6">
+                                        <span dir="auto" title="ay 7aga" class="ggj6brxn gfz4du6o r7fjleex g0rxnol2 lhj4utae le5p0ye3 l7jjieqr i0jNr">{{isset($oneNotPinned['contact']['name']) ? $oneNotPinned['contact']['name'] : 
+                                        (isset($oneNotPinned['contact']['notify']) ? $oneNotPinned['contact']['notify'] : (isset($oneNotPinned['contact']['id']) ? explode('@', $oneNotPinned['contact']['id'])[0] : str_replace('@s.whatsapp.net', '',str_replace('@g.us','',$oneNotPinned['id']))))  }}</span>
+                                        <div class="_3dulN"></div>
+                                      </span>
+                                    </div>
+                                    <div class="_1i_wG">{{isset($oneNotPinned['lastMessage']) && isset($oneNotPinned['lastMessage']['time']) ? \Helper::reformDate($oneNotPinned['lastMessage']['time'])  : ''}}</div>
+                                  </div>
+                                  <div class="_37FrU">
+                                    <div class="_1qB8f">
+                                      <span class="Hy9nV" title="" data-testid="last-msg-status">
+                                        @if(isset($oneNotPinned['lastMessage']) && isset($oneNotPinned['lastMessage']['messageType']))
+                                        @if(in_array($oneNotPinned['lastMessage']['messageType'], ['text','disappearingMessage','mentionMessage','buttonsMessage','templateMessage','listMessage','linkWithPreview','groupInvitationMessage','catalogMessage']) == 'text')
+                                          @if($oneNotPinned['lastMessage']['status'] == 4)
+                                          <div class="_2qo4q _3NIfV">
+                                            <span data-testid="status-dblcheck" class="">
+                                              <svg viewBox="0 0 18 18" width="18" height="18" class="">
+                                                <path fill="currentColor" d="m17.394 5.035-.57-.444a.434.434 0 0 0-.609.076l-6.39 8.198a.38.38 0 0 1-.577.039l-.427-.388a.381.381 0 0 0-.578.038l-.451.576a.497.497 0 0 0 .043.645l1.575 1.51a.38.38 0 0 0 .577-.039l7.483-9.602a.436.436 0 0 0-.076-.609zm-4.892 0-.57-.444a.434.434 0 0 0-.609.076l-6.39 8.198a.38.38 0 0 1-.577.039l-2.614-2.556a.435.435 0 0 0-.614.007l-.505.516a.435.435 0 0 0 .007.614l3.887 3.8a.38.38 0 0 0 .577-.039l7.483-9.602a.435.435 0 0 0-.075-.609z"></path>
+                                              </svg>
+                                            </span>
+                                          </div>
+                                          @elseif($oneNotPinned['lastMessage']['status'] == 3)
+                                          <div class="_2qo4q">
+                                            <span data-testid="status-dblcheck" class=""><svg viewBox="0 0 18 18" width="18" height="18" class=""><path fill="currentColor" d="m17.394 5.035-.57-.444a.434.434 0 0 0-.609.076l-6.39 8.198a.38.38 0 0 1-.577.039l-.427-.388a.381.381 0 0 0-.578.038l-.451.576a.497.497 0 0 0 .043.645l1.575 1.51a.38.38 0 0 0 .577-.039l7.483-9.602a.436.436 0 0 0-.076-.609zm-4.892 0-.57-.444a.434.434 0 0 0-.609.076l-6.39 8.198a.38.38 0 0 1-.577.039l-2.614-2.556a.435.435 0 0 0-.614.007l-.505.516a.435.435 0 0 0 .007.614l3.887 3.8a.38.38 0 0 0 .577-.039l7.483-9.602a.435.435 0 0 0-.075-.609z"></path></svg></span>
+                                          </div>
+                                          @elseif($oneNotPinned['lastMessage']['status'] == 2)
+                                          <div class="_2qo4q">
+                                            <span data-testid="status-check" class=""><svg viewBox="0 0 14 18" width="14" height="18" class=""><path fill="currentColor" d="m12.502 5.035-.57-.444a.434.434 0 0 0-.609.076l-6.39 8.198a.38.38 0 0 1-.577.039l-2.614-2.556a.435.435 0 0 0-.614.007l-.505.516a.435.435 0 0 0 .007.614l3.887 3.8a.38.38 0 0 0 .577-.039l7.483-9.602a.435.435 0 0 0-.075-.609z"></path></svg></span>
+                                          </div>  
+                                          @endif
+                                        @elseif($oneNotPinned['lastMessage']['messageType'] == 'image')
+                                          <div class="_2tHs0 status-image _3Bn0t">
+                                            <span data-testid="status-image" class="">
+                                              <svg viewBox="0 0 16 20" width="16" height="20" class=""><path fill="currentColor" d="M13.822 4.668H7.14l-1.068-1.09a1.068 1.068 0 0 0-.663-.278H3.531c-.214 0-.51.128-.656.285L1.276 5.296c-.146.157-.266.46-.266.675v1.06l-.001.003v6.983c0 .646.524 1.17 1.17 1.17h11.643a1.17 1.17 0 0 0 1.17-1.17v-8.18a1.17 1.17 0 0 0-1.17-1.169zm-5.982 8.63a3.395 3.395 0 1 1 0-6.79 3.395 3.395 0 0 1 0 6.79zm0-5.787a2.392 2.392 0 1 0 0 4.784 2.392 2.392 0 0 0 0-4.784z"></path></svg>
+                                            </span>
+                                          </div>
+                                          @elseif($oneNotPinned['lastMessage']['messageType'] == 'video')
+                                          <div class="_2tHs0 status-video _3Bn0t">
+                                            <span data-testid="status-video" class="">
+                                              <svg viewBox="0 0 16 20" width="16" height="20" class=""><path fill="currentColor" d="m15.243 5.868-3.48 3.091v-2.27c0-.657-.532-1.189-1.189-1.189H1.945c-.657 0-1.189.532-1.189 1.189v7.138c0 .657.532 1.189 1.189 1.189h8.629c.657 0 1.189-.532 1.189-1.189v-2.299l3.48 3.09v-8.75z"></path></svg>
+                                            </span>
+                                          </div>
+                                          @elseif($oneNotPinned['lastMessage']['messageType'] == 'audio')
+                                          <div class="_2tHs0 status-audio _3Bn0t">
+                                            <span data-testid="status-audio" class="">
+                                              <svg viewBox="0 0 14 17" width="14" height="17" class="" version="1.1" id="_x39_7d25ebd-827b-4b31-aacf-70732ab74202" x="0" y="0"><path fill="currentColor" d="M7 2.33a5.983 5.983 0 0 0-6 5.96V13c-.02 1.09.85 1.98 1.94 2H5V9.67H2.33V8.33c0-2.58 2.09-4.67 4.67-4.67s4.67 2.09 4.67 4.67v1.33H9v5.33h2c1.09.02 1.98-.85 2-1.94V8.33c.01-3.3-2.66-5.99-5.96-6H7z"></path></svg>
+                                            </span>
+                                          </div>
+                                          @elseif($oneNotPinned['lastMessage']['messageType'] == 'document')
+                                          <div class="_2tHs0 status-document _3Bn0t">
+                                            <span data-testid="status-document" class="">
+                                              <svg viewBox="0 0 13 20" width="13" height="20" class=""><path fill="currentColor" d="M10.2 3H2.5C1.7 3 1 3.7 1 4.5v10.1c0 .7.7 1.4 1.5 1.4h7.7c.8 0 1.5-.7 1.5-1.5v-10C11.6 3.7 11 3 10.2 3zm-2.6 9.7H3.5v-1.3h4.1v1.3zM9.3 10H3.5V8.7h5.8V10zm0-2.7H3.5V6h5.8v1.3z"></path></svg>
+                                            </span>
+                                          </div>
+                                          @elseif($oneNotPinned['lastMessage']['messageType'] == 'sticker')
+                                          <div class="_2tHs0 status-sticker _3Bn0t">
+                                            <span data-testid="status-sticker" class=""><svg viewBox="0 0 16 16" width="16" height="16" class=""><path fill="currentColor" d="M9.179 14.637c.061-.14.106-.29.135-.45.031-.171.044-.338.049-.543a9.05 9.05 0 0 0 .003-.233l.001-.067v-.072l.002-.216c.01-.364.032-1.205.08-1.473.052-.287.136-.538.255-.771a2.535 2.535 0 0 1 1.125-1.111 2.8 2.8 0 0 1 .786-.255c.27-.048 1.098-.07 1.487-.08l.152.001h.047l.325-.004a3.63 3.63 0 0 0 .554-.048 2.06 2.06 0 0 0 .494-.151 4.766 4.766 0 0 1-1.359 2.429 143.91 143.91 0 0 1-2.057 1.924 4.782 4.782 0 0 1-2.079 1.12zm-1.821.16-.474.012a9.023 9.023 0 0 1-1.879-.11 4.747 4.747 0 0 1-1.314-.428 4.376 4.376 0 0 1-1.123-.807 4.354 4.354 0 0 1-.816-1.11 4.584 4.584 0 0 1-.434-1.303 8.783 8.783 0 0 1-.12-1.356 29.156 29.156 0 0 1-.009-.617c-.002-.206-.002-.37-.002-.736v-.674l.001-.549.001-.182c.001-.223.004-.426.009-.62a8.69 8.69 0 0 1 .121-1.358c.087-.476.229-.903.434-1.301a4.399 4.399 0 0 1 1.936-1.916 4.7 4.7 0 0 1 1.315-.429 8.926 8.926 0 0 1 1.379-.12c.72-.009.989-.011 1.359-.011h.528c.896.003 1.143.005 1.366.011.55.015.959.046 1.371.12.482.085.913.226 1.314.428a4.396 4.396 0 0 1 1.937 1.915c.206.4.348.827.434 1.302.075.412.107.819.121 1.356.006.198.009.402.01.619v.024c0 .069-.001.132-.003.194a2.61 2.61 0 0 1-.033.391.902.902 0 0 1-.494.677 1.05 1.05 0 0 1-.29.094 2.734 2.734 0 0 1-.395.033l-.311.004h-.039l-.163-.001c-.453.012-1.325.036-1.656.096a3.81 3.81 0 0 0-1.064.348 3.541 3.541 0 0 0-.911.655c-.267.263-.49.566-.661.899-.166.324-.281.67-.351 1.054-.06.33-.085 1.216-.096 1.636l-.002.23v.069l-.001.067c0 .074-.001.143-.003.213-.004.158-.014.28-.033.388a.902.902 0 0 1-.494.676 1.054 1.054 0 0 1-.289.093 1.335 1.335 0 0 1-.176.024z"></path></svg>
+                                            </span>
+                                          </div>
+                                          @elseif($oneNotPinned['lastMessage']['messageType'] == 'gif')
+                                          <div class="_2tHs0 status-gif _3Bn0t">
+                                            <span data-testid="status-gif" class="">
+                                              <svg viewBox="0 0 20 20" width="20" height="20" class=""><path fill="currentColor" d="M4.878 3.9h10.285c1.334 0 1.818.139 2.306.4s.871.644 1.131 1.131c.261.488.4.972.4 2.306v4.351c0 1.334-.139 1.818-.4 2.306a2.717 2.717 0 0 1-1.131 1.131c-.488.261-.972.4-2.306.4H4.878c-1.334 0-1.818-.139-2.306-.4s-.871-.644-1.131-1.131-.4-.972-.4-2.306V7.737c0-1.334.139-1.818.4-2.306s.643-.87 1.131-1.131.972-.4 2.306-.4zm6.193 5.936c-.001-.783.002-1.567-.003-2.35a.597.597 0 0 0-.458-.577.59.59 0 0 0-.683.328.907.907 0 0 0-.062.352c-.004 1.492-.003 2.984-.002 4.476 0 .06.002.121.008.181a.592.592 0 0 0 .468.508c.397.076.728-.196.731-.611.004-.768.001-1.537.001-2.307zm-3.733.687c0 .274-.005.521.002.768.003.093-.031.144-.106.19a2.168 2.168 0 0 1-.905.292c-.819.097-1.572-.333-1.872-1.081a2.213 2.213 0 0 1-.125-1.14 1.76 1.76 0 0 1 1.984-1.513c.359.05.674.194.968.396a.616.616 0 0 0 .513.112.569.569 0 0 0 .448-.464c.055-.273-.055-.484-.278-.637-.791-.545-1.677-.659-2.583-.464-2.006.432-2.816 2.512-2.08 4.196.481 1.101 1.379 1.613 2.546 1.693.793.054 1.523-.148 2.2-.56.265-.161.438-.385.447-.698.014-.522.014-1.045.001-1.568-.007-.297-.235-.549-.51-.557a37.36 37.36 0 0 0-1.64-.001c-.21.004-.394.181-.446.385a.494.494 0 0 0 .217.559.714.714 0 0 0 .313.088c.296.011.592.004.906.004zm6.477-2.519h.171c.811 0 1.623.002 2.434-.001.383-.001.632-.286.577-.654-.041-.274-.281-.455-.611-.455h-3.074c-.474 0-.711.237-.711.713v4.479c0 .243.096.436.306.56.41.241.887-.046.896-.545.009-.504.002-1.008.002-1.511v-.177h.169c.7 0 1.4.001 2.1-.001a.543.543 0 0 0 .535-.388c.071-.235-.001-.488-.213-.611a.87.87 0 0 0-.407-.105c-.667-.01-1.335-.005-2.003-.005h-.172V8.004z"></path></svg>
+                                            </span>
+                                          </div>
+                                          @elseif($oneNotPinned['lastMessage']['messageType'] == 'locationMessage')
+                                          <div class="_2tHs0 status-location _3Bn0t">
+                                            <span data-testid="status-location" class="">
+                                              <svg viewBox="0 0 13 20" width="13" height="20" class=""><path fill="currentColor" d="M6.487 3.305A4.659 4.659 0 0 0 1.8 7.992c0 3.482 4.687 8.704 4.687 8.704s4.687-5.222 4.687-8.704a4.659 4.659 0 0 0-4.687-4.687zm0 6.36c-.937 0-1.674-.737-1.674-1.674s.736-1.674 1.674-1.674 1.674.737 1.674 1.674c0 .938-.737 1.674-1.674 1.674z"></path></svg>
+                                            </span>
+                                          </div>
+                                          @elseif($oneNotPinned['lastMessage']['messageType'] == 'contactMessage')
+                                          <div class="_2tHs0 status-vcard _3Bn0t">
+                                            <span data-testid="status-vcard" class="">
+                                              <svg viewBox="0 0 14 20" width="14" height="20" class=""><path fill="currentColor" d="M6.844 9.975a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm5.759 3.087c-.884-.845-3.136-1.587-5.721-1.587-2.584 0-4.739.742-5.622 1.587-.203.195-.26.464-.26.746v1.679h12v-1.679c0-.282-.193-.552-.397-.746z"></path></svg>
+                                            </span>
+                                          </div>
+                                          @elseif($oneNotPinned['lastMessage']['messageType'] == 'product')
+                                          <div class="_2tHs0 business-description _3Bn0t">
+                                            <span data-testid="business-description" class=""><svg width="24" height="24" viewBox="0 0 24 24" class=""><g fill="none" fill-rule="evenodd"><path d="M3.555 5.111h16.888V3H3.555v2.111Zm0 1.057L2.5 11.447v2.111h1.055v6.332H14.11v-6.332h4.224v6.332h2.111v-6.332H21.5v-2.111l-1.055-5.28H3.555ZM5.666 17.78h6.332v-4.223H5.666v4.223Z" id="Page-1-Copy" fill="currentColor"></path></g></svg>
+                                            </span>
+                                          </div>
+                                          @endif
+                                          @else
+                                          <div class="_2qo4q">
+                                            <span data-testid="status-time" class=""><svg viewBox="0 0 14 18" width="14" height="18" class=""><path fill="currentColor" d="M8.906 10.132h-1.64V7.569c0-.3-.243-.545-.545-.545h-.102c-.3 0-.545.243-.545.545v3.21c0 .3.243.545.545.545h.102l.003-.001.003.001h2.178c.3 0 .545-.243.545-.545v-.102a.544.544 0 0 0-.544-.545zm0-5.732H5.094A3.598 3.598 0 0 0 1.5 7.994v3.812A3.598 3.598 0 0 0 5.094 15.4h3.812a3.598 3.598 0 0 0 3.594-3.594V7.994A3.598 3.598 0 0 0 8.906 4.4zm2.178 7.406a2.178 2.178 0 0 1-2.178 2.178H5.094a2.178 2.178 0 0 1-2.178-2.178V7.994c0-1.203.975-2.178 2.178-2.178h3.812c1.203 0 2.178.975 2.178 2.178v3.812z"></path></svg></span>
+                                          </div>
+                                          @endif
+                                        <span dir="auto" class="l7jjieqr i0jNr">{{isset($oneNotPinned['lastMessage']) && isset($oneNotPinned['lastMessage']['fromMe']) && $oneNotPinned['lastMessage']['fromMe'] == 'true' ? 'You:' : ''}}</span>
+                                        <span dir="rtl" class="ggj6brxn gfz4du6o r7fjleex g0rxnol2 lhj4utae le5p0ye3 f804f6gw ln8gz9je i0jNr">{{isset($oneNotPinned['lastMessage']) && isset($oneNotPinned['lastMessage']['body']) ? $oneNotPinned['lastMessage']['body'] : ''}}
+                                        </span>
+                                      </span>
+                                    </div>
+                                    <div role="gridcell" aria-colindex="1" class="_1i_wG">
+                                      <span></span>
+                                      <span></span>
+                                      <span></span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      @endforeach
                     </div>
                   </div>
                 </div>

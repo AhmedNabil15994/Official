@@ -24,9 +24,7 @@
             --progress-background: #233138
           }
 
-          #app,
-          body,
-          html {
+          #app{
             width: 100%;
             height: 100%;
             padding: 0;

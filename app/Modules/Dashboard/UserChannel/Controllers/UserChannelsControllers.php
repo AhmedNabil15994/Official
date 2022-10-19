@@ -35,11 +35,31 @@ class UserChannelsControllers extends Controller {
             return redirect()->back();
         }
 
+        $connectionArr = [];
+        try {
+            $find = Http::get(env('URL_WA_SERVER').'/instances/me?id='.$channelObj->name);
+            $result = $find->json();
+            if(isset($result['data']) && isset($result['data']['image'])){
+                $connectionArr['image'] = $result['data']['image'];
+            }
+
+            $find2 = Http::get(env('URL_WA_SERVER').'/chats/myChats?id='.$channelObj->name);
+            $result2 = $find2->json();
+            if(isset($result2['data']) && isset($result2['data']['pinned'])){
+                $connectionArr['pinned'] = $result2['data']['pinned'];
+            }
+            if(isset($result2['data']) && isset($result2['data']['notPinned'])){
+                $connectionArr['notPinned'] = $result2['data']['notPinned'];
+            }
+        } catch (\Illuminate\Http\Client\ConnectionException $e) {}
+
+
         $newChannelObj = Device::getData($channelObj);
         $data = new \stdClass();//OfflineMessage::dataList($newChannelObj->name);
         $data->device = $newChannelObj;
         $data->details = $channelObj->ChannelSetting != null ? DeviceSetting::getData($channelObj->ChannelSetting) : [];
         $data->channels = Device::dataList(USER_ID)['data'];
+        $data->connection = (object)$connectionArr;
         return view('Dashboard.UserChannel.Views.view')->with('data',$data);
     }
 

@@ -10,6 +10,20 @@ class Helper
     // 100 = 115/15 x
     // x = 100 * 15/115
 
+    public static function reformDate($time){
+        $diff = (time() - $time ) / (3600 * 24);
+        $date = \Carbon\Carbon::parse(date('Y-m-d H:i:s'));
+        if(round($diff) == 0 && round($diff) < 1){
+            return date('h:i A',$time);
+        }else if($diff>0 && $diff<=1){
+            return trans('main.yesterday');
+        }else if($diff > 1 && $diff < 7){
+            $myDate = \Carbon\Carbon::parse(date('Y-m-d H:i:s',$time));
+            return $myDate->locale('en')->dayName;
+        }else{
+            return date('Y-m-d',$time);
+        }
+    }
 
     public static function formatMessages($msgData,$sessionId,$noChannel=false){
         $author = $msgData['fromMe'] == 'false' && $msgData['author'] != $msgData['pushName'] ? $msgData['pushName'] : ($msgData['fromMe'] == 'true' ? 'Me' : $msgData['author']);
