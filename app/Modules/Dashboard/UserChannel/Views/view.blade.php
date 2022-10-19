@@ -364,7 +364,7 @@
                         @if($data->device->validStatus  != trans('main.active'))
                             @include('whatsweb.index3')
                         @else
-                            @include('whatsweb.index',['qr' => '$data->device->image'])
+                            @include('whatsweb.index',['qr' => $data->device->image])
                         @endif
                     @endif
                 </div>
