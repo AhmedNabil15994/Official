@@ -400,12 +400,17 @@
                                             </div>
                                           @endif
                                         <span dir="auto" class="l7jjieqr i0jNr">{{isset($onePinned['lastMessage']) && isset($onePinned['lastMessage']['fromMe']) && $onePinned['lastMessage']['fromMe'] == 'true' ? 'You:' : ''}}</span>
-                                        <span dir="rtl" class="ggj6brxn gfz4du6o r7fjleex g0rxnol2 lhj4utae le5p0ye3 f804f6gw ln8gz9je i0jNr">{{isset($onePinned['lastMessage']) && isset($onePinned['lastMessage']['body'])}}
+                                        <span dir="rtl" class="ggj6brxn gfz4du6o r7fjleex g0rxnol2 lhj4utae le5p0ye3 f804f6gw ln8gz9je i0jNr">{{isset($onePinned['lastMessage']) && isset($onePinned['lastMessage']['body']) ? $onePinned['lastMessage']['body'] : ''}}
                                         </span>
                                       </span>
                                     </div>
                                     <div role="gridcell" aria-colindex="1" class="_1i_wG">
-                                      <span></span>
+                                      <span>
+                                        <div class="_1pJ9J _2XH9R">
+                                          <span data-testid="pinned2" class=""><svg height="15" width="15" preserveAspectRatio="xMidYMid meet" class=""><path fill="currentColor" d="M12.074 4.21 8.7 8.232l.116 4.233a.4.4 0 0 1-.657.318L.43 6.297a.4.4 0 0 1 .199-.702l4.196-.622L8.196.957a.63.63 0 0 1 .887-.078l2.914 2.445a.63.63 0 0 1 .077.887ZM1.294 14.229a.713.713 0 0 1-1.09-.915l2.674-3.64 1.536 1.288-3.12 3.267Z"></path></svg>
+                                          </span>
+                                        </div>
+                                      </span>
                                       <span></span>
                                       <span></span>
                                     </div>
