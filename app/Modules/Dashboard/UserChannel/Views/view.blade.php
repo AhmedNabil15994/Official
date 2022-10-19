@@ -356,15 +356,15 @@
                 <div class="modal-body p-4" style="height: 100vh;position:relative">
                     @if($data->device->status == 'connected')
                         @include('whatsweb.index2',[
-                            'profPic' => $data->connection->image,
-                            'pinned' => $data->connection->pinned,
-                            'notPinned' => $data->connection->notPinned,
+                            'profPic' => isset($data->connection->image) ? $data->connection->image : asset('assets/images/avatar.png'),
+                            'pinned' => isset($data->connection->pinned) ? $data->connection->pinned : [],
+                            'notPinned' => isset($data->connection->notPinned) ? $data->connection->notPinned : [],
                         ])
                     @else
                         @if($data->device->validStatus  != trans('main.active'))
                             @include('whatsweb.index3')
                         @else
-                            @include('whatsweb.index',['qr' => $data->device->image])
+                            @include('whatsweb.index',['qr' => '$data->device->image'])
                         @endif
                     @endif
                 </div>
