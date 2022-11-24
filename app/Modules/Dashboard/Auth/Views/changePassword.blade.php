@@ -4,6 +4,7 @@
         <meta charset="utf-8" />
         <title>{{ trans('auth.change') }}</title>
         <meta name="description" content="#" />
+        <link rel="shortcut icon" href="{{ asset('assets/images/logo.svg') }}">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -21,7 +22,7 @@
                 <div class="row login-page">
                     <div class="col-lg-12 col-xl-6 control-side">
                         <div class="logo">
-                            <img src="{{ asset('assets/images/HtmlToSvg.png') }}" alt="logo">
+                            <img src="{{ asset('assets/images/Group 41588.jpg') }}" alt="logo">
                         </div>
                         <div class="user-form">
                             <form action="{{ URL::to('/completeReset') }}" method="POST">

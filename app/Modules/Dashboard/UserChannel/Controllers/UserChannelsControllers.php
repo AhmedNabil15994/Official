@@ -46,10 +46,22 @@ class UserChannelsControllers extends Controller {
             $find2 = Http::get(env('URL_WA_SERVER').'/chats/myChats?id='.$channelObj->name);
             $result2 = $find2->json();
             if(isset($result2['data']) && isset($result2['data']['pinned'])){
-                $connectionArr['pinned'] = $result2['data']['pinned'];
+                $pinned = [];
+                foreach($result2['data']['pinned'] as $onePinned){
+                    if(isset($onePinned['id'])){
+                        $pinned[] = $onePinned;
+                    }
+                }
+                $connectionArr['pinned'] = $pinned;
             }
             if(isset($result2['data']) && isset($result2['data']['notPinned'])){
-                $connectionArr['notPinned'] = $result2['data']['notPinned'];
+                $notPinneds = [];
+                foreach($result2['data']['notPinned'] as $notPinned){
+                    if(isset($notPinned['id'])){
+                        $notPinneds[] = $notPinned;
+                    }
+                }
+                $connectionArr['notPinned'] = $notPinneds;
             }
         } catch (\Illuminate\Http\Client\ConnectionException $e) {}
 

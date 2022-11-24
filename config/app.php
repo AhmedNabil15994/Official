@@ -16,6 +16,7 @@ return [
     'name' => env('APP_NAME', 'Laravel'),
     'IMAGE_URL' => 'http://img.whatsapp.loc/',
     'ENGINE_URL' => 'http://official.whatsapp.loc/engine/',
+    'BASE_URL' => 'http://official.whatsapp.loc/',
     'pagination_no' => 20,
     /*
     |--------------------------------------------------------------------------

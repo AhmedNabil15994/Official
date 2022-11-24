@@ -313,8 +313,7 @@
                                   <div role="gridcell" aria-colindex="2" class="_3vPI2">
                                     <div class="zoWT4">
                                       <span class="_3q9s6">
-                                        <span dir="auto" title="ay 7aga" class="ggj6brxn gfz4du6o r7fjleex g0rxnol2 lhj4utae le5p0ye3 l7jjieqr i0jNr">{{isset($onePinned['contact']['name']) ? $onePinned['contact']['name'] : 
-                                        (isset($onePinned['contact']['notify']) ? $onePinned['contact']['notify'] : (isset($onePinned['contact']['id']) ? explode('@', $onePinned['contact']['id'])[0] : str_replace('@s.whatsapp.net', '',str_replace('@g.us','',$onePinned['id']))))  }}</span>
+                                        <span dir="auto" title="ay 7aga" class="ggj6brxn gfz4du6o r7fjleex g0rxnol2 lhj4utae le5p0ye3 l7jjieqr i0jNr">{{isset($onePinned['contact']['name']) ? $onePinned['contact']['name'] : (isset($onePinned['contact']['notify']) ? $onePinned['contact']['notify'] : explode('@', $onePinned['contact']['id'])[0])  }}</span>
                                         <div class="_3dulN"></div>
                                       </span>
                                     </div>
@@ -333,7 +332,7 @@
                                                 </svg>
                                               </span>
                                             </div>
-                                            @elseif($onePinned['lastMessage']['status'] == 3 || ($onePinned['lastMessage']['status'] == 2 && $onePinned['lastMessage']['fromMe']) == 'false')
+                                            @elseif($onePinned['lastMessage']['status'] == 3)
                                             <div class="_2qo4q">
                                               <span data-testid="status-dblcheck" class=""><svg viewBox="0 0 18 18" width="18" height="18" class=""><path fill="currentColor" d="m17.394 5.035-.57-.444a.434.434 0 0 0-.609.076l-6.39 8.198a.38.38 0 0 1-.577.039l-.427-.388a.381.381 0 0 0-.578.038l-.451.576a.497.497 0 0 0 .043.645l1.575 1.51a.38.38 0 0 0 .577-.039l7.483-9.602a.436.436 0 0 0-.076-.609zm-4.892 0-.57-.444a.434.434 0 0 0-.609.076l-6.39 8.198a.38.38 0 0 1-.577.039l-2.614-2.556a.435.435 0 0 0-.614.007l-.505.516a.435.435 0 0 0 .007.614l3.887 3.8a.38.38 0 0 0 .577-.039l7.483-9.602a.435.435 0 0 0-.075-.609z"></path></svg></span>
                                             </div>
@@ -381,12 +380,6 @@
                                           <div class="_2tHs0 status-location _3Bn0t">
                                             <span data-testid="status-location" class="">
                                               <svg viewBox="0 0 13 20" width="13" height="20" class=""><path fill="currentColor" d="M6.487 3.305A4.659 4.659 0 0 0 1.8 7.992c0 3.482 4.687 8.704 4.687 8.704s4.687-5.222 4.687-8.704a4.659 4.659 0 0 0-4.687-4.687zm0 6.36c-.937 0-1.674-.737-1.674-1.674s.736-1.674 1.674-1.674 1.674.737 1.674 1.674c0 .938-.737 1.674-1.674 1.674z"></path></svg>
-                                            </span>
-                                          </div>
-                                          @elseif(in_array($onePinned['lastMessage']['messageType'],['pollMessage','poll_vote','poll_unvote']))
-                                          <div class="_2tHs0 status-poll _3Bn0t">
-                                            <span data-testid="status-poll" class="">
-                                              <svg viewBox="0 0 16 20" width="16" height="20" class=""><path fill="currentColor" d="M6 5c0-.6.4-1 1-1h2c.6 0 1 .4 1 1v9c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V5zM1 10c0-.6.4-1 1-1h2c.6 0 1 .4 1 1v4c0 .6-.4 1-1 1H2c-.6 0-1-.4-1-1v-4zM12 7c-.6 0-1 .4-1 1v6c0 .6.4 1 1 1h2c.6 0 1-.4 1-1V8c0-.6-.4-1-1-1h-2z"></path></svg>
                                             </span>
                                           </div>
                                           @elseif($onePinned['lastMessage']['messageType'] == 'contactMessage')
@@ -465,7 +458,7 @@
                                               </svg>
                                             </span>
                                           </div>
-                                          @elseif($oneNotPinned['lastMessage']['status'] == 3 || ($oneNotPinned['lastMessage']['status'] == 2 && $oneNotPinned['lastMessage']['fromMe']) == 'false')
+                                          @elseif($oneNotPinned['lastMessage']['status'] == 3)
                                           <div class="_2qo4q">
                                             <span data-testid="status-dblcheck" class=""><svg viewBox="0 0 18 18" width="18" height="18" class=""><path fill="currentColor" d="m17.394 5.035-.57-.444a.434.434 0 0 0-.609.076l-6.39 8.198a.38.38 0 0 1-.577.039l-.427-.388a.381.381 0 0 0-.578.038l-.451.576a.497.497 0 0 0 .043.645l1.575 1.51a.38.38 0 0 0 .577-.039l7.483-9.602a.436.436 0 0 0-.076-.609zm-4.892 0-.57-.444a.434.434 0 0 0-.609.076l-6.39 8.198a.38.38 0 0 1-.577.039l-2.614-2.556a.435.435 0 0 0-.614.007l-.505.516a.435.435 0 0 0 .007.614l3.887 3.8a.38.38 0 0 0 .577-.039l7.483-9.602a.435.435 0 0 0-.075-.609z"></path></svg></span>
                                           </div>
@@ -513,12 +506,6 @@
                                           <div class="_2tHs0 status-location _3Bn0t">
                                             <span data-testid="status-location" class="">
                                               <svg viewBox="0 0 13 20" width="13" height="20" class=""><path fill="currentColor" d="M6.487 3.305A4.659 4.659 0 0 0 1.8 7.992c0 3.482 4.687 8.704 4.687 8.704s4.687-5.222 4.687-8.704a4.659 4.659 0 0 0-4.687-4.687zm0 6.36c-.937 0-1.674-.737-1.674-1.674s.736-1.674 1.674-1.674 1.674.737 1.674 1.674c0 .938-.737 1.674-1.674 1.674z"></path></svg>
-                                            </span>
-                                          </div>
-                                          @elseif(in_array($oneNotPinned['lastMessage']['messageType'],['pollMessage','poll_vote','poll_unvote']))
-                                          <div class="_2tHs0 status-poll _3Bn0t">
-                                            <span data-testid="status-poll" class="">
-                                              <svg viewBox="0 0 16 20" width="16" height="20" class=""><path fill="currentColor" d="M6 5c0-.6.4-1 1-1h2c.6 0 1 .4 1 1v9c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V5zM1 10c0-.6.4-1 1-1h2c.6 0 1 .4 1 1v4c0 .6-.4 1-1 1H2c-.6 0-1-.4-1-1v-4zM12 7c-.6 0-1 .4-1 1v6c0 .6.4 1 1 1h2c.6 0 1-.4 1-1V8c0-.6-.4-1-1-1h-2z"></path></svg>
                                             </span>
                                           </div>
                                           @elseif($oneNotPinned['lastMessage']['messageType'] == 'contactMessage')
@@ -605,9 +592,6 @@
           </div>
         </div>
       </div>
-    </div>
-    <div id="hard_expire_time" data-time="1679523695.916"></div>
-    
-   
+    </div>    
   </body>
 </html>

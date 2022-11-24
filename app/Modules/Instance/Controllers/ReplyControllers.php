@@ -1387,4 +1387,78 @@ class ReplyControllers extends Controller {
         $data['status'] = \TraitsFunc::SuccessResponse("Message Reply Sent Successfully !!!");
         return \Response::json((object) $data);        
     }
+
+    /**
+     * @OA\Post(
+     *     path="/messages/pollReply",
+     *     tags={"Reply With Message"},
+     *     operationId="pollReply",
+     *     summary="reply with poll message",
+     *     description="reply with poll message",
+     *     security={ {"bearer_token": {} , "channel_id": {} , "channel_token": {} }},
+     *     @OA\Response(response="200",description=""),
+     *     @OA\Parameter(description="Phone to reply to",in="query",name="phone", required=true),
+     *     @OA\Parameter(description="Message Id to reply to (fromMe must be false)",in="query",name="messageId", required=true),
+     *     @OA\Parameter(description="Poll Message Body to send",in="query",name="body", required=true),
+     *     @OA\Parameter(description="Poll Message Selectable Options Count",in="query",name="selectableOptionsCount",),
+     *     @OA\Parameter(description="Poll Message Options to send",in="query",name="options", required=true),
+     * )
+    */
+    public function pollReply(){
+        $input = Request::all();
+        $name = NAME;
+        $deviceObj = Device::NotDeleted()->where('name', $name)->first();
+        if(!$deviceObj){
+            return \TraitsFunc::ErrorMessage("Channel isn't Found !!");
+        }
+
+        if((!isset($input['phone']) || empty($input['phone']))){
+            return \TraitsFunc::ErrorMessage("Receiver Phone field is required !!");
+        }
+
+        if(!isset($input['messageId']) || empty($input['messageId'])){
+            return \TraitsFunc::ErrorMessage("Message ID field is required !!");
+        }
+        $input['messageId'] = explode('.us_',$input['messageId'])[1];
+
+        if(!isset($input['body']) || empty($input['body'])){
+            return \TraitsFunc::ErrorMessage("Message Body field is required !!");
+        }
+
+        if((!isset($input['selectableOptionsCount']) || empty($input['selectableOptionsCount']))){
+            $input['selectableOptionsCount'] = 0;
+        }else{
+            $input['selectableOptionsCount'] = (int)$input['selectableOptionsCount'];
+        }
+
+        if(!isset($input['options']) || empty($input['options'])){
+            return \TraitsFunc::ErrorMessage("Message Options field is required !!");
+        }
+
+        $forwardResponse = Http::post(env('URL_WA_SERVER').'/messages/sendReply?id='.$name, [
+            'phone' => $input['phone'],
+            'messageId' => $input['messageId'],
+            'messageType' => 20,
+            'messageData' => [
+                'body' => $input['body'],
+                'selectableOptionsCount' => $input['selectableOptionsCount'],
+                'options' => $input['options'],
+            ],
+        ]);
+
+        $res = json_decode($forwardResponse->getBody());
+        if(!$res->success){
+            return \TraitsFunc::ErrorMessage("System Error, Contact Your System Adminstrator !!");
+        }
+
+        $chatId = str_replace('@s.whatsapp.net','@c.us',isset($res->data->key) ? $res->data->key->remoteJid : $input['phone'].'@s.whatsapp.net');
+
+        $data['data'] = [
+            'success' => true,
+            'chatId' => $chatId,
+            'id' => 'true_'.str_replace('@s.whatsapp.net','@c.us',$chatId).'_'.(isset($res->data->key) ? $res->data->key->id : $res->data ),
+        ];
+        $data['status'] = \TraitsFunc::SuccessResponse("Message Reply Sent Successfully !!!");
+        return \Response::json((object) $data);        
+    }
 }

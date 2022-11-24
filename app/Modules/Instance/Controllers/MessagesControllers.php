@@ -1533,6 +1533,93 @@ class MessagesControllers extends Controller {
         return \Response::json((object) $data);        
     }
 
+    /**
+     * @OA\Post(
+     *     path="/messages/sendPoll",
+     *     tags={"Messages"},
+     *     operationId="sendPoll",
+     *     summary="send poll message",
+     *     description="send poll message",
+     *     security={ {"bearer_token": {} , "channel_id": {} , "channel_token": {} }},
+     *     @OA\Response(response="200",description=""),
+     *     @OA\Parameter(description="Phone to send to",in="query",name="phone", required=true),
+     *     @OA\Parameter(description="Poll Message Body to send",in="query",name="body", required=true),
+     *     @OA\Parameter(description="Poll Message Selectable Options Count",in="query",name="selectableOptionsCount",),
+     *     @OA\Parameter(description="Poll Message Options to send",in="query",name="options", required=true),
+     * )
+     */
+    public function sendPoll(){
+        $input = Request::all();
+        $name = NAME;
+        $deviceObj = Device::NotDeleted()->where('name', $name)->first();
+        if(!$deviceObj){
+            return \TraitsFunc::ErrorMessage("Channel isn't Found !!");
+        }
+
+        if(empty($input)){
+            return \TraitsFunc::ErrorMessage("Raw data field is required !!");
+        }
+
+        if(!isset($input['body']) || empty($input['body'])){
+            return \TraitsFunc::ErrorMessage("Message Body field is required !!");
+        }
+
+        if((!isset($input['phone']) || empty($input['phone']))){
+            return \TraitsFunc::ErrorMessage("Receiver Phone field is required !!");
+        }
+
+        if((!isset($input['selectableOptionsCount']) || empty($input['selectableOptionsCount']))){
+            $input['selectableOptionsCount'] = 0;
+        }else{
+            $input['selectableOptionsCount'] = (int)$input['selectableOptionsCount'];
+        }
+
+        if(!isset($input['options']) || empty($input['options'])){
+            return \TraitsFunc::ErrorMessage("Message Options field is required !!");
+        }
+
+    
+        $response = Http::post(env('URL_WA_SERVER').'/messages/sendPoll?id='.$name, $input);
+        $res = json_decode($response->getBody());
+        if(!$res->success){
+            return \TraitsFunc::ErrorMessage("System Error, Contact Your System Adminstrator !!");
+        }
+
+        $messageText = "Message Sent Successfully !!!";
+        if(isset($res->data->sessionId)){
+            // Queued Messages
+            $sessionId = $res->data->sessionId;
+            $chatId = $res->data->key->remoteJid;
+            $queuedTime = $res->data->messageTimestamp;
+            $myData = (array)$res->data;
+
+            unset($myData['messageTimestamp']);
+            unset($myData['status']);
+            unset($myData['sessionId']);
+
+            $queuedMessageObj = OfflineMessage::where('sessionId',$sessionId)->where('chatId',$chatId)->where('sent_time',$queuedTime)->first();
+            if(!$queuedMessageObj){
+                $queuedMessageObj = new OfflineMessage;
+            }
+            $queuedMessageObj->sessionId = $sessionId;
+            $queuedMessageObj->message = json_encode((object)$myData);
+            $queuedMessageObj->chatId = $chatId;
+            $queuedMessageObj->type = 'poll';
+            $queuedMessageObj->sent_time = $queuedTime;
+            $queuedMessageObj->created_at = DATE_TIME;
+            $queuedMessageObj->save();
+            $messageText = "The message has been added to your queue !!!";
+        }
+
+        $data['data'] = [
+            'success' => true,
+            'chatId' => str_replace('@s.whatsapp.net','@c.us',$res->data->key->remoteJid),
+            'id' => 'true_'.str_replace('@s.whatsapp.net','@c.us',$res->data->key->remoteJid).'_'.$res->data->key->id,
+        ];
+        $data['status'] = \TraitsFunc::SuccessResponse($messageText);
+        return \Response::json((object) $data);        
+    }
+
     /**********************************************************/
     /**
      * @OA\Post(

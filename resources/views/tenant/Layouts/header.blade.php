@@ -61,21 +61,21 @@
         <div class="logo-box">
             <a href="{{ URL::to('/dashboard') }}" class="logo logo-dark text-center">
                 <span class="logo-sm">
-                    <img src="{{ asset('assets/images/favicon.ico') }}" alt="" height="22">
+                    <img src="{{ asset('assets/images/logo.svg') }}" alt="" height="22">
                     <!-- <span class="logo-lg-text-light">UBold</span> -->
                 </span>
                 <span class="logo-lg">
-                    <img src="{{ asset('assets/images/HtmlToSvg.png') }}" alt="" height="35">
+                    <img src="{{ asset('assets/images/Group 41588.jpg') }}" alt="" height="60">
                     <!-- <span class="logo-lg-text-light">U</span> -->
                 </span>
             </a>
 
             <a href="{{ URL::to('/dashboard') }}" class="logo logo-light text-center">
                 <span class="logo-sm">
-                    <img src="{{ asset('assets/images/favicon.ico') }}" alt="" height="22">
+                    <img src="{{ asset('assets/images/logo.svg') }}" alt="" height="22">
                 </span>
                 <span class="logo-lg">
-                    <img src="{{ asset('assets/images/HtmlToSvg.png') }}" alt="" height="35">
+                    <img src="{{ asset('assets/images/Group 41588.jpg') }}" alt="" height="60">
                 </span>
             </a>
         </div>

@@ -4,6 +4,7 @@
         $controller = App\Http\Controllers\InstancesControllers::class;
         Route::get('/qr', [$controller,'qr']);
         Route::get('/status', [$controller,'status']);
+        Route::get('/screenshot', [$controller,'screenshot']);
         Route::post('/disconnect', [$controller,'disconnect']);
         Route::post('/clearInstance', [$controller,'clearInstance']);
         Route::post('/updateChannelSetting', [$controller,'updateChannelSetting']);
@@ -47,6 +48,7 @@
         Route::post('/sendTemplates', [$controller,'sendTemplates']);
         Route::post('/sendList', [$controller,'sendList']);
         Route::post('/sendGroupInvitation', [$controller,'sendGroupInvitation']);
+        Route::post('/sendPoll', [$controller,'sendPoll']);
         Route::post('/forwardMessage', [$controller,'forwardMessage']);
         Route::post('/starMessage', [$controller,'starMessage']);
         Route::post('/unstarMessage', [$controller,'unstarMessage']);
@@ -74,6 +76,7 @@
         Route::post('/groupInvitationReply', [$replyController,'groupInvitationReply']);
         Route::post('/productReply', [$replyController,'productReply']);
         Route::post('/catalogReply', [$replyController,'catalogReply']);
+        Route::post('/pollReply', [$replyController,'pollReply']);
         
 
         Route::post('/textBulk', [$bulkController,'textBulk']);
@@ -94,6 +97,7 @@
         Route::post('/groupInvitationBulk', [$bulkController,'groupInvitationBulk']);
         Route::post('/productBulk', [$bulkController,'productBulk']);
         Route::post('/catalogBulk', [$bulkController,'catalogBulk']);
+        Route::post('/pollBulk', [$bulkController,'pollBulk']);
 
 
         // Route::post('/sendReply', [$controller,'sendReply']);

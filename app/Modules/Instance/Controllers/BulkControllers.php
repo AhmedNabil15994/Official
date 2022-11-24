@@ -1135,4 +1135,70 @@ class BulkControllers extends Controller {
         $data['status'] = \TraitsFunc::SuccessResponse("Message Sent Successfully !!!");
         return \Response::json((object) $data);           
     }
+
+    /**
+     * @OA\Post(
+     *     path="/messages/pollBulk",
+     *     tags={"Group Messages With Interval"},
+     *     operationId="pollBulk",
+     *     summary="group poll message",
+     *     description="send group poll message",
+     *     security={ {"bearer_token": {} , "channel_id": {} , "channel_token": {} }},
+     *     @OA\Response(response="200",description=""),
+     *     @OA\Parameter(description="Phones to send to",in="query",name="phones", required=true),
+     *     @OA\Parameter(description="Interval between every message in seconds",in="query",name="interval", required=false),
+     *     @OA\Parameter(description="Poll Message Body to send",in="query",name="body", required=true),
+     *     @OA\Parameter(description="Poll Message Selectable Options Count",in="query",name="selectableOptionsCount",),
+     *     @OA\Parameter(description="Poll Message Options to send",in="query",name="options", required=true),
+     * )
+     */
+    public function pollBulk(){
+        $input = Request::all();
+        $name = NAME;
+        $deviceObj = Device::NotDeleted()->where('name', $name)->first();
+        if(!$deviceObj){
+            return \TraitsFunc::ErrorMessage("Channel isn't Found !!");
+        }
+
+        if(!isset($input['body']) || empty($input['body'])){
+            return \TraitsFunc::ErrorMessage("Message Body field is required !!");
+        }
+
+        if((!isset($input['phones']) || empty($input['phones']))){
+            return \TraitsFunc::ErrorMessage("Receivers Phones field is required !!");
+        }
+
+        if((!isset($input['selectableOptionsCount']) || empty($input['selectableOptionsCount']))){
+            $input['selectableOptionsCount'] = 0;
+        }else{
+            $input['selectableOptionsCount'] = (int)$input['selectableOptionsCount'];
+        }
+
+        if(!isset($input['options']) || empty($input['options'])){
+            return \TraitsFunc::ErrorMessage("Message Options field is required !!");
+        }
+
+        $forwardResponse = Http::post(env('URL_WA_SERVER').'/messages/sendGroupMessage?id='.$name, [
+            'phones' => $input['phones'],
+            'interval' => isset($input['interval']) && !empty($input['interval']) ? $input['interval'] : 3,
+            'messageType' => 20,
+            'messageData' => [
+                'body' => $input['body'],
+                'selectableOptionsCount' => $input['selectableOptionsCount'],
+                'options' => $input['options'],
+            ],
+        ]);
+        $res = json_decode($forwardResponse->getBody());
+        if(!$res->success){
+            return \TraitsFunc::ErrorMessage("System Error, Contact Your System Adminstrator !!");
+        }
+
+        
+        $data['data'] = [
+            'success' => true,
+            'message' => $res->message
+        ];
+        $data['status'] = \TraitsFunc::SuccessResponse("Message Sent Successfully !!!");
+        return \Response::json((object) $data);
+    }
 }

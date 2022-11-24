@@ -12,7 +12,8 @@ use App\Models\OfflineMessage;
 use App\Models\Channel;
 use App\Events\QRScanned;
 use Illuminate\Support\Facades\Http;
-
+use Barryvdh\Snappy\Facades\SnappyImage;
+use Barryvdh\Snappy\Facades\SnappyPdf;
 class InstancesControllers extends Controller {
 
     use \TraitsFunc;
@@ -131,6 +132,66 @@ class InstancesControllers extends Controller {
         }
 
         $data['status'] = \TraitsFunc::SuccessResponse();
+        return \Response::json((object) $data);        
+    }
+
+    /**
+     * @OA\Get(
+     *     path="/instances/screenshot",
+     *     tags={"Instances"},
+     *     operationId="screenshot",
+     *     summary="fetch qr",
+     *     description="fetch user connection screenshot",
+     *     security={ {"bearer_token": {} , "channel_id": {} , "channel_token": {} }},
+     *     @OA\Response(response="200", description="returns disconnected or connected.")
+     * )
+     */
+    public function screenshot(){
+        $name = NAME;
+        $deviceObj = Device::NotDeleted()->where('name', $name)->first();
+        $deviceObj = Device::getData($deviceObj);
+        $connectionArr = [];
+        if($deviceObj->status == 'connected'){
+            try {
+                $find = Http::get(env('URL_WA_SERVER').'/instances/me?id='.$name);
+                $result = $find->json();
+                if(isset($result['data']) && isset($result['data']['image'])){
+                    $connectionArr['image'] = $result['data']['image'];
+                }
+
+                $find2 = Http::get(env('URL_WA_SERVER').'/chats/myChats?id='.$name);
+                $result2 = $find2->json();
+                if(isset($result2['data']) && isset($result2['data']['pinned'])){
+                    $connectionArr['pinned'] = $result2['data']['pinned'];
+                }
+                if(isset($result2['data']) && isset($result2['data']['notPinned'])){
+                    $connectionArr['notPinned'] = $result2['data']['notPinned'];
+                }   
+            } catch (\Illuminate\Http\Client\ConnectionException $e) {}
+            $pdf = SnappyImage::loadView('whatsweb.conversation',[
+                    'profPic' => isset($data->connection->image) ? $data->connection->image : asset('assets/images/avatar.png'),
+                    'pinned' => isset($data->connection->pinned) ? $data->connection->pinned : [],
+                    'notPinned' => isset($data->connection->notPinned) ? $data->connection->notPinned : [],
+                ])->setOption('height', '1080')->setOption('width', '1920');
+        }else{
+            if($deviceObj->validStatus  != trans('main.active')){
+                $$pdf = SnappyImage::loadView('whatsweb.notActive',[])
+                        ->setOption('height', '1080')
+                        ->setOption('width', '1920');
+            }else{
+                $pdf = SnappyImage::loadView('whatsweb.whatsappQR',['qr' => $deviceObj->image])
+                        ->setOption('height', '1080')
+                        ->setOption('width', '1920');
+            }
+        }
+
+        $fileName = 'screenshot_'.$name.'_'.time().'.jpg';
+        $pdf->save(public_path().'/uploads/screens/'.$name.'/'.$fileName);
+        
+        $baseURL = config('app.BASE_URL').'uploads/screens/'.$name.'/'.$fileName;
+        
+        $data['data'] = $baseURL;
+        $data['status'] = \TraitsFunc::SuccessResponse("Disconnected Successfully !!!");
         return \Response::json((object) $data);        
     }
      

@@ -29,7 +29,7 @@ class ChannelHeaders extends Strategy
     {
         return [
             'CHANNELID' => '7420',
-            'CHANNELTOKEN' => '2240e354c21899584a46ddd7653f7c66',
+            'CHANNELTOKEN' => '2240e354c21019584a46ddd7653f7c66',
         ];
     }
 

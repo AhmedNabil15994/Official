@@ -1,4 +1,4 @@
-<link rel="shortcut icon" href="{{ asset('assets/images/groupImage.jpeg') }}">
+<link rel="shortcut icon" href="{{ asset('assets/images/logo.svg') }}">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap" rel="stylesheet">
 <link href="{{ asset('assets/libs/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />

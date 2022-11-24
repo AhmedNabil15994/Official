@@ -95,7 +95,7 @@
                     <p class="text-muted mb-2 font-13"><strong>{{trans('main.status')}} :</strong> <span class="ml-2 ">{{$data->device->validStatus}}</span></p>
                 </div>
 
-                <ul class="social-list list-inline mt-3 mb-0">
+                <ul class="list-inline mt-3 mb-0">
                     <li class="list-inline-item mb-2">
                         <a href="{{URL::to('/channels/'.$data->device->id.'/logout')}}" class="btn btn-light waves-effect waves-light"><i class="mdi mdi-logout"></i> {{trans('main.logout')}}</a>
                     </li>

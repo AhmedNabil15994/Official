@@ -880,6 +880,59 @@
                 ]
             }
         },
+        "/messages/pollBulk": {
+            "post": {
+                "tags": [
+                    "Group Messages With Interval"
+                ],
+                "summary": "group poll message",
+                "description": "send group poll message",
+                "operationId": "pollBulk",
+                "parameters": [
+                    {
+                        "name": "phones",
+                        "in": "query",
+                        "description": "Phones to send to",
+                        "required": true
+                    },
+                    {
+                        "name": "interval",
+                        "in": "query",
+                        "description": "Interval between every message in seconds",
+                        "required": false
+                    },
+                    {
+                        "name": "body",
+                        "in": "query",
+                        "description": "Poll Message Body to send",
+                        "required": true
+                    },
+                    {
+                        "name": "selectableOptionsCount",
+                        "in": "query",
+                        "description": "Poll Message Selectable Options Count"
+                    },
+                    {
+                        "name": "options",
+                        "in": "query",
+                        "description": "Poll Message Options to send",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
         "/business/getBusinessProfile": {
             "post": {
                 "tags": [
@@ -2868,6 +2921,28 @@
                 ]
             }
         },
+        "/instances/screenshot": {
+            "get": {
+                "tags": [
+                    "Instances"
+                ],
+                "summary": "fetch qr",
+                "description": "fetch user connection screenshot",
+                "operationId": "screenshot",
+                "responses": {
+                    "200": {
+                        "description": "returns disconnected or connected."
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
         "/instances/disconnect": {
             "post": {
                 "tags": [
@@ -3920,6 +3995,53 @@
                         "name": "groupId",
                         "in": "query",
                         "description": "Group Id to send",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/sendPoll": {
+            "post": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "send poll message",
+                "description": "send poll message",
+                "operationId": "sendPoll",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to send to",
+                        "required": true
+                    },
+                    {
+                        "name": "body",
+                        "in": "query",
+                        "description": "Poll Message Body to send",
+                        "required": true
+                    },
+                    {
+                        "name": "selectableOptionsCount",
+                        "in": "query",
+                        "description": "Poll Message Selectable Options Count"
+                    },
+                    {
+                        "name": "options",
+                        "in": "query",
+                        "description": "Poll Message Options to send",
                         "required": true
                     }
                 ],
@@ -5018,6 +5140,59 @@
                         "name": "messageId",
                         "in": "query",
                         "description": "Message Id to reply to (fromMe must be false)",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/messages/pollReply": {
+            "post": {
+                "tags": [
+                    "Reply With Message"
+                ],
+                "summary": "reply with poll message",
+                "description": "reply with poll message",
+                "operationId": "pollReply",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to reply to",
+                        "required": true
+                    },
+                    {
+                        "name": "messageId",
+                        "in": "query",
+                        "description": "Message Id to reply to (fromMe must be false)",
+                        "required": true
+                    },
+                    {
+                        "name": "body",
+                        "in": "query",
+                        "description": "Poll Message Body to send",
+                        "required": true
+                    },
+                    {
+                        "name": "selectableOptionsCount",
+                        "in": "query",
+                        "description": "Poll Message Selectable Options Count"
+                    },
+                    {
+                        "name": "options",
+                        "in": "query",
+                        "description": "Poll Message Options to send",
                         "required": true
                     }
                 ],
