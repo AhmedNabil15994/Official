@@ -69,7 +69,9 @@ class InstancesControllers extends Controller {
         }
 
         $fileName = $name.time().'.png';
-        file_put_contents(public_path().'/uploads/qrImages/'.$fileName, file_get_contents($image));
+        if($image){
+            file_put_contents(public_path().'/uploads/qrImages/'.$fileName, file_get_contents($image));
+        }
         $url = \URL::to('/').'/uploads/qrImages/'.$fileName;
 
         $logo = asset('assets/images/HtmlToSvg.png');
