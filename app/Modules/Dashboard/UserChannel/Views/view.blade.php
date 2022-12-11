@@ -126,25 +126,25 @@
                     <div class="form-group row mb-2">
                         <label class="col-4 col-form-label">{{trans('main.messageNotifications')}}</label>
                         <div class="col-8">
-                            <input type="text" class="form-control" name="messageNotifications" placeholder="{{trans('main.messageNotifications')}}" value="{{!empty($data->details) ? $data->details->webhooks->messageNotifications : ''}}">
+                            <input type="text" class="form-control" name="messageNotifications" placeholder="{{trans('main.messageNotifications')}}" value="{{!empty($data->details) ? @$data->details->webhooks->messageNotifications : ''}}">
                         </div>
                     </div>
                     <div class="form-group row mb-2">
                         <label class="col-4 col-form-label">{{trans('main.ackNotifications')}}</label>
                         <div class="col-8">
-                            <input type="text" class="form-control" name="ackNotifications" placeholder="{{trans('main.ackNotifications')}}" value="{{!empty($data->details) ? $data->details->webhooks->ackNotifications : ''}}">
+                            <input type="text" class="form-control" name="ackNotifications" placeholder="{{trans('main.ackNotifications')}}" value="{{!empty($data->details) ? @$data->details->webhooks->ackNotifications : ''}}">
                         </div>
                     </div>
                     <div class="form-group row mb-2">
                         <label class="col-4 col-form-label">{{trans('main.chatNotifications')}}</label>
                         <div class="col-8">
-                            <input type="text" class="form-control" name="chatNotifications" placeholder="{{trans('main.chatNotifications')}}" value="{{!empty($data->details) ? $data->details->webhooks->chatNotifications : ''}}">
+                            <input type="text" class="form-control" name="chatNotifications" placeholder="{{trans('main.chatNotifications')}}" value="{{!empty($data->details) ? @$data->details->webhooks->chatNotifications : ''}}">
                         </div>
                     </div>
                     <div class="form-group row mb-2">
                         <label class="col-4 col-form-label">{{trans('main.labelNotifications')}}</label>
                         <div class="col-8">
-                            <input type="text" class="form-control" name="labelNotifications" placeholder="{{trans('main.labelNotifications')}}" value="{{!empty($data->details) ? $data->details->webhooks->labelNotifications : ''}}">
+                            <input type="text" class="form-control" name="labelNotifications" placeholder="{{trans('main.labelNotifications')}}" value="{{!empty($data->details) ? @$data->details->webhooks->labelNotifications : ''}}">
                         </div>
                     </div>
                     <div class="form-group row mb-2">

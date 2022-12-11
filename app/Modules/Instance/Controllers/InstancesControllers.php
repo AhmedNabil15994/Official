@@ -14,6 +14,8 @@ use App\Events\QRScanned;
 use Illuminate\Support\Facades\Http;
 use Barryvdh\Snappy\Facades\SnappyImage;
 use Barryvdh\Snappy\Facades\SnappyPdf;
+use Spatie\Browsershot\Browsershot;
+
 class InstancesControllers extends Controller {
 
     use \TraitsFunc;
@@ -105,7 +107,6 @@ class InstancesControllers extends Controller {
     public function status(){
         $name = NAME;
         $input = \Request::all();
-
         if(isset($input['status']) && !empty($input['status']) && in_array($input['status'], ['connected','authenticated','disconnected'])){
             $devObj = Device::NotDeleted()->where('name', $name)->first();
             $devObj->update(['status' => $input['status'],'updated_at' => date('Y-m-d H:i:s'),'image' => null]);
@@ -170,28 +171,25 @@ class InstancesControllers extends Controller {
                     $connectionArr['notPinned'] = $result2['data']['notPinned'];
                 }   
             } catch (\Illuminate\Http\Client\ConnectionException $e) {}
-            $pdf = SnappyImage::loadView('whatsweb.conversation',[
-                    'profPic' => isset($data->connection->image) ? $data->connection->image : asset('assets/images/avatar.png'),
-                    'pinned' => isset($data->connection->pinned) ? $data->connection->pinned : [],
-                    'notPinned' => isset($data->connection->notPinned) ? $data->connection->notPinned : [],
-                ])->setOption('height', '1080')->setOption('width', '1920');
+            $pdf = view('whatsweb.index2',[
+                'profPic' => isset($connectionArr['image']) ? $connectionArr['image'] : asset('assets/images/avatar.png'),
+                'pinned' => isset($connectionArr['pinned']) ? $connectionArr['pinned'] : [],
+                'notPinned' => isset($connectionArr['notPinned']) ? $connectionArr['notPinned'] : [],
+            ])->render();
         }else{
             if($deviceObj->validStatus  != trans('main.active')){
-                $$pdf = SnappyImage::loadView('whatsweb.notActive',[])
-                        ->setOption('height', '1080')
-                        ->setOption('width', '1920');
+                $pdf = view('whatsweb.index3',[])->render();
             }else{
-                $pdf = SnappyImage::loadView('whatsweb.whatsappQR',['qr' => $deviceObj->image])
-                        ->setOption('height', '1080')
-                        ->setOption('width', '1920');
+                $this->qr();
+                $image = Device::NotDeleted()->where('name', $name)->first()->image;
+                $pdf = view('whatsweb.index',['qr' => $image])->render();
             }
         }
+        return response()->json( array('success' => true, 'html'=> $pdf) );
 
         $fileName = 'screenshot_'.$name.'_'.time().'.jpg';
-        $pdf->save(public_path().'/uploads/screens/'.$name.'/'.$fileName);
-        
+        Browsershot::html($pdf)->save(public_path().'/uploads/screens/'.$name.'/'.$fileName);        
         $baseURL = config('app.BASE_URL').'uploads/screens/'.$name.'/'.$fileName;
-        
         $data['data'] = $baseURL;
         $data['status'] = \TraitsFunc::SuccessResponse("Disconnected Successfully !!!");
         return \Response::json((object) $data);        
@@ -231,8 +229,8 @@ class InstancesControllers extends Controller {
      *     path="/instances/clearInstance",
      *     tags={"Instances"},
      *     operationId="clearInstance",
-     *     summary="clear instance data",
-     *     description="clear instance data",
+     *     summary="clear instance",
+     *     description="clear instance",
      *     security={ {"bearer_token": {} , "channel_id": {} , "channel_token": {} }},
      *     
      *     @OA\Response(response="200", description="returns Disconnected.")
@@ -245,16 +243,42 @@ class InstancesControllers extends Controller {
             return \TraitsFunc::ErrorMessage("Account Status isn't equal to connected !!");
         }
 
-        $find = Http::delete(env('URL_WA_SERVER').'/sessions/clearInstance/'.$name);
+        $find = Http::post(env('URL_WA_SERVER').'/sessions/clearInstance',['id'=>$name]);
         $deviceObj->status = '';
         $deviceObj->image = null;
         $deviceObj->save();
-
-        Dialog::where('sessionId',$name)->delete();
-        Message::where('sessionId',$name)->delete();
         
-        $data['data'] = 'Disconnected';
-        $data['status'] = \TraitsFunc::SuccessResponse("Disconnected Successfully !!!");
+        $data['data'] = 'Cleared';
+        $data['status'] = \TraitsFunc::SuccessResponse("Cleared Successfully !!!");
+        return \Response::json((object) $data);        
+    }
+
+    /**
+     * @OA\Post(
+     *     path="/instances/clearInstanceData",
+     *     tags={"Instances"},
+     *     operationId="clearInstanceData",
+     *     summary="clear instance data",
+     *     description="clear instance data",
+     *     security={ {"bearer_token": {} , "channel_id": {} , "channel_token": {} }},
+     *     
+     *     @OA\Response(response="200", description="returns Disconnected.")
+     * )
+     */
+    public function clearInstanceData(){
+        $name = NAME;
+        $deviceObj = Device::NotDeleted()->where('name', $name)->first();
+        if($deviceObj->status != 'connected'){
+            return \TraitsFunc::ErrorMessage("Account Status isn't equal to connected !!");
+        }
+
+        $find = Http::post(env('URL_WA_SERVER').'/sessions/clearData',['id'=>$name]);
+        $deviceObj->status = '';
+        $deviceObj->image = null;
+        $deviceObj->save();
+        
+        $data['data'] = 'Cleared';
+        $data['status'] = \TraitsFunc::SuccessResponse("Cleared Successfully !!!");
         return \Response::json((object) $data);        
     }
 

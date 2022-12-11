@@ -7,6 +7,7 @@
         Route::get('/screenshot', [$controller,'screenshot']);
         Route::post('/disconnect', [$controller,'disconnect']);
         Route::post('/clearInstance', [$controller,'clearInstance']);
+        Route::post('/clearInstanceData', [$controller,'clearInstanceData']);
         Route::post('/updateChannelSetting', [$controller,'updateChannelSetting']);
     });
 

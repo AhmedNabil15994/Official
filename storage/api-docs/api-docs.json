@@ -2970,9 +2970,31 @@
                 "tags": [
                     "Instances"
                 ],
+                "summary": "clear instance",
+                "description": "clear instance",
+                "operationId": "clearInstance",
+                "responses": {
+                    "200": {
+                        "description": "returns Disconnected."
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
+        "/instances/clearInstanceData": {
+            "post": {
+                "tags": [
+                    "Instances"
+                ],
                 "summary": "clear instance data",
                 "description": "clear instance data",
-                "operationId": "clearInstance",
+                "operationId": "clearInstanceData",
                 "responses": {
                     "200": {
                         "description": "returns Disconnected."

@@ -298,6 +298,7 @@
                   <div class="" data-testid="chat-list">
                     <div aria-label="Chat list" class="_3uIPm WYyr1" role="grid" aria-rowcount="30" style="height: 3600px;">
                       @foreach($pinned as $key => $onePinned)
+                        @if(isset($onePinned['id']))
                         <div class="lhggkp7q ln8gz9je rx9719la" style="z-index: {{$key+14}}; transition: none 0s ease 0s; height: 72px;top:{{$key*72}}px">
                           <div class="_1Oe6M">
                             <div tabindex="-1" aria-selected="false" role="row">
@@ -427,9 +428,11 @@
                             </div>
                           </div>
                         </div>
+                        @endif
                       @endforeach
 
                       @foreach($notPinned as $notKey => $oneNotPinned)
+                        @if(isset($oneNotPinned['id'])) 
                         <div class="lhggkp7q ln8gz9je rx9719la" style="z-index: {{$notKey+50}}; transition: none 0s ease 0s; height: 72px;top:{{      ($notKey*72) + (72*count($pinned))    }}px">
                           <div class="_1Oe6M">
                             <div tabindex="-1" aria-selected="false" role="row">
@@ -554,6 +557,7 @@
                             </div>
                           </div>
                         </div>
+                        @endif
                       @endforeach
                     </div>
                   </div>

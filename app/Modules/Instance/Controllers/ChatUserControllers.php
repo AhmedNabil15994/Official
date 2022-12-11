@@ -71,6 +71,7 @@ class ChatUserControllers extends Controller {
             if(isset($res->data->data) && is_array($res->data->data)){
                 foreach($res->data->data as $oneMessage){
                     if(isset($oneMessage->id)){
+                        $oneMessage->id = str_replace('s.whatsapp.net','c.us',$oneMessage->id);
                         $messages[] = \Helper::formatArrayShape((array)$oneMessage);
                     }
                 }

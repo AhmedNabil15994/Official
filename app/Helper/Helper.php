@@ -71,13 +71,13 @@ class Helper
     public static function getType($type){
         $type = str_replace('Message','',$type);
         if($type == 'text'){
-            return 'chat';
+            return 'text';
         }else{
             $type = str_replace('Message','',$type);
             if($type == 'audio'){
-                return 'ptt';
+                return 'audio';
             }else if($type == 'contact'){
-                return 'vcard';
+                return 'contact';
             }else{
                 return $type;
             }
