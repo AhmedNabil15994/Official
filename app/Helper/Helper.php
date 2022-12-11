@@ -39,7 +39,7 @@ class Helper
         if($msgData['body'] != '' || ($msgData['body'] == '' && in_array($msgData['messageType'],['locationMessage']))){
             $messages = [
                 'id' => $id,
-                'body'=> isset($msgData['body']) && !empty($msgData['body']) ? $msgData['body'] : '',
+                'body'=> $msgData['body'],
                 'type' => self::getType($msgData['messageType']),
                 'fromMe' => $msgData['fromMe'],
                 'chatId' => $remoteJid,
