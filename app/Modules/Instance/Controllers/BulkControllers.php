@@ -44,15 +44,17 @@ class BulkControllers extends Controller {
             return \TraitsFunc::ErrorMessage("Receivers Phones field is required !!");
         }
 
-        if(!isset($input['body']) || empty($input['body'])){
-            return \TraitsFunc::ErrorMessage("Message Body field is required !!");
+        if(!isset($input['messageData'])){
+            if(!isset($input['body']) || empty($input['body'])){
+                return \TraitsFunc::ErrorMessage("Message Body field is required !!");
+            }
         }
 
         $forwardResponse = Http::post(env('URL_WA_SERVER').'/messages/sendGroupMessage?id='.$name, [
             'phones' => $input['phones'],
             'interval' => isset($input['interval']) && !empty($input['interval']) ? $input['interval'] : 3,
             'messageType' => 1,
-            'messageData' => [
+            'messageData' => isset($input['messageData']) && !empty($input['messageData']) ? $input['messageData'] : [
                 'body' => $input['body'],
             ],
         ]);
@@ -97,15 +99,17 @@ class BulkControllers extends Controller {
             return \TraitsFunc::ErrorMessage("Receivers Phones field is required !!");
         }
 
-        if(!isset($input['url']) || empty($input['url'])){
-            return \TraitsFunc::ErrorMessage("Image Url field is required !!");
+        if(!isset($input['messageData'])){
+            if(!isset($input['url']) || empty($input['url'])){
+                return \TraitsFunc::ErrorMessage("Image Url field is required !!");
+            }
         }
 
         $forwardResponse = Http::post(env('URL_WA_SERVER').'/messages/sendGroupMessage?id='.$name, [
             'phones' => $input['phones'],
             'messageType' => 2,
             'interval' => isset($input['interval']) && !empty($input['interval']) ? $input['interval'] : 3,
-            'messageData' => [
+            'messageData' => isset($input['messageData']) && !empty($input['messageData']) ? $input['messageData'] : [
                 'url' => $input['url'],
                 'caption' => isset($input['caption']) ? $input['caption']: '',
             ],
@@ -151,15 +155,17 @@ class BulkControllers extends Controller {
             return \TraitsFunc::ErrorMessage("Receivers Phones field is required !!");
         }
 
-        if(!isset($input['url']) || empty($input['url'])){
-            return \TraitsFunc::ErrorMessage("Video Url field is required !!");
+        if(!isset($input['messageData'])){
+            if(!isset($input['url']) || empty($input['url'])){
+                return \TraitsFunc::ErrorMessage("Video Url field is required !!");
+            }
         }
 
         $forwardResponse = Http::post(env('URL_WA_SERVER').'/messages/sendGroupMessage?id='.$name, [
             'phones' => $input['phones'],
             'messageType' => 3,
             'interval' => isset($input['interval']) && !empty($input['interval']) ? $input['interval'] : 3,
-            'messageData' => [
+            'messageData' => isset($input['messageData']) && !empty($input['messageData']) ? $input['messageData'] : [
                 'url' => $input['url'],
                 'caption' => isset($input['caption']) ? $input['caption']: '',
             ],
@@ -204,8 +210,10 @@ class BulkControllers extends Controller {
             return \TraitsFunc::ErrorMessage("Receivers Phones field is required !!");
         }
 
-        if(!isset($input['url']) || empty($input['url'])){
-            return \TraitsFunc::ErrorMessage("Video Url field is required !!");
+        if(!isset($input['messageData'])){
+            if(!isset($input['url']) || empty($input['url'])){
+                return \TraitsFunc::ErrorMessage("Video Url field is required !!");
+            }
         }
 
         $fileName = 'soundFile'.time();
@@ -222,7 +230,7 @@ class BulkControllers extends Controller {
             'phones' => $input['phones'],
             'interval' => isset($input['interval']) && !empty($input['interval']) ? $input['interval'] : 3,
             'messageType' => 4,
-            'messageData' => [
+            'messageData' => isset($input['messageData']) && !empty($input['messageData']) ? $input['messageData'] : [
                 'url' => $input['url'],
             ],
         ]);
@@ -266,15 +274,17 @@ class BulkControllers extends Controller {
             return \TraitsFunc::ErrorMessage("Receivers Phones field is required !!");
         }
 
-        if(!isset($input['url']) || empty($input['url'])){
-            return \TraitsFunc::ErrorMessage("Video Url field is required !!");
+        if(!isset($input['messageData'])){
+            if(!isset($input['url']) || empty($input['url'])){
+                return \TraitsFunc::ErrorMessage("Video Url field is required !!");
+            }
         }
 
         $forwardResponse = Http::post(env('URL_WA_SERVER').'/messages/sendGroupMessage?id='.$name, [
             'phones' => $input['phones'],
             'messageType' => 5,
             'interval' => isset($input['interval']) && !empty($input['interval']) ? $input['interval'] : 3,
-            'messageData' => [
+            'messageData' => isset($input['messageData']) && !empty($input['messageData']) ? $input['messageData'] : [
                 'url' => $input['url'],
             ],
         ]);
@@ -318,15 +328,17 @@ class BulkControllers extends Controller {
             return \TraitsFunc::ErrorMessage("Receivers Phones field is required !!");
         }
 
-        if(!isset($input['url']) || empty($input['url'])){
-            return \TraitsFunc::ErrorMessage("Video Url field is required !!");
+        if(!isset($input['messageData'])){
+            if(!isset($input['url']) || empty($input['url'])){
+                return \TraitsFunc::ErrorMessage("Video Url field is required !!");
+            }
         }
 
         $forwardResponse = Http::post(env('URL_WA_SERVER').'/messages/sendGroupMessage?id='.$name, [
             'phones' => $input['phones'],
             'messageType' => 6,
             'interval' => isset($input['interval']) && !empty($input['interval']) ? $input['interval'] : 3,
-            'messageData' => [
+            'messageData' => isset($input['messageData']) && !empty($input['messageData']) ? $input['messageData'] : [
                 'url' => $input['url'],
             ],
         ]);
@@ -371,8 +383,10 @@ class BulkControllers extends Controller {
             return \TraitsFunc::ErrorMessage("Receivers Phones field is required !!");
         }
 
-        if(!isset($input['url']) || empty($input['url'])){
-            return \TraitsFunc::ErrorMessage("Video Url field is required !!");
+        if(!isset($input['messageData'])){
+            if(!isset($input['url']) || empty($input['url'])){
+                return \TraitsFunc::ErrorMessage("Video Url field is required !!");
+            }
         }
 
         $fileName = 'gifFile'.time();
@@ -388,7 +402,7 @@ class BulkControllers extends Controller {
             'phones' => $input['phones'],
             'interval' => isset($input['interval']) && !empty($input['interval']) ? $input['interval'] : 3,
             'messageType' => 7,
-            'messageData' => [
+            'messageData' => isset($input['messageData']) && !empty($input['messageData']) ? $input['messageData'] : [
                 'url' => $input['url'],
                 'caption' => isset($input['caption']) ? $input['caption']: '',
             ],
@@ -435,19 +449,21 @@ class BulkControllers extends Controller {
             return \TraitsFunc::ErrorMessage("Receivers Phones field is required !!");
         }
 
-        if(!isset($input['latitude']) || empty($input['latitude'])){
-            return \TraitsFunc::ErrorMessage("Location latitude field is required !!");
-        }
+        if(!isset($input['messageData'])){
+            if(!isset($input['latitude']) || empty($input['latitude'])){
+                return \TraitsFunc::ErrorMessage("Location latitude field is required !!");
+            }
 
-        if(!isset($input['longitude']) || empty($input['longitude'])){
-            return \TraitsFunc::ErrorMessage("Location longitude field is required !!");
+            if(!isset($input['longitude']) || empty($input['longitude'])){
+                return \TraitsFunc::ErrorMessage("Location longitude field is required !!");
+            }
         }
 
         $forwardResponse = Http::post(env('URL_WA_SERVER').'/messages/sendGroupMessage?id='.$name, [
             'interval' => isset($input['interval']) && !empty($input['interval']) ? $input['interval'] : 3,
             'phones' => $input['phones'],
             'messageType' => 8,
-            'messageData' => [
+            'messageData' => isset($input['messageData']) && !empty($input['messageData']) ? $input['messageData'] : [
                 'lat' => $input['latitude'],
                 'lng' => $input['longitude'],
                 'address' => isset($input['address']) ? $input['address']: '',
@@ -495,19 +511,21 @@ class BulkControllers extends Controller {
             return \TraitsFunc::ErrorMessage("Receivers Phones field is required !!");
         }
 
-        if(!isset($input['name']) || empty($input['name'])){
-            return \TraitsFunc::ErrorMessage("Contact Name field is required !!");
-        }
+        if(!isset($input['messageData'])){
+            if(!isset($input['name']) || empty($input['name'])){
+                return \TraitsFunc::ErrorMessage("Contact Name field is required !!");
+            }
 
-        if(!isset($input['contact']) || empty($input['contact'])){
-            return \TraitsFunc::ErrorMessage("Contact Mobile field is required !!");
+            if(!isset($input['contact']) || empty($input['contact'])){
+                return \TraitsFunc::ErrorMessage("Contact Mobile field is required !!");
+            }
         }
 
         $forwardResponse = Http::post(env('URL_WA_SERVER').'/messages/sendGroupMessage?id='.$name, [
             'phones' => $input['phones'],
             'messageType' => 9,
             'interval' => isset($input['interval']) && !empty($input['interval']) ? $input['interval'] : 3,
-            'messageData' => [
+            'messageData' => isset($input['messageData']) && !empty($input['messageData']) ? $input['messageData'] : [
                 'name' => $input['name'],
                 'contact' => $input['contact'],
                 'organization' => isset($input['organization']) ? $input['organization']: '',
@@ -554,19 +572,21 @@ class BulkControllers extends Controller {
             return \TraitsFunc::ErrorMessage("Receivers Phones field is required !!");
         }
 
-        if(!isset($input['body']) || empty($input['body'])){
-            return \TraitsFunc::ErrorMessage("Message Body field is required !!");
-        }
+        if(!isset($input['messageData'])){
+            if(!isset($input['body']) || empty($input['body'])){
+                return \TraitsFunc::ErrorMessage("Message Body field is required !!");
+            }
 
-        if(!isset($input['expiration']) || empty($input['expiration'])){
-            return \TraitsFunc::ErrorMessage("Message Expiration field is required !!");
+            if(!isset($input['expiration']) || empty($input['expiration'])){
+                return \TraitsFunc::ErrorMessage("Message Expiration field is required !!");
+            }
         }
 
         $forwardResponse = Http::post(env('URL_WA_SERVER').'/messages/sendGroupMessage?id='.$name, [
             'phones' => $input['phones'],
             'messageType' => 10,
             'interval' => isset($input['interval']) && !empty($input['interval']) ? $input['interval'] : 3,
-            'messageData' => [
+            'messageData' => isset($input['messageData']) && !empty($input['messageData']) ? $input['messageData'] : [
                 'body' => $input['body'],
                 'expiration' => $input['expiration'],
             ],
@@ -611,15 +631,17 @@ class BulkControllers extends Controller {
             return \TraitsFunc::ErrorMessage("Receivers Phones field is required !!");
         }
 
-        if(!isset($input['contact']) || empty($input['contact'])){
-            return \TraitsFunc::ErrorMessage("Contact Mention field is required !!");
+        if(!isset($input['messageData'])){
+            if(!isset($input['contact']) || empty($input['contact'])){
+                return \TraitsFunc::ErrorMessage("Contact Mention field is required !!");
+            }
         }
 
         $forwardResponse = Http::post(env('URL_WA_SERVER').'/messages/sendGroupMessage?id='.$name, [
             'phones' => $input['phones'],
             'interval' => isset($input['interval']) && !empty($input['interval']) ? $input['interval'] : 3,
             'messageType' => 11,
-            'messageData' => [
+            'messageData' => isset($input['messageData']) && !empty($input['messageData']) ? $input['messageData'] : [
                 'contact' => $input['contact'],
             ],
         ]);
@@ -670,24 +692,26 @@ class BulkControllers extends Controller {
             return \TraitsFunc::ErrorMessage("Receivers Phones field is required !!");
         }
 
-        if(!isset($input['body']) || empty($input['body'])){
-            return \TraitsFunc::ErrorMessage("Message Body field is required !!");
-        }
-
-        if(!isset($input['footer']) || empty($input['footer'])){
-            return \TraitsFunc::ErrorMessage("Message Footer field is required !!");
-        }
-
-        if(!isset($input['buttons']) || empty($input['buttons'])){
-            return \TraitsFunc::ErrorMessage("Message Buttons field is required !!");
-        }
-
-        foreach ($input['buttons'] as $key => $button) {
-            if(!isset($button['id']) || empty($button['id'])){
-                return \TraitsFunc::ErrorMessage("Button ".($key+1)." ID is required !!");
+        if(!isset($input['messageData'])){
+            if(!isset($input['body']) || empty($input['body'])){
+                return \TraitsFunc::ErrorMessage("Message Body field is required !!");
             }
-            if(!isset($button['title']) || empty($button['title'])){
-                return \TraitsFunc::ErrorMessage("Button ".($key+1)." Title is required !!");
+
+            if(!isset($input['footer']) || empty($input['footer'])){
+                return \TraitsFunc::ErrorMessage("Message Footer field is required !!");
+            }
+
+            if(!isset($input['buttons']) || empty($input['buttons'])){
+                return \TraitsFunc::ErrorMessage("Message Buttons field is required !!");
+            }
+
+            foreach ($input['buttons'] as $key => $button) {
+                if(!isset($button['id']) || empty($button['id'])){
+                    return \TraitsFunc::ErrorMessage("Button ".($key+1)." ID is required !!");
+                }
+                if(!isset($button['title']) || empty($button['title'])){
+                    return \TraitsFunc::ErrorMessage("Button ".($key+1)." Title is required !!");
+                }
             }
         }
 
@@ -708,7 +732,7 @@ class BulkControllers extends Controller {
             'phones' => $input['phones'],
             'messageType' => 13,
             'interval' => isset($input['interval']) && !empty($input['interval']) ? $input['interval'] : 3,
-            'messageData' => [
+            'messageData' => isset($input['messageData']) && !empty($input['messageData']) ? $input['messageData'] : [
                 'body' => $input['body'],
                 'footer' => $input['footer'],
                 'hasImage' => $input['hasImage'],
@@ -763,30 +787,32 @@ class BulkControllers extends Controller {
             return \TraitsFunc::ErrorMessage("Receivers Phones field is required !!");
         }
 
-        if(!isset($input['body']) || empty($input['body'])){
-            return \TraitsFunc::ErrorMessage("Message Body field is required !!");
-        }
-
-        if(!isset($input['footer']) || empty($input['footer'])){
-            return \TraitsFunc::ErrorMessage("Message Footer field is required !!");
-        }
-
-        if(!isset($input['buttons']) || empty($input['buttons'])){
-            return \TraitsFunc::ErrorMessage("Message Buttons field is required !!");
-        }
-
-        foreach ($input['buttons'] as $key => $button) {
-            if(!isset($button['id']) || empty($button['id'])){
-                return \TraitsFunc::ErrorMessage("Button ".($key+1)." ID is required !!");
+        if(!isset($input['messageData'])){
+            if(!isset($input['body']) || empty($input['body'])){
+                return \TraitsFunc::ErrorMessage("Message Body field is required !!");
             }
-            if(!isset($button['title']) || empty($button['title'])){
-                return \TraitsFunc::ErrorMessage("Button ".($key+1)." Title is required !!");
+
+            if(!isset($input['footer']) || empty($input['footer'])){
+                return \TraitsFunc::ErrorMessage("Message Footer field is required !!");
             }
-            if(!isset($button['type']) || empty($button['type']) || !in_array($button['type'],[1,2,3])){
-                return \TraitsFunc::ErrorMessage("Button ".($key+1)." Type is required !!");
+
+            if(!isset($input['buttons']) || empty($input['buttons'])){
+                return \TraitsFunc::ErrorMessage("Message Buttons field is required !!");
             }
-            if(!isset($button['extra_data']) || empty($button['extra_data'])){
-                return \TraitsFunc::ErrorMessage("Button ".($key+1)." Extra Data is required !!");
+
+            foreach ($input['buttons'] as $key => $button) {
+                if(!isset($button['id']) || empty($button['id'])){
+                    return \TraitsFunc::ErrorMessage("Button ".($key+1)." ID is required !!");
+                }
+                if(!isset($button['title']) || empty($button['title'])){
+                    return \TraitsFunc::ErrorMessage("Button ".($key+1)." Title is required !!");
+                }
+                if(!isset($button['type']) || empty($button['type']) || !in_array($button['type'],[1,2,3])){
+                    return \TraitsFunc::ErrorMessage("Button ".($key+1)." Type is required !!");
+                }
+                if(!isset($button['extra_data']) || empty($button['extra_data'])){
+                    return \TraitsFunc::ErrorMessage("Button ".($key+1)." Extra Data is required !!");
+                }
             }
         }
 
@@ -807,7 +833,7 @@ class BulkControllers extends Controller {
             'phones' => $input['phones'],
             'messageType' => 14,
             'interval' => isset($input['interval']) && !empty($input['interval']) ? $input['interval'] : 3,
-            'messageData' => [
+            'messageData' => isset($input['messageData']) && !empty($input['messageData']) ? $input['messageData'] : [
                 'body' => $input['body'],
                 'footer' => $input['footer'],
                 'hasImage' => $input['hasImage'],
@@ -863,39 +889,42 @@ class BulkControllers extends Controller {
             return \TraitsFunc::ErrorMessage("Receivers Phones field is required !!");
         }
 
-        if(!isset($input['body']) || empty($input['body'])){
-            return \TraitsFunc::ErrorMessage("Message Body field is required !!");
-        }
+        if(!isset($input['messageData'])){
 
-        if(!isset($input['footer']) || empty($input['footer'])){
-            return \TraitsFunc::ErrorMessage("Message Footer field is required !!");
-        }
-
-        if(!isset($input['title']) || empty($input['title'])){
-            return \TraitsFunc::ErrorMessage("Message Title field is required !!");
-        }
-
-        if(!isset($input['buttonText']) || empty($input['buttonText'])){
-            return \TraitsFunc::ErrorMessage("Message Button Text field is required !!");
-        }
-
-        if(!isset($input['sections']) || empty($input['sections'])){
-            return \TraitsFunc::ErrorMessage("Message Sections field is required !!");
-        }
-
-        foreach ($input['sections'] as $key => $section) {
-            if(!isset($section['title']) || empty($section['title'])){
-                return \TraitsFunc::ErrorMessage("Section ".($key+1)." Title is required !!");
+            if(!isset($input['body']) || empty($input['body'])){
+                return \TraitsFunc::ErrorMessage("Message Body field is required !!");
             }
-            if(!isset($section['rows']) || empty($section['rows'])){
-                return \TraitsFunc::ErrorMessage("Section ".($key+1)." Rows is required !!");
+
+            if(!isset($input['footer']) || empty($input['footer'])){
+                return \TraitsFunc::ErrorMessage("Message Footer field is required !!");
             }
-            foreach ($section['rows'] as $rowKey => $oneRow) {
-                if(!isset($oneRow['title']) || empty($oneRow['title'])){
-                    return \TraitsFunc::ErrorMessage("Section ".($key+1)." Row ".($rowKey+1)." Title is required !!");
+
+            if(!isset($input['title']) || empty($input['title'])){
+                return \TraitsFunc::ErrorMessage("Message Title field is required !!");
+            }
+
+            if(!isset($input['buttonText']) || empty($input['buttonText'])){
+                return \TraitsFunc::ErrorMessage("Message Button Text field is required !!");
+            }
+
+            if(!isset($input['sections']) || empty($input['sections'])){
+                return \TraitsFunc::ErrorMessage("Message Sections field is required !!");
+            }
+
+            foreach ($input['sections'] as $key => $section) {
+                if(!isset($section['title']) || empty($section['title'])){
+                    return \TraitsFunc::ErrorMessage("Section ".($key+1)." Title is required !!");
                 }
-                if(!isset($oneRow['rowId']) || empty($oneRow['rowId'])){
-                    return \TraitsFunc::ErrorMessage("Section ".($key+1)." Row ".($rowKey+1)." RowID is required !!");
+                if(!isset($section['rows']) || empty($section['rows'])){
+                    return \TraitsFunc::ErrorMessage("Section ".($key+1)." Rows is required !!");
+                }
+                foreach ($section['rows'] as $rowKey => $oneRow) {
+                    if(!isset($oneRow['title']) || empty($oneRow['title'])){
+                        return \TraitsFunc::ErrorMessage("Section ".($key+1)." Row ".($rowKey+1)." Title is required !!");
+                    }
+                    if(!isset($oneRow['rowId']) || empty($oneRow['rowId'])){
+                        return \TraitsFunc::ErrorMessage("Section ".($key+1)." Row ".($rowKey+1)." RowID is required !!");
+                    }
                 }
             }
         }
@@ -904,7 +933,7 @@ class BulkControllers extends Controller {
             'phones' => $input['phones'],
             'messageType' => 15,
             'interval' => isset($input['interval']) && !empty($input['interval']) ? $input['interval'] : 3,
-            'messageData' => [
+            'messageData' => isset($input['messageData']) && !empty($input['messageData']) ? $input['messageData'] : [
                 'title' => $input['title'],
                 'body' => $input['body'],
                 'footer' => $input['footer'],
@@ -954,19 +983,21 @@ class BulkControllers extends Controller {
             return \TraitsFunc::ErrorMessage("Receivers Phones field is required !!");
         }
 
-        if(!isset($input['url']) || empty($input['url'])){
-            return \TraitsFunc::ErrorMessage("URL field is required !!");
-        }
+        if(!isset($input['messageData'])){
+            if(!isset($input['url']) || empty($input['url'])){
+                return \TraitsFunc::ErrorMessage("URL field is required !!");
+            }
 
-        if(!isset($input['title']) || empty($input['title'])){
-            return \TraitsFunc::ErrorMessage("URL title field is required !!");
+            if(!isset($input['title']) || empty($input['title'])){
+                return \TraitsFunc::ErrorMessage("URL title field is required !!");
+            }
         }
 
         $forwardResponse = Http::post(env('URL_WA_SERVER').'/messages/sendGroupMessage?id='.$name, [
             'phones' => $input['phones'],
             'messageType' => 16,
             'interval' => isset($input['interval']) && !empty($input['interval']) ? $input['interval'] : 3,
-            'messageData' => [
+            'messageData' => isset($input['messageData']) && !empty($input['messageData']) ? $input['messageData'] : [
                 'url' => $input['url'],
                 'title' => $input['title'],
                 'body' => isset($input['description']) ? $input['description']: '',
@@ -1012,16 +1043,17 @@ class BulkControllers extends Controller {
             return \TraitsFunc::ErrorMessage("Receivers Phones field is required !!");
         }
 
-        if(!isset($input['groupId']) || empty($input['groupId'])){
-            return \TraitsFunc::ErrorMessage("Group Id field is required !!");
+        if(!isset($input['messageData'])){
+            if(!isset($input['groupId']) || empty($input['groupId'])){
+                return \TraitsFunc::ErrorMessage("Group Id field is required !!");
+            }
         }
-
 
         $forwardResponse = Http::post(env('URL_WA_SERVER').'/messages/sendGroupMessage?id='.$name, [
             'phones' => $input['phones'],
             'messageType' => 17,
             'interval' => isset($input['interval']) && !empty($input['interval']) ? $input['interval'] : 3,
-            'messageData' => [
+            'messageData' => isset($input['messageData']) && !empty($input['messageData']) ? $input['messageData'] : [
                 'groupId' => $input['groupId'],
             ],
         ]);
@@ -1065,15 +1097,17 @@ class BulkControllers extends Controller {
             return \TraitsFunc::ErrorMessage("Receivers Phones field is required !!");
         }
 
-        if(!isset($input['productId']) || empty($input['productId'])){
-            return \TraitsFunc::ErrorMessage("URL field is required !!");
+        if(!isset($input['messageData'])){
+            if(!isset($input['productId']) || empty($input['productId'])){
+                return \TraitsFunc::ErrorMessage("URL field is required !!");
+            }
         }
-
+        
         $forwardResponse = Http::post(env('URL_WA_SERVER').'/messages/sendGroupMessage?id='.$name, [
             'phones' => $input['phones'],
             'messageType' => 18,
             'interval' => isset($input['interval']) && !empty($input['interval']) ? $input['interval'] : 3,
-            'messageData' => [
+            'messageData' => isset($input['messageData']) && !empty($input['messageData']) ? $input['messageData'] : [
                 'productId' => $input['productId'],
             ],
         ]);
@@ -1160,29 +1194,31 @@ class BulkControllers extends Controller {
             return \TraitsFunc::ErrorMessage("Channel isn't Found !!");
         }
 
-        if(!isset($input['body']) || empty($input['body'])){
-            return \TraitsFunc::ErrorMessage("Message Body field is required !!");
-        }
-
         if((!isset($input['phones']) || empty($input['phones']))){
             return \TraitsFunc::ErrorMessage("Receivers Phones field is required !!");
         }
 
-        if((!isset($input['selectableOptionsCount']) || empty($input['selectableOptionsCount']))){
-            $input['selectableOptionsCount'] = 0;
-        }else{
-            $input['selectableOptionsCount'] = (int)$input['selectableOptionsCount'];
-        }
+        if(!isset($input['messageData'])){
+            if(!isset($input['body']) || empty($input['body'])){
+                return \TraitsFunc::ErrorMessage("Message Body field is required !!");
+            }
 
-        if(!isset($input['options']) || empty($input['options'])){
-            return \TraitsFunc::ErrorMessage("Message Options field is required !!");
+            if((!isset($input['selectableOptionsCount']) || empty($input['selectableOptionsCount']))){
+                $input['selectableOptionsCount'] = 0;
+            }else{
+                $input['selectableOptionsCount'] = (int)$input['selectableOptionsCount'];
+            }
+
+            if(!isset($input['options']) || empty($input['options'])){
+                return \TraitsFunc::ErrorMessage("Message Options field is required !!");
+            }
         }
 
         $forwardResponse = Http::post(env('URL_WA_SERVER').'/messages/sendGroupMessage?id='.$name, [
             'phones' => $input['phones'],
             'interval' => isset($input['interval']) && !empty($input['interval']) ? $input['interval'] : 3,
             'messageType' => 20,
-            'messageData' => [
+            'messageData' => isset($input['messageData']) && !empty($input['messageData']) ? $input['messageData'] : [
                 'body' => $input['body'],
                 'selectableOptionsCount' => $input['selectableOptionsCount'],
                 'options' => $input['options'],
