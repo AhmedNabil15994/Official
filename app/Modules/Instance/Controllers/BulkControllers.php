@@ -222,7 +222,7 @@ class BulkControllers extends Controller {
         file_put_contents($path.$extension, fopen($input['url'], 'r'));
 
         // shell_exec("ffmpeg -i ".$path.$extension." -ac 1 -c:a libopus -b:a 64k  -ar 48000 ".$path.".oga");
-        shell_exec("/var/www/official/vendor/ffmpeg/ffmpeg -i ".$path.$extension." -ac 1 -c:a libopus -b:a 64k  -ar 48000 ".$path.".oga");
+        shell_exec("/usr/bin/ffmpeg -i ".$path.$extension." -ac 1 -c:a libopus -b:a 64k  -ar 48000 ".$path.".oga");
        
         $input['url'] = \URL::to('/').'/uploads/temp/'.$fileName.'.oga';
 
@@ -230,7 +230,7 @@ class BulkControllers extends Controller {
             'phones' => $input['phones'],
             'interval' => isset($input['interval']) && !empty($input['interval']) ? $input['interval'] : 3,
             'messageType' => 4,
-            'messageData' => isset($input['messageData']) && !empty($input['messageData']) ? $input['messageData'] : [
+            'messageData' => [
                 'url' => $input['url'],
             ],
         ]);
