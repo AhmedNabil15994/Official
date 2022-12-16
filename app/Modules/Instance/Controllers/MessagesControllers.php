@@ -677,7 +677,7 @@ class MessagesControllers extends Controller {
             return \TraitsFunc::ErrorMessage("Url field is required !!");
         }
 
-        $input['body'] = (isset($input['description']) && !empty($input['description']) ?  $input['description'].' ' : ''). $input['url'];
+        $input['body'] = (isset($input['description']) && !empty($input['description']) ?  $input['description'] : ' ');
 
         $response = Http::post(env('URL_WA_SERVER').'/messages/sendPreview?id='.$name, $input);
         $res = json_decode($response->getBody());

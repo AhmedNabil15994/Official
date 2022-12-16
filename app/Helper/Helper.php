@@ -36,7 +36,7 @@ class Helper
             $msgData['metadata']['quotedMessageId'] = ( $msgData['metadata']['quotedMessage']['fromMe'] == 'true' ? 'true_' : 'false_') . $remoteJid . '_'  . $msgData['metadata']['quotedMessageId'];
         }
         $messages = [];
-        if($msgData['body'] != '' || ($msgData['body'] == '' && in_array($msgData['messageType'],['locationMessage']))){
+        if($msgData['body'] != '' || ($msgData['body'] == '' && in_array($msgData['messageType'],['locationMessage','order']))){
             $messages = [
                 'id' => $id,
                 'body'=> $msgData['body'],
