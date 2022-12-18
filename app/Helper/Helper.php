@@ -57,6 +57,7 @@ class Helper
                     'date' => date('Y-m-d H:i:s',strtotime($msgData['timeFormatted'])),
                     'dateTimeZone' => $msgData['timeFormatted'],
                 ],
+                // Metadata Needs to be formatted because of (locationMessage) type and msg Id from Reaction and others
                 'metadata' => isset($msgData['metadata']) ? $msgData['metadata'] : [],
                 'channel' => str_replace('wlChannel','',$sessionId),
             ];     
