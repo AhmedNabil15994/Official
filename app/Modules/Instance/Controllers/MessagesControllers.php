@@ -112,7 +112,7 @@ class MessagesControllers extends Controller {
             return \TraitsFunc::ErrorMessage("Receiver Phone field is required !!");
         }
 
-        if(!isset($input['body']) || empty($input['body'])){
+        if(!isset($input['body']) || $input['body'] == ''){
             return \TraitsFunc::ErrorMessage("Message Body field is required !!");
         }
 

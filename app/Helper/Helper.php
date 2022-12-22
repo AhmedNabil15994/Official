@@ -35,6 +35,13 @@ class Helper
         if(isset($msgData['metadata']) && isset($msgData['metadata']['quotedMessageId']) && isset($msgData['metadata']['quotedMessage']['fromMe'])){
             $msgData['metadata']['quotedMessageId'] = ( $msgData['metadata']['quotedMessage']['fromMe'] == 'true' ? 'true_' : 'false_') . $remoteJid . '_'  . $msgData['metadata']['quotedMessageId'];
         }
+        if(isset($msgData['metadata']) && isset($msgData['metadata']['remoteJid'])){
+            $msgData['metadata']['remoteJid'] = str_replace('s.whatsapp.net','c.us',$msgData['metadata']['remoteJid']);
+        }
+
+        if(isset($msgData['metadata']) && isset($msgData['metadata']['quotedMessage']) && isset($msgData['metadata']['quotedMessage']['remoteJid'])){
+            $msgData['metadata']['quotedMessage']['remoteJid'] = str_replace('s.whatsapp.net','c.us',$msgData['metadata']['quotedMessage']['remoteJid']);
+        }
         $messages = [];
         if($msgData['body'] != '' || ($msgData['body'] == '' && in_array($msgData['messageType'],['locationMessage','order']))){
             $messages = [

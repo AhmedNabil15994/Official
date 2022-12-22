@@ -71,7 +71,7 @@ class MessagesWebhook extends ProcessWebhookJob{
 		}		
 		$msgId = $msgData['fromMe'].'_'.$chatId.'_'.$msgData['id'];
 
-		if(in_array($msgData['status'], [3,4])){	   
+		if(in_array($msgData['status'], [3,4,6])){	   
 			$dataArr[] = [
 				'id' => $msgId,
 				'status' => lcfirst($msgData['statusText']),
@@ -79,15 +79,32 @@ class MessagesWebhook extends ProcessWebhookJob{
 			];
    			$event = 'message-status';
    		}else if($msgData['status'] == null && $msgData['statusText'] == null){
-   			$msgData['status'] = 5;
-   			$msgData['statusText'] = 'DeletedForAll';
-   			$event = 'message-delete-all';
+   			$msgData['status'] = 6;
+   			// $msgData['statusText'] = 'DeletedForAll';
+   			$msgData['statusText'] = 'deleted';
+   			$event = 'message-status';
+   			// $event = 'message-delete-all';
    			$dataArr[] = [
 				'id' => $msgId,
 				'status' => lcfirst($msgData['statusText']),
 				'chatId' => $chatId,
 			];
 	   		 
+   		}else if(in_array($msgData['status'], ['starred','unstarred'])){
+   			$event = 'message-status';
+   			$dataArr[] = [
+				'id' => $msgId,
+				'status' => $msgData['status'],
+				'chatId' => $chatId,
+			];
+   		}else if(in_array($msgData['status'], ['labelled','unlabelled'])){
+   			$event = 'message-status';
+   			$dataArr[] = [
+				'id' => $msgId,
+				'status' => $msgData['status'],
+				'label_id' => $msgData['label_id'],
+				'chatId' => $chatId,
+			];
    		}
 
    		if($webhooks != null && isset($webhooks->ackNotifications) && !empty($webhooks->ackNotifications)){
