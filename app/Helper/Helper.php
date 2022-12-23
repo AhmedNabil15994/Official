@@ -66,6 +66,8 @@ class Helper
                 ],
                 // Metadata Needs to be formatted because of (locationMessage) type and msg Id from Reaction and others
                 'metadata' => isset($msgData['metadata']) ? $msgData['metadata'] : [],
+                'labelled' => isset($msgData['labeled']) ? $msgData['labeled'] : null,
+                'starred' => isset($msgData['starred']) ? $msgData['starred'] : 0,
                 'channel' => str_replace('wlChannel','',$sessionId),
             ];     
             if($noChannel){

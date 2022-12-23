@@ -49,7 +49,7 @@ class ReplyControllers extends Controller {
         }
         $input['messageId'] = explode('.us_',$input['messageId'])[1];
 
-        if(!isset($input['body']) || empty($input['body'])){
+        if(!isset($input['body']) || $input['body'] == ''){
             return \TraitsFunc::ErrorMessage("Message Body field is required !!");
         }
 
@@ -249,7 +249,7 @@ class ReplyControllers extends Controller {
         file_put_contents($path.$extension, fopen($input['url'], 'r'));
 
         // shell_exec("ffmpeg -i ".$path.$extension." -ac 1 -c:a libopus -b:a 64k  -ar 48000 ".$path.".oga");
-        shell_exec("/var/www/official/vendor/ffmpeg/ffmpeg -i ".$path.$extension." -ac 1 -c:a libopus -b:a 64k  -ar 48000 ".$path.".oga");
+        shell_exec("/usr/bin/ffmpeg -i ".$path.$extension." -ac 1 -c:a libopus -b:a 64k  -ar 48000 ".$path.".oga");
        
         $input['url'] = \URL::to('/').'/uploads/temp/'.$fileName.'.oga';
 
@@ -662,7 +662,7 @@ class ReplyControllers extends Controller {
         }
         $input['messageId'] = explode('.us_',$input['messageId'])[1];
 
-        if(!isset($input['body']) || empty($input['body'])){
+        if(!isset($input['body']) || $input['body'] == ''){
             return \TraitsFunc::ErrorMessage("Message Body field is required !!");
         }
 
@@ -871,7 +871,7 @@ class ReplyControllers extends Controller {
         }
         $input['messageId'] = explode('.us_',$input['messageId'])[1];
 
-        if(!isset($input['body']) || empty($input['body'])){
+        if(!isset($input['body']) || $input['body'] == ''){
             return \TraitsFunc::ErrorMessage("Message Body field is required !!");
         }
 
@@ -972,11 +972,11 @@ class ReplyControllers extends Controller {
         }
         $input['messageId'] = explode('.us_',$input['messageId'])[1];
 
-        if(!isset($input['body']) || empty($input['body'])){
+        if(!isset($input['body']) || $input['body'] == ''){
             return \TraitsFunc::ErrorMessage("Message Body field is required !!");
         }
 
-        if(!isset($input['footer']) || empty($input['footer'])){
+        if(!isset($input['footer']) || $input['footer'] == ''){
             return \TraitsFunc::ErrorMessage("Message Footer field is required !!");
         }
 
@@ -1080,19 +1080,19 @@ class ReplyControllers extends Controller {
         }
         $input['messageId'] = explode('.us_',$input['messageId'])[1];
 
-        if(!isset($input['body']) || empty($input['body'])){
+        if(!isset($input['body']) || $input['body'] == ''){
             return \TraitsFunc::ErrorMessage("Message Body field is required !!");
         }
 
-        if(!isset($input['footer']) || empty($input['footer'])){
+        if(!isset($input['footer']) || $input['footer'] == ''){
             return \TraitsFunc::ErrorMessage("Message Footer field is required !!");
         }
 
-        if(!isset($input['title']) || empty($input['title'])){
+        if(!isset($input['title']) || $input['title'] == ''){
             return \TraitsFunc::ErrorMessage("Message Title field is required !!");
         }
 
-        if(!isset($input['buttonText']) || empty($input['buttonText'])){
+        if(!isset($input['buttonText']) || $input['buttonText'] == ''){
             return \TraitsFunc::ErrorMessage("Message Button Text field is required !!");
         }
 
@@ -1421,7 +1421,7 @@ class ReplyControllers extends Controller {
         }
         $input['messageId'] = explode('.us_',$input['messageId'])[1];
 
-        if(!isset($input['body']) || empty($input['body'])){
+        if(!isset($input['body']) || $input['body'] == ''){
             return \TraitsFunc::ErrorMessage("Message Body field is required !!");
         }
 

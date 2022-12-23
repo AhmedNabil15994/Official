@@ -45,7 +45,7 @@ class BulkControllers extends Controller {
         }
 
         if(!isset($input['messageData'])){
-            if(!isset($input['body']) || empty($input['body'])){
+            if(!isset($input['body']) || $input['body'] == ''){
                 return \TraitsFunc::ErrorMessage("Message Body field is required !!");
             }
         }
@@ -573,7 +573,7 @@ class BulkControllers extends Controller {
         }
 
         if(!isset($input['messageData'])){
-            if(!isset($input['body']) || empty($input['body'])){
+            if(!isset($input['body']) || $input['body'] == ''){
                 return \TraitsFunc::ErrorMessage("Message Body field is required !!");
             }
 
@@ -693,11 +693,11 @@ class BulkControllers extends Controller {
         }
 
         if(!isset($input['messageData'])){
-            if(!isset($input['body']) || empty($input['body'])){
+            if(!isset($input['body']) || $input['body'] == ''){
                 return \TraitsFunc::ErrorMessage("Message Body field is required !!");
             }
 
-            if(!isset($input['footer']) || empty($input['footer'])){
+            if(!isset($input['footer']) || $input['footer'] == ''){
                 return \TraitsFunc::ErrorMessage("Message Footer field is required !!");
             }
 
@@ -788,11 +788,11 @@ class BulkControllers extends Controller {
         }
 
         if(!isset($input['messageData'])){
-            if(!isset($input['body']) || empty($input['body'])){
+            if(!isset($input['body']) || $input['body'] == ''){
                 return \TraitsFunc::ErrorMessage("Message Body field is required !!");
             }
 
-            if(!isset($input['footer']) || empty($input['footer'])){
+            if(!isset($input['footer']) || $input['footer'] == ''){
                 return \TraitsFunc::ErrorMessage("Message Footer field is required !!");
             }
 
@@ -891,19 +891,19 @@ class BulkControllers extends Controller {
 
         if(!isset($input['messageData'])){
 
-            if(!isset($input['body']) || empty($input['body'])){
+            if(!isset($input['body']) || $input['body'] == ''){
                 return \TraitsFunc::ErrorMessage("Message Body field is required !!");
             }
 
-            if(!isset($input['footer']) || empty($input['footer'])){
+            if(!isset($input['footer']) || $input['footer'] == ''){
                 return \TraitsFunc::ErrorMessage("Message Footer field is required !!");
             }
 
-            if(!isset($input['title']) || empty($input['title'])){
+            if(!isset($input['title']) || $input['title'] == ''){
                 return \TraitsFunc::ErrorMessage("Message Title field is required !!");
             }
 
-            if(!isset($input['buttonText']) || empty($input['buttonText'])){
+            if(!isset($input['buttonText']) || $input['buttonText'] == ''){
                 return \TraitsFunc::ErrorMessage("Message Button Text field is required !!");
             }
 
@@ -1199,7 +1199,7 @@ class BulkControllers extends Controller {
         }
 
         if(!isset($input['messageData'])){
-            if(!isset($input['body']) || empty($input['body'])){
+            if(!isset($input['body']) || $input['body'] == ''){
                 return \TraitsFunc::ErrorMessage("Message Body field is required !!");
             }
 
