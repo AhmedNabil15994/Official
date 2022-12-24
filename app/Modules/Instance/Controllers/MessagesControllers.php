@@ -41,7 +41,11 @@ class MessagesControllers extends Controller {
         }
 
         if(isset($input['messageId']) && !empty($input['messageId'])){
-            $input['messageId'] = explode('.us_',$input['messageId'])[1];
+            if(str_contains($input['messageId'], 'true') || str_contains($input['messageId'], 'false')){
+                $input['messageId'] = explode('.us_',$input['messageId'])[1];
+            }else{
+                $input['messageId'] = $input['messageId'];
+            }
             $response = Http::post(env('URL_WA_SERVER').'/messages/getMessageByID?id='.$name,$input);
         }else{
             $queryString = '';
@@ -1061,7 +1065,7 @@ class MessagesControllers extends Controller {
         $input['messageId'] = explode('.us_',$input['messageId'])[1];
 
         if(!isset($input['reaction']) || empty($input['reaction'])){
-            return \TraitsFunc::ErrorMessage("R field is required !!");
+            return \TraitsFunc::ErrorMessage("Reaction field is required !!");
         }
 
         $forwardResponse = Http::post(env('URL_WA_SERVER').'/messages/sendReaction?id='.$name, [

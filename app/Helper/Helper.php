@@ -32,8 +32,17 @@ class Helper
         $remoteJid = str_replace('s.whatsapp.net','c.us',$remoteJid);
         $id = ( $msgData['fromMe'] == 'true' ? 'true_' : 'false_') . $remoteJid . '_'  . $msgData['id'];
 
-        if(isset($msgData['metadata']) && isset($msgData['metadata']['quotedMessageId']) && isset($msgData['metadata']['quotedMessage']['fromMe'])){
-            $msgData['metadata']['quotedMessageId'] = ( $msgData['metadata']['quotedMessage']['fromMe'] == 'true' ? 'true_' : 'false_') . $remoteJid . '_'  . $msgData['metadata']['quotedMessageId'];
+        $fromMe = '';
+        if(isset($msgData['metadata']) && isset($msgData['metadata']['quotedMessageId'])){
+            $response = Http::post(env('URL_WA_SERVER').'/messages/getMessageByID?id='.$sessionId,['messageId'=>$msgData['metadata']['quotedMessageId']]);
+            $fromMe = @json_decode($response->getBody())->data->fromMe;
+            $msgData['metadata']['quotedMessageId'] =  $fromMe. '_' . $remoteJid . '_'  . $msgData['metadata']['quotedMessageId'];
+            if(isset($msgData['metadata']['fromMe']) && $fromMe != ''){
+                $msgData['metadata']['fromMe'] = $fromMe;
+            }
+            if(isset($msgData['metadata']['quotedMessage']) && isset($msgData['metadata']['quotedMessage']['fromMe']) && $fromMe != ''){
+                $msgData['metadata']['quotedMessage']['fromMe'] = $fromMe;
+            }
         }
         if(isset($msgData['metadata']) && isset($msgData['metadata']['remoteJid'])){
             $msgData['metadata']['remoteJid'] = str_replace('s.whatsapp.net','c.us',$msgData['metadata']['remoteJid']);
@@ -43,7 +52,7 @@ class Helper
             $msgData['metadata']['quotedMessage']['remoteJid'] = str_replace('s.whatsapp.net','c.us',$msgData['metadata']['quotedMessage']['remoteJid']);
         }
         $messages = [];
-        if($msgData['body'] != '' || ($msgData['body'] == '' && in_array($msgData['messageType'],['locationMessage','order']))){
+        if($msgData['body'] != '' || ($msgData['body'] == '' && in_array($msgData['messageType'],['locationMessage','order','reactionMessage']))){
             $messages = [
                 'id' => $id,
                 'body'=> $msgData['body'],
