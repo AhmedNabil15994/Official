@@ -40,7 +40,7 @@ class ReplyControllers extends Controller {
             return \TraitsFunc::ErrorMessage("Channel isn't Found !!");
         }
 
-        if((!isset($input['phone']) || empty($input['phone']))){
+        if((!isset($input['phone']) || empty($input['phone'])) && !isset($input['chat'])){
             return \TraitsFunc::ErrorMessage("Receiver Phone field is required !!");
         }
 
@@ -99,7 +99,7 @@ class ReplyControllers extends Controller {
             return \TraitsFunc::ErrorMessage("Channel isn't Found !!");
         }
 
-        if((!isset($input['phone']) || empty($input['phone']))){
+        if((!isset($input['phone']) || empty($input['phone'])) && !isset($input['chat'])){
             return \TraitsFunc::ErrorMessage("Receiver Phone field is required !!");
         }
 
@@ -165,7 +165,7 @@ class ReplyControllers extends Controller {
             return \TraitsFunc::ErrorMessage("Channel isn't Found !!");
         }
 
-        if((!isset($input['phone']) || empty($input['phone']))){
+        if((!isset($input['phone']) || empty($input['phone'])) && !isset($input['chat'])){
             return \TraitsFunc::ErrorMessage("Receiver Phone field is required !!");
         }
 
@@ -230,7 +230,7 @@ class ReplyControllers extends Controller {
             return \TraitsFunc::ErrorMessage("Channel isn't Found !!");
         }
 
-        if((!isset($input['phone']) || empty($input['phone']))){
+        if((!isset($input['phone']) || empty($input['phone'])) && !isset($input['chat'])){
             return \TraitsFunc::ErrorMessage("Receiver Phone field is required !!");
         }
 
@@ -307,7 +307,7 @@ class ReplyControllers extends Controller {
             return \TraitsFunc::ErrorMessage("Channel isn't Found !!");
         }
 
-        if((!isset($input['phone']) || empty($input['phone']))){
+        if((!isset($input['phone']) || empty($input['phone'])) && !isset($input['chat'])){
             return \TraitsFunc::ErrorMessage("Receiver Phone field is required !!");
         }
 
@@ -370,7 +370,7 @@ class ReplyControllers extends Controller {
             return \TraitsFunc::ErrorMessage("Channel isn't Found !!");
         }
 
-        if((!isset($input['phone']) || empty($input['phone']))){
+        if((!isset($input['phone']) || empty($input['phone'])) && !isset($input['chat'])){
             return \TraitsFunc::ErrorMessage("Receiver Phone field is required !!");
         }
 
@@ -435,7 +435,7 @@ class ReplyControllers extends Controller {
             return \TraitsFunc::ErrorMessage("Channel isn't Found !!");
         }
 
-        if((!isset($input['phone']) || empty($input['phone']))){
+        if((!isset($input['phone']) || empty($input['phone'])) && !isset($input['chat'])){
             return \TraitsFunc::ErrorMessage("Receiver Phone field is required !!");
         }
 
@@ -512,7 +512,7 @@ class ReplyControllers extends Controller {
             return \TraitsFunc::ErrorMessage("Channel isn't Found !!");
         }
 
-        if((!isset($input['phone']) || empty($input['phone']))){
+        if((!isset($input['phone']) || empty($input['phone'])) && !isset($input['chat'])){
             return \TraitsFunc::ErrorMessage("Receiver Phone field is required !!");
         }
 
@@ -583,7 +583,7 @@ class ReplyControllers extends Controller {
             return \TraitsFunc::ErrorMessage("Channel isn't Found !!");
         }
 
-        if((!isset($input['phone']) || empty($input['phone']))){
+        if((!isset($input['phone']) || empty($input['phone'])) && !isset($input['chat'])){
             return \TraitsFunc::ErrorMessage("Receiver Phone field is required !!");
         }
 
@@ -653,7 +653,7 @@ class ReplyControllers extends Controller {
             return \TraitsFunc::ErrorMessage("Channel isn't Found !!");
         }
 
-        if((!isset($input['phone']) || empty($input['phone']))){
+        if((!isset($input['phone']) || empty($input['phone'])) && !isset($input['chat'])){
             return \TraitsFunc::ErrorMessage("Receiver Phone field is required !!");
         }
 
@@ -718,7 +718,7 @@ class ReplyControllers extends Controller {
             return \TraitsFunc::ErrorMessage("Channel isn't Found !!");
         }
 
-        if((!isset($input['phone']) || empty($input['phone']))){
+        if((!isset($input['phone']) || empty($input['phone'])) && !isset($input['chat'])){
             return \TraitsFunc::ErrorMessage("Receiver Phone field is required !!");
         }
 
@@ -779,7 +779,7 @@ class ReplyControllers extends Controller {
             return \TraitsFunc::ErrorMessage("Channel isn't Found !!");
         }
 
-        if((!isset($input['phone']) || empty($input['phone']))){
+        if((!isset($input['phone']) || empty($input['phone'])) && !isset($input['chat'])){
             return \TraitsFunc::ErrorMessage("Receiver Phone field is required !!");
         }
 
@@ -862,7 +862,7 @@ class ReplyControllers extends Controller {
             return \TraitsFunc::ErrorMessage("Raw data field is required !!");
         }
 
-        if((!isset($input['phone']) || empty($input['phone']))){
+        if((!isset($input['phone']) || empty($input['phone'])) && !isset($input['chat'])){
             return \TraitsFunc::ErrorMessage("Receiver Phone field is required !!");
         }
 
@@ -963,7 +963,7 @@ class ReplyControllers extends Controller {
             return \TraitsFunc::ErrorMessage("Raw data field is required !!");
         }
 
-        if((!isset($input['phone']) || empty($input['phone']))){
+        if((!isset($input['phone']) || empty($input['phone'])) && !isset($input['chat'])){
             return \TraitsFunc::ErrorMessage("Receiver Phone field is required !!");
         }
 
@@ -1071,7 +1071,7 @@ class ReplyControllers extends Controller {
             return \TraitsFunc::ErrorMessage("Raw data field is required !!");
         }
 
-        if((!isset($input['phone']) || empty($input['phone']))){
+        if((!isset($input['phone']) || empty($input['phone'])) && !isset($input['chat'])){
             return \TraitsFunc::ErrorMessage("Receiver Phone field is required !!");
         }
 
@@ -1170,7 +1170,7 @@ class ReplyControllers extends Controller {
             return \TraitsFunc::ErrorMessage("Channel isn't Found !!");
         }
 
-        if((!isset($input['phone']) || empty($input['phone']))){
+        if((!isset($input['phone']) || empty($input['phone'])) && !isset($input['chat'])){
             return \TraitsFunc::ErrorMessage("Receiver Phone field is required !!");
         }
 
@@ -1236,7 +1236,7 @@ class ReplyControllers extends Controller {
             return \TraitsFunc::ErrorMessage("Channel isn't Found !!");
         }
 
-        if((!isset($input['phone']) || empty($input['phone']))){
+        if((!isset($input['phone']) || empty($input['phone'])) && !isset($input['chat'])){
             return \TraitsFunc::ErrorMessage("Receiver Phone field is required !!");
         }
 
@@ -1297,7 +1297,7 @@ class ReplyControllers extends Controller {
             return \TraitsFunc::ErrorMessage("Channel isn't Found !!");
         }
 
-        if((!isset($input['phone']) || empty($input['phone']))){
+        if((!isset($input['phone']) || empty($input['phone'])) && !isset($input['chat'])){
             return \TraitsFunc::ErrorMessage("Receiver Phone field is required !!");
         }
 
@@ -1356,7 +1356,7 @@ class ReplyControllers extends Controller {
             return \TraitsFunc::ErrorMessage("Channel isn't Found !!");
         }
 
-        if((!isset($input['phone']) || empty($input['phone']))){
+        if((!isset($input['phone']) || empty($input['phone'])) && !isset($input['chat'])){
             return \TraitsFunc::ErrorMessage("Receiver Phone field is required !!");
         }
 
@@ -1412,7 +1412,7 @@ class ReplyControllers extends Controller {
             return \TraitsFunc::ErrorMessage("Channel isn't Found !!");
         }
 
-        if((!isset($input['phone']) || empty($input['phone']))){
+        if((!isset($input['phone']) || empty($input['phone'])) && !isset($input['chat'])){
             return \TraitsFunc::ErrorMessage("Receiver Phone field is required !!");
         }
 

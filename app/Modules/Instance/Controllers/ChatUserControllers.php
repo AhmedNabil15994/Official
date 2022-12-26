@@ -266,10 +266,10 @@ class ChatUserControllers extends Controller {
         if(isset($res->success) && $res->success){
             if(is_array($res->data)){
                 foreach($res->data as $oneMessage){
-                    $messages[] = str_replace('@s.whatsapp.net','c.us',$oneMessage);
+                    $messages[] = str_replace('s.whatsapp.net','c.us',$oneMessage);
                 }
             }else{
-                $messages[] = str_replace('@s.whatsapp.net','c.us',$res->data);
+                $messages[] = str_replace('s.whatsapp.net','c.us',$res->data);
             }
 
             $data['data'] = $messages;

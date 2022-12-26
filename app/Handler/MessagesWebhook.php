@@ -147,6 +147,10 @@ class MessagesWebhook extends ProcessWebhookJob{
                 $myData['mutedUntil'] = date('Y-m-d H:i:s',$chatObj['mute'] / 1000);
             }
         }
+        if(isset($chatObj['labeled'])){
+            $myData['labelled'] = $chatObj['labeled'] == 'true' ? true : false;
+            $myData['label_id'] = (int)$chatObj['label_id'];
+        }
    		if($webhooks != null && isset($webhooks->ackNotifications) && !empty($webhooks->ackNotifications)){
    			return $this->fireWebhook([
 				'event' => 'dialog-update',

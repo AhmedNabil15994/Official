@@ -57,12 +57,11 @@ class GroupsControllers extends Controller {
 
         $dialogs = [];
         if(isset($res->success) && $res->success){
+            $res->data = (array) $res->data;
             if(is_array($res->data)){
                 foreach($res->data as $oneMessage){
-                    $dialogs[] = \Helper::formatArrayShape((array)$oneMessage);
+                    $dialogs[] = (array)$oneMessage;
                 }
-            }else{
-                $dialogs[] = \Helper::formatArrayShape((array)$res->data);
             }
 
             $data['data'] = $dialogs;
