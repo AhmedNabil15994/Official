@@ -26,7 +26,7 @@ class Helper
     }
 
     public static function formatMessages($msgData,$sessionId,$noChannel=false){
-        $author = $msgData['fromMe'] == 'false' && $msgData['author'] != $msgData['pushName'] ? $msgData['pushName'] : ($msgData['fromMe'] == 'true' ? 'Me' : $msgData['author']);
+        $author = $msgData['fromMe'] == 'false' && $msgData['author'] != $msgData['pushName'] && !str_contains($msgData['remoteJid'], '@g.us') ? $msgData['pushName'] : ($msgData['fromMe'] == 'true' ? 'Me' : $msgData['author']);
         $author = is_numeric($author) ? $author.'@c.us' : $author;
         $remoteJid = $msgData['remoteJid'];
         $remoteJid = str_replace('s.whatsapp.net','c.us',$remoteJid);

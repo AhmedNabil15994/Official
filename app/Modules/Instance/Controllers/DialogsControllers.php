@@ -109,7 +109,7 @@ class DialogsControllers extends Controller {
             return \TraitsFunc::ErrorMessage("Channel isn't Found !!");
         }
 
-        if((!isset($input['phone']) || empty($input['phone']))){
+        if((!isset($input['phone']) || empty($input['phone']))  && !isset($input['chat'])){
             return \TraitsFunc::ErrorMessage("Receiver Phone field is required !!");
         }
 
@@ -122,7 +122,7 @@ class DialogsControllers extends Controller {
         $data['data'] = [
             'success' => true,
             'deleted' => true,
-            'chatId' => $input['phone'],
+            'chatId' => isset($input['chat']) ? $input['chat'] : $input['phone'],
         ];
         $data['status'] = \TraitsFunc::SuccessResponse("Chat Read Successfully !!!");
         return \Response::json((object) $data);        
@@ -148,7 +148,7 @@ class DialogsControllers extends Controller {
             return \TraitsFunc::ErrorMessage("Channel isn't Found !!");
         }
 
-        if((!isset($input['phone']) || empty($input['phone']))){
+        if((!isset($input['phone']) || empty($input['phone']))  && !isset($input['chat'])){
             return \TraitsFunc::ErrorMessage("Receiver Phone field is required !!");
         }
 
@@ -161,7 +161,7 @@ class DialogsControllers extends Controller {
         $data['data'] = [
             'success' => true,
             'chatRead' => true,
-            'chatId' => $input['phone'],
+            'chatId' => isset($input['chat']) ? $input['chat'] : $input['phone'],
         ];
         $data['status'] = \TraitsFunc::SuccessResponse("Chat Read Successfully !!!");
         return \Response::json((object) $data);        
@@ -187,7 +187,7 @@ class DialogsControllers extends Controller {
             return \TraitsFunc::ErrorMessage("Channel isn't Found !!");
         }
 
-        if((!isset($input['phone']) || empty($input['phone']))){
+        if((!isset($input['phone']) || empty($input['phone']))  && !isset($input['chat'])){
             return \TraitsFunc::ErrorMessage("Receiver Phone field is required !!");
         }
 
@@ -200,7 +200,7 @@ class DialogsControllers extends Controller {
         $data['data'] = [
             'success' => true,
             'chatRead' => false,
-            'chatId' => $input['phone'],
+            'chatId' => isset($input['chat']) ? $input['chat'] : $input['phone'],
         ];
         $data['status'] = \TraitsFunc::SuccessResponse("Chat Read Successfully !!!");
         return \Response::json((object) $data);        
@@ -226,7 +226,7 @@ class DialogsControllers extends Controller {
             return \TraitsFunc::ErrorMessage("Channel isn't Found !!");
         }
 
-        if((!isset($input['phone']) || empty($input['phone']))){
+        if((!isset($input['phone']) || empty($input['phone']))  && !isset($input['chat'])){
             return \TraitsFunc::ErrorMessage("Receiver Phone field is required !!");
         }
 
@@ -239,7 +239,7 @@ class DialogsControllers extends Controller {
         $data['data'] = [
             'success' => true,
             'chatArchived' => true,
-            'chatId' => $input['phone'],
+            'chatId' => isset($input['chat']) ? $input['chat'] : $input['phone'],
         ];
         $data['status'] = \TraitsFunc::SuccessResponse("Chat Archived Successfully !!!");
         return \Response::json((object) $data);        
@@ -265,7 +265,7 @@ class DialogsControllers extends Controller {
             return \TraitsFunc::ErrorMessage("Channel isn't Found !!");
         }
 
-        if((!isset($input['phone']) || empty($input['phone']))){
+        if((!isset($input['phone']) || empty($input['phone']))  && !isset($input['chat'])){
             return \TraitsFunc::ErrorMessage("Receiver Phone field is required !!");
         }
 
@@ -278,7 +278,7 @@ class DialogsControllers extends Controller {
         $data['data'] = [
             'success' => true,
             'chatArchived' => false,
-            'chatId' => $input['phone'],
+            'chatId' => isset($input['chat']) ? $input['chat'] : $input['phone'],
         ];
         $data['status'] = \TraitsFunc::SuccessResponse("Chat UnArchived Successfully !!!");
         return \Response::json((object) $data);        
@@ -304,7 +304,7 @@ class DialogsControllers extends Controller {
             return \TraitsFunc::ErrorMessage("Channel isn't Found !!");
         }
 
-        if((!isset($input['phone']) || empty($input['phone']))){
+        if((!isset($input['phone']) || empty($input['phone']))  && !isset($input['chat'])){
             return \TraitsFunc::ErrorMessage("Receiver Phone field is required !!");
         }
 
@@ -317,7 +317,7 @@ class DialogsControllers extends Controller {
         $data['data'] = [
             'success' => true,
             'chatPinned' => true,
-            'chatId' => $input['phone'],
+            'chatId' => isset($input['chat']) ? $input['chat'] : $input['phone'],
         ];
         $data['status'] = \TraitsFunc::SuccessResponse("Chat Pinned Successfully !!!");
         return \Response::json((object) $data);        
@@ -343,7 +343,7 @@ class DialogsControllers extends Controller {
             return \TraitsFunc::ErrorMessage("Channel isn't Found !!");
         }
 
-        if((!isset($input['phone']) || empty($input['phone']))){
+        if((!isset($input['phone']) || empty($input['phone']))  && !isset($input['chat'])){
             return \TraitsFunc::ErrorMessage("Receiver Phone field is required !!");
         }
 
@@ -356,7 +356,7 @@ class DialogsControllers extends Controller {
         $data['data'] = [
             'success' => true,
             'chatPinned' => false,
-            'chatId' => $input['phone'],
+            'chatId' => isset($input['chat']) ? $input['chat'] : $input['phone'],
         ];
         $data['status'] = \TraitsFunc::SuccessResponse("Chat UnPinned Successfully !!!");
         return \Response::json((object) $data);        
@@ -383,7 +383,7 @@ class DialogsControllers extends Controller {
             return \TraitsFunc::ErrorMessage("Channel isn't Found !!");
         }
 
-        if((!isset($input['phone']) || empty($input['phone']))){
+        if((!isset($input['phone']) || empty($input['phone']))  && !isset($input['chat'])){
             return \TraitsFunc::ErrorMessage("Receiver Phone field is required !!");
         }
 
@@ -400,7 +400,7 @@ class DialogsControllers extends Controller {
         $data['data'] = [
             'success' => true,
             'chatMuted' => true,
-            'chatId' => $input['phone'],
+            'chatId' => isset($input['chat']) ? $input['chat'] : $input['phone'],
         ];
         $data['status'] = \TraitsFunc::SuccessResponse("Chat Muted Successfully !!!");
         return \Response::json((object) $data);        
@@ -426,7 +426,7 @@ class DialogsControllers extends Controller {
             return \TraitsFunc::ErrorMessage("Channel isn't Found !!");
         }
 
-        if((!isset($input['phone']) || empty($input['phone']))){
+        if((!isset($input['phone']) || empty($input['phone']))  && !isset($input['chat'])){
             return \TraitsFunc::ErrorMessage("Receiver Phone field is required !!");
         }
 
@@ -439,7 +439,7 @@ class DialogsControllers extends Controller {
         $data['data'] = [
             'success' => true,
             'chatMuted' => false,
-            'chatId' => $input['phone'],
+            'chatId' => isset($input['chat']) ? $input['chat'] : $input['phone'],
         ];
         $data['status'] = \TraitsFunc::SuccessResponse("Chat UnMuted Successfully !!!");
         return \Response::json((object) $data);        
@@ -465,7 +465,7 @@ class DialogsControllers extends Controller {
             return \TraitsFunc::ErrorMessage("Channel isn't Found !!");
         }
 
-        if((!isset($input['phone']) || empty($input['phone']))){
+        if((!isset($input['phone']) || empty($input['phone']))  && !isset($input['chat'])){
             return \TraitsFunc::ErrorMessage("Receiver Phone field is required !!");
         }
 
@@ -477,7 +477,7 @@ class DialogsControllers extends Controller {
             
         $data['data'] = [
             'success' => true,
-            'chatId' => $input['phone'],
+            'chatId' => isset($input['chat']) ? $input['chat'] : $input['phone'],
         ];
         $data['status'] = \TraitsFunc::SuccessResponse("Chat UnMuted Successfully !!!");
         return \Response::json((object) $data);        
@@ -503,7 +503,7 @@ class DialogsControllers extends Controller {
             return \TraitsFunc::ErrorMessage("Channel isn't Found !!");
         }
 
-        if((!isset($input['phone']) || empty($input['phone']))){
+        if((!isset($input['phone']) || empty($input['phone']))  && !isset($input['chat'])){
             return \TraitsFunc::ErrorMessage("Receiver Phone field is required !!");
         }
 
@@ -515,7 +515,7 @@ class DialogsControllers extends Controller {
             
         $data['data'] = [
             'success' => true,
-            'chatId' => $input['phone'],
+            'chatId' => isset($input['chat']) ? $input['chat'] : $input['phone'],
         ];
         $data['status'] = \TraitsFunc::SuccessResponse("Chat UnMuted Successfully !!!");
         return \Response::json((object) $data);        
