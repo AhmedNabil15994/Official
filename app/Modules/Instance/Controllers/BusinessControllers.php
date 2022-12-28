@@ -299,6 +299,55 @@ class BusinessControllers extends Controller {
 
     /**
      * @OA\Post(
+     *     path="/business/orders",
+     *     tags={"Whatsapp Business"},
+     *     operationId="orders",
+     *     summary="fetch user business orders",
+     *     description="fetch connected user business orders data",
+     *     security={ {"bearer_token": {} , "channel_id": {} , "channel_token": {} }},
+     *     @OA\Response(response="200", description=""),
+     *     @OA\Parameter(description="Phone to get specific Phone Orders",in="query",name="phone", required=false),
+     * )
+     */
+    public function orders(){
+        $input = Request::all();
+        $name = NAME;
+        $deviceObj = Device::NotDeleted()->where('name', $name)->first();
+        if(!$deviceObj){
+            return \TraitsFunc::ErrorMessage("Channel isn't Found !!");
+        }
+        
+        $response = Http::post(env('URL_WA_SERVER').'/business/getOrders?id='.$name,$input);
+
+        $res = json_decode($response->getBody());
+        if(!$res->success){
+            return \TraitsFunc::ErrorMessage("System Error, Contact Your System Adminstrator !!");
+        }
+
+        $messages = [];
+        if(isset($res->success) && $res->success){
+            if(is_array($res->data)){
+                foreach($res->data as $oneMessage){
+                    if(isset($oneMessage->id)){
+                        $messages[] = \Helper::formatArrayShape((array)$oneMessage);
+                    }
+                }
+            }else{
+                if(isset($res->data->id)){
+                    $messages[] = \Helper::formatArrayShape((array)$res->data);
+                }
+            }
+
+            $data['data'] = $messages;
+            $data['status'] = \TraitsFunc::SuccessResponse();
+            return \Response::json((object) $data);        
+        }else{
+            return \TraitsFunc::ErrorMessage($res->message);
+        }
+    }
+
+    /**
+     * @OA\Post(
      *     path="/business/getOrder",
      *     tags={"Whatsapp Business"},
      *     operationId="getOrder",

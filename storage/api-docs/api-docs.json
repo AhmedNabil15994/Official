@@ -1191,6 +1191,36 @@
                 ]
             }
         },
+        "/business/orders": {
+            "post": {
+                "tags": [
+                    "Whatsapp Business"
+                ],
+                "summary": "fetch user business orders",
+                "description": "fetch connected user business orders data",
+                "operationId": "orders",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone to get specific Phone Orders",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": [],
+                        "channel_id": [],
+                        "channel_token": []
+                    }
+                ]
+            }
+        },
         "/business/getOrder": {
             "post": {
                 "tags": [

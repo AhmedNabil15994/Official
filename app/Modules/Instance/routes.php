@@ -158,12 +158,14 @@
     Route::group(['prefix' => '/business','middleware'=>'InstanceMiddleware'] , function () {
         $controller = App\Http\Controllers\BusinessControllers::class;
         Route::post('/getBusinessProfile', [$controller,'getBusinessProfile']);
+
         Route::post('/products', [$controller,'products']);
         Route::post('/products/create', [$controller,'createProduct']);
         Route::post('/products/update', [$controller,'updateProduct']);
         Route::post('/products/delete', [$controller,'deleteProduct']);
         Route::post('/sendProduct', [$controller,'sendProduct']);
 
+        Route::post('/orders', [$controller,'orders']);
         Route::post('/getOrder', [$controller,'getOrder']);
         Route::post('/collections', [$controller,'collections']);
         Route::post('/sendCatalog', [$controller,'sendCatalog']);
