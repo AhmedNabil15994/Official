@@ -18,6 +18,14 @@ class MessagesWebhook extends ProcessWebhookJob{
 	    	return $this->incomingMessage($mainData);
 	    }
 
+	    if(isset($mainData['conversation']) && isset($mainData['isGroup'])){
+	    	return $this->newGroup($mainData);
+	    }
+
+	    if(isset($mainData['conversationUpdate'])){
+	    	return $this->updateGroup($mainData);
+	    }
+
 	    if(isset($mainData['messageStatus'])){
 	    	return $this->updateMessage($mainData);
 	    }
@@ -116,6 +124,44 @@ class MessagesWebhook extends ProcessWebhookJob{
    		return 1;
 	}
 
+	public function newGroup($mainData){
+		$convData = $mainData['conversation']['data'];
+	   	$sessionId = $mainData['sessionId'];
+	   	$msgData = (array) $convData;
+	   	$msgData = \Helper::formatArrayShape($msgData);
+	   	$participantsArr = [];
+	   	foreach($msgData['participants'] as $key => $participant){
+	   		if($key%2 == 0){
+		   		$participantsArr[] = array_merge($msgData['participants'][$key], $msgData['participants'][$key+1]);
+	   		}
+	   	}
+	   	$msgData['participants'] = $participantsArr;
+
+	   	$webhooks = $this->getWebhooksURL($mainData['sessionId']);
+   		if($webhooks != null && isset($webhooks->chatNotifications) && !empty($webhooks->chatNotifications)){
+   			$this->fireWebhook([
+   				'event' => 'group-new',
+   				'data' => $msgData,
+   			],$webhooks->chatNotifications);
+   		}	  
+	   	return 1;
+	}
+
+	public function updateGroup($mainData){
+		$convData = $mainData['conversationUpdate']['data'];
+	   	$sessionId = $mainData['sessionId'];
+	   	$msgData = (array) $convData;
+	   	$msgData = \Helper::formatArrayShape($msgData);
+
+	   	$webhooks = $this->getWebhooksURL($mainData['sessionId']);
+   		if($webhooks != null && isset($webhooks->chatNotifications) && !empty($webhooks->chatNotifications)){
+   			$this->fireWebhook([
+   				'event' => 'group-update',
+   				'data' => $msgData,
+   			],$webhooks->chatNotifications);
+   		}	  
+	   	return 1;
+	}
 
 	public function updateConversation($mainData){
 		$convData = $mainData['conversationStatus'];
@@ -151,11 +197,11 @@ class MessagesWebhook extends ProcessWebhookJob{
             $myData['labelled'] = $chatObj['labeled'] == 'true' ? true : false;
             $myData['label_id'] = (int)$chatObj['label_id'];
         }
-   		if($webhooks != null && isset($webhooks->ackNotifications) && !empty($webhooks->ackNotifications)){
+   		if($webhooks != null && isset($webhooks->chatNotifications) && !empty($webhooks->chatNotifications)){
    			return $this->fireWebhook([
 				'event' => 'dialog-update',
 	   			'data' => $myData
-   			],$webhooks->ackNotifications);
+   			],$webhooks->chatNotifications);
    		}	  	
 	   	
    		return 1;  	
@@ -168,11 +214,11 @@ class MessagesWebhook extends ProcessWebhookJob{
 	   	unset($msgData['id']);
 
 	   	$webhooks = $this->getWebhooksURL($mainData['sessionId']);
-	   	if($webhooks != null && isset($webhooks->ackNotifications) && !empty($webhooks->ackNotifications)){
+	   	if($webhooks != null && isset($webhooks->chatNotifications) && !empty($webhooks->chatNotifications)){
    			return $this->fireWebhook([
 				'event' => 'dialog-delete',
 	   			'data' => $msgData
-   			],$webhooks->ackNotifications);
+   			],$webhooks->chatNotifications);
    		}	  	
 	   	return 1;
 	}
