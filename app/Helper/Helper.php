@@ -51,6 +51,16 @@ class Helper
         if(isset($msgData['metadata']) && isset($msgData['metadata']['quotedMessage']) && isset($msgData['metadata']['quotedMessage']['remoteJid'])){
             $msgData['metadata']['quotedMessage']['remoteJid'] = str_replace('s.whatsapp.net','c.us',$msgData['metadata']['quotedMessage']['remoteJid']);
         }
+
+        $labels = [];
+        if(isset($msgData['labels']) && !empty($msgData['labels'])){
+            foreach ($msgData['labels'] as $labelKey => $labelled) {
+                if($labelled){
+                    $labels[] = $labelKey;
+                }
+            }
+        }
+
         $messages = [];
         if($msgData['body'] != '' || ($msgData['body'] == '' && in_array($msgData['messageType'],['locationMessage','order','reactionMessage']))){
             $messages = [
@@ -75,8 +85,9 @@ class Helper
                 ],
                 // Metadata Needs to be formatted because of (locationMessage) type and msg Id from Reaction and others
                 'metadata' => isset($msgData['metadata']) ? $msgData['metadata'] : [],
+                'labels' => $labels,
                 'labelled' => isset($msgData['labeled']) ? $msgData['labeled'] : null,
-                'starred' => isset($msgData['starred']) ? $msgData['starred'] : 0,
+                'starred' => isset($msgData['starred']) &&  ($msgData['starred'] == true || $msgData['starred'] == 'true') ? 1 : 0,
                 'channel' => str_replace('wlChannel','',$sessionId),
             ];     
             if($noChannel){
