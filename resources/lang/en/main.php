@@ -552,7 +552,7 @@ return [
 	'messageNotifications' => 'Messages Notifications Webhook URL',
 	'ackNotifications' => 'Messages Acknowledge Notifications Webhook URL',
 	'chatNotifications' => 'Chats Notifications Webhook URL',
-	'labelNotifications' => 'Labels Notifications Webhook URL',
+	'businessNotifications' => 'Business Notifications Webhook URL',
 	'accoutMustBeConnected' => "Account Status isn't equal to connected !!",
 	'logoutSuccess' => 'Alert! Connection Has Been Ended Successfully',
 	'clearSuccess' => 'Alert! Channel Has Been Cleared Successfully',

@@ -223,8 +223,8 @@ class UserChannelsControllers extends Controller {
         if(isset($input['chatNotifications']) && !empty($input['chatNotifications'])){
             $oldUrls['chatNotifications'] = $input['chatNotifications'];
         }
-        if(isset($input['labelNotifications']) && !empty($input['labelNotifications'])){
-            $oldUrls['labelNotifications'] = $input['labelNotifications'];
+        if(isset($input['businessNotifications']) && !empty($input['businessNotifications'])){
+            $oldUrls['businessNotifications'] = $input['businessNotifications'];
         }
         $settingObj->webhooks = json_encode($oldUrls);
         

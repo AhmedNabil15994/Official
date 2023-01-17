@@ -142,9 +142,9 @@
                         </div>
                     </div>
                     <div class="form-group row mb-2">
-                        <label class="col-4 col-form-label">{{trans('main.labelNotifications')}}</label>
+                        <label class="col-4 col-form-label">{{trans('main.businessNotifications')}}</label>
                         <div class="col-8">
-                            <input type="text" class="form-control" name="labelNotifications" placeholder="{{trans('main.labelNotifications')}}" value="{{!empty($data->details) ? @$data->details->webhooks->labelNotifications : ''}}">
+                            <input type="text" class="form-control" name="businessNotifications" placeholder="{{trans('main.businessNotifications')}}" value="{{!empty($data->details) ? @$data->details->webhooks->businessNotifications : ''}}">
                         </div>
                     </div>
                     <div class="form-group row mb-2">

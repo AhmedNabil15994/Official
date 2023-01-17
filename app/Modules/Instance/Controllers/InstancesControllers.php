@@ -314,9 +314,9 @@ class InstancesControllers extends Controller {
      *         required=false,
      *     ),
      *     @OA\Parameter(
-     *         description="Labels Webhook",
+     *         description="Business Webhook",
      *         in="query",
-     *         name="webhooks[labelNotifications]",
+     *         name="webhooks[businessNotifications]",
      *         required=false,
      *     ),
      *     @OA\Response(response="200", description="returns channel setting object after modifications.")
@@ -349,8 +349,8 @@ class InstancesControllers extends Controller {
                 if(isset($input['webhooks']['chatNotifications']) && !empty($input['webhooks']['chatNotifications'])){
                     $oldUrls['chatNotifications'] = $input['webhooks']['chatNotifications'];
                 }
-                if(isset($input['webhooks']['labelNotifications']) && !empty($input['webhooks']['labelNotifications'])){
-                    $oldUrls['labelNotifications'] = $input['webhooks']['labelNotifications'];
+                if(isset($input['webhooks']['businessNotifications']) && !empty($input['webhooks']['businessNotifications'])){
+                    $oldUrls['businessNotifications'] = $input['webhooks']['businessNotifications'];
                 }
                 $settingObj->webhooks = json_encode($oldUrls);
             }else{

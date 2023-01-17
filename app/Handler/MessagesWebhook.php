@@ -34,12 +34,20 @@ class MessagesWebhook extends ProcessWebhookJob{
 	    	return $this->updateConversation($mainData);
 	    }
 
-	    if(isset($mainData['chatDeleted'])){
+	    if(isset($mainData['conversationPresence'])){
+	    	return $this->updatePresence($mainData);
+	    }
+
+	    if(isset($mainData['conversationDelete'])){
 	     	return $this->deleteDialog($mainData);
 	    }
 
 	    if(isset($mainData['connectionStatus'])){
 	    	return $this->updateConnectionStatus($mainData);
+	    }
+
+	    if(isset($mainData['business'])){
+	    	return $this->businessData($mainData);
 	    }
 
    		return 1;	   		
@@ -59,6 +67,33 @@ class MessagesWebhook extends ProcessWebhookJob{
    				'event' => 'message-new',
    				'messages' => $item,
    			],$webhooks->messageNotifications);
+   			if($item['type'] == 'order' && isset($webhooks->businessNotifications) && !empty($webhooks->businessNotifications)){
+   				$products = [];
+   				$response = Http::post(env('URL_WA_SERVER').'/business/getOrder?id='.$sessionId,[
+		            'orderId' => $item['metadata']['orderId'],
+		            'orderToken' => $item['metadata']['token'],
+		        ]);
+
+		        $res = json_decode($response->getBody());
+		        if($res->success){
+		        	$products = $res->data->products;
+		        }
+   				$this->fireWebhook([
+	   				'event' => 'orders-set',
+	   				'data' => [
+	   					'id' => $item['metadata']['orderId'],
+						'token' => $item['metadata']['token'],
+						'title' => $item['metadata']['orderTitle'],
+						'sellerJid' => $item['metadata']['sellerJid'],
+						'itemCount' => $item['metadata']['itemCount'],
+						'price' => $item['metadata']['price'],
+						'currency' => $item['metadata']['currency'],
+						'time' => $item['time'],
+						'chatId' => $item['chatName'],
+						'products' => $products,
+	   				],
+	   			],$webhooks->businessNotifications);
+   			}
    		}	  
 	   	return 1;
 	}
@@ -208,7 +243,7 @@ class MessagesWebhook extends ProcessWebhookJob{
 	}
 
 	public function deleteDialog($mainData){
-		$msgData = $mainData['chatDeleted'];
+		$msgData = $mainData['conversationDelete'];
 	   	$sessionId = $mainData['sessionId'];
 	   	$msgData['chatId'] = str_replace('s.whatsapp.net','c.us',$msgData['id']);
 	   	unset($msgData['id']);
@@ -220,6 +255,43 @@ class MessagesWebhook extends ProcessWebhookJob{
 	   			'data' => $msgData
    			],$webhooks->chatNotifications);
    		}	  	
+	   	return 1;
+	}
+
+	public function updatePresence($mainData){
+	   	$sessionId = $mainData['sessionId'];
+		$convData = $mainData['conversationPresence']['data'];
+	   	$newData = [
+	   		'chatId' => str_replace('s.whatsapp.net','c.us',$convData['id']),
+	   		'presenceData' => [
+	   			'phone' => str_replace('@s.whatsapp.net','',key($convData['presences'])),
+	   			'presence' => reset($convData['presences'])['lastKnownPresence'] == 'composing' ? 'typing' : reset($convData['presences'])['lastKnownPresence'],
+	   		],
+	   	];
+
+		$webhooks = $this->getWebhooksURL($mainData['sessionId']);
+	   	if($webhooks != null && isset($webhooks->chatNotifications) && !empty($webhooks->chatNotifications)){
+   			return $this->fireWebhook([
+				'event' => 'dialog-presence',
+	   			'data' => $newData
+   			],$webhooks->chatNotifications);
+   		}	  	
+	   	return 1;
+	}
+
+	public function businessData($mainData){
+		$sessionId = $mainData['sessionId'];
+		$event = $mainData['business']['type'];
+		$eventData = $mainData['business']['data'];
+		if(str_contains($event, 'labels') || str_contains($event, 'replies')){
+			$webhooks = $this->getWebhooksURL($sessionId);
+		   	if($webhooks != null && isset($webhooks->businessNotifications) && !empty($webhooks->businessNotifications)){
+	   			return $this->fireWebhook([
+					'event' => $event,
+		   			'data' => !str_contains($event, 'delete') ? json_decode($eventData) : $eventData
+	   			],$webhooks->businessNotifications);
+	   		}	 
+		}
 	   	return 1;
 	}
 

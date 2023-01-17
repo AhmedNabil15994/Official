@@ -3067,9 +3067,9 @@
                         "required": false
                     },
                     {
-                        "name": "webhooks[labelNotifications]",
+                        "name": "webhooks[businessNotifications]",
                         "in": "query",
-                        "description": "Labels Webhook",
+                        "description": "Business Webhook",
                         "required": false
                     }
                 ],
