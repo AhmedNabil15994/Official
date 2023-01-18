@@ -68,7 +68,7 @@ class  Device extends Model{
         if($id_users != null){
             $source->where('id_users',$id_users);
         }
-        $source->orderBy('id','DESC');
+        $source->orderBy('created_at','ASC');
         return self::getObj($source,$withPaginate);
     }
 
@@ -82,7 +82,7 @@ class  Device extends Model{
         $list = [];
         foreach ($sourceArr as $key => $value) {
             $list[$key] = new \stdClass();
-            $list[$key] = self::getData($value);
+            $list[$key] = self::getData($value,true);
         }
 
         $data['data'] = $list;
@@ -92,7 +92,7 @@ class  Device extends Model{
         return $data;
     }
 
-    static function getData($source){
+    static function getData($source,$allData=false){
         $dataObj = new \stdClass();
         $source = self::getDaysData($source);
         // $dataObj->id = $source->id;
@@ -104,7 +104,9 @@ class  Device extends Model{
         $dataObj->description = $source->description;
         $dataObj->multidevice = $source->multidevice;
         $dataObj->status = $source->status == null ? 'got QR and ready to scan' : $source->status;
-        $dataObj->image = $source->image;
+        if(!$allData){
+            $dataObj->image = $source->image;
+        }
         $dataObj->days = $source->days;
         $dataObj->valid_until = $source->valid_until;
         $dataObj->created_at = $source->created_at;
