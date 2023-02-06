@@ -52,7 +52,7 @@ class BulkControllers extends Controller {
 
         $forwardResponse = Http::post(env('URL_WA_SERVER').'/messages/sendGroupMessage?id='.$name, [
             'phones' => $input['phones'],
-            'interval' => isset($input['interval']) && !empty($input['interval']) ? $input['interval'] : 3,
+            'interval' => isset($input['interval']) && !empty($input['interval']) ? ($input['interval'] < 5 ? 5 : $input['interval']) : 5,
             'messageType' => 1,
             'messageData' => isset($input['messageData']) && !empty($input['messageData']) ? $input['messageData'] : [
                 'body' => $input['body'],
@@ -108,7 +108,7 @@ class BulkControllers extends Controller {
         $forwardResponse = Http::post(env('URL_WA_SERVER').'/messages/sendGroupMessage?id='.$name, [
             'phones' => $input['phones'],
             'messageType' => 2,
-            'interval' => isset($input['interval']) && !empty($input['interval']) ? $input['interval'] : 3,
+            'interval' => isset($input['interval']) && !empty($input['interval']) ? ($input['interval'] < 5 ? 5 : $input['interval']) : 5,
             'messageData' => isset($input['messageData']) && !empty($input['messageData']) ? $input['messageData'] : [
                 'url' => $input['url'],
                 'caption' => isset($input['caption']) ? $input['caption']: '',
@@ -164,7 +164,7 @@ class BulkControllers extends Controller {
         $forwardResponse = Http::post(env('URL_WA_SERVER').'/messages/sendGroupMessage?id='.$name, [
             'phones' => $input['phones'],
             'messageType' => 3,
-            'interval' => isset($input['interval']) && !empty($input['interval']) ? $input['interval'] : 3,
+            'interval' => isset($input['interval']) && !empty($input['interval']) ? ($input['interval'] < 5 ? 5 : $input['interval']) : 5,
             'messageData' => isset($input['messageData']) && !empty($input['messageData']) ? $input['messageData'] : [
                 'url' => $input['url'],
                 'caption' => isset($input['caption']) ? $input['caption']: '',
@@ -228,7 +228,7 @@ class BulkControllers extends Controller {
 
         $forwardResponse = Http::post(env('URL_WA_SERVER').'/messages/sendGroupMessage?id='.$name, [
             'phones' => $input['phones'],
-            'interval' => isset($input['interval']) && !empty($input['interval']) ? $input['interval'] : 3,
+            'interval' => isset($input['interval']) && !empty($input['interval']) ? ($input['interval'] < 5 ? 5 : $input['interval']) : 5,
             'messageType' => 4,
             'messageData' => [
                 'url' => $input['url'],
@@ -283,7 +283,7 @@ class BulkControllers extends Controller {
         $forwardResponse = Http::post(env('URL_WA_SERVER').'/messages/sendGroupMessage?id='.$name, [
             'phones' => $input['phones'],
             'messageType' => 5,
-            'interval' => isset($input['interval']) && !empty($input['interval']) ? $input['interval'] : 3,
+            'interval' => isset($input['interval']) && !empty($input['interval']) ? ($input['interval'] < 5 ? 5 : $input['interval']) : 5,
             'messageData' => isset($input['messageData']) && !empty($input['messageData']) ? $input['messageData'] : [
                 'url' => $input['url'],
             ],
@@ -337,7 +337,7 @@ class BulkControllers extends Controller {
         $forwardResponse = Http::post(env('URL_WA_SERVER').'/messages/sendGroupMessage?id='.$name, [
             'phones' => $input['phones'],
             'messageType' => 6,
-            'interval' => isset($input['interval']) && !empty($input['interval']) ? $input['interval'] : 3,
+            'interval' => isset($input['interval']) && !empty($input['interval']) ? ($input['interval'] < 5 ? 5 : $input['interval']) : 5,
             'messageData' => isset($input['messageData']) && !empty($input['messageData']) ? $input['messageData'] : [
                 'url' => $input['url'],
             ],
@@ -400,7 +400,7 @@ class BulkControllers extends Controller {
 
         $forwardResponse = Http::post(env('URL_WA_SERVER').'/messages/sendGroupMessage?id='.$name, [
             'phones' => $input['phones'],
-            'interval' => isset($input['interval']) && !empty($input['interval']) ? $input['interval'] : 3,
+            'interval' => isset($input['interval']) && !empty($input['interval']) ? ($input['interval'] < 5 ? 5 : $input['interval']) : 5,
             'messageType' => 7,
             'messageData' => isset($input['messageData']) && !empty($input['messageData']) ? $input['messageData'] : [
                 'url' => $input['url'],
@@ -460,7 +460,7 @@ class BulkControllers extends Controller {
         }
 
         $forwardResponse = Http::post(env('URL_WA_SERVER').'/messages/sendGroupMessage?id='.$name, [
-            'interval' => isset($input['interval']) && !empty($input['interval']) ? $input['interval'] : 3,
+            'interval' => isset($input['interval']) && !empty($input['interval']) ? ($input['interval'] < 5 ? 5 : $input['interval']) : 5,
             'phones' => $input['phones'],
             'messageType' => 8,
             'messageData' => isset($input['messageData']) && !empty($input['messageData']) ? $input['messageData'] : [
@@ -524,7 +524,7 @@ class BulkControllers extends Controller {
         $forwardResponse = Http::post(env('URL_WA_SERVER').'/messages/sendGroupMessage?id='.$name, [
             'phones' => $input['phones'],
             'messageType' => 9,
-            'interval' => isset($input['interval']) && !empty($input['interval']) ? $input['interval'] : 3,
+            'interval' => isset($input['interval']) && !empty($input['interval']) ? ($input['interval'] < 5 ? 5 : $input['interval']) : 5,
             'messageData' => isset($input['messageData']) && !empty($input['messageData']) ? $input['messageData'] : [
                 'name' => $input['name'],
                 'contact' => $input['contact'],
@@ -585,7 +585,7 @@ class BulkControllers extends Controller {
         $forwardResponse = Http::post(env('URL_WA_SERVER').'/messages/sendGroupMessage?id='.$name, [
             'phones' => $input['phones'],
             'messageType' => 10,
-            'interval' => isset($input['interval']) && !empty($input['interval']) ? $input['interval'] : 3,
+            'interval' => isset($input['interval']) && !empty($input['interval']) ? ($input['interval'] < 5 ? 5 : $input['interval']) : 5,
             'messageData' => isset($input['messageData']) && !empty($input['messageData']) ? $input['messageData'] : [
                 'body' => $input['body'],
                 'expiration' => $input['expiration'],
@@ -639,7 +639,7 @@ class BulkControllers extends Controller {
 
         $forwardResponse = Http::post(env('URL_WA_SERVER').'/messages/sendGroupMessage?id='.$name, [
             'phones' => $input['phones'],
-            'interval' => isset($input['interval']) && !empty($input['interval']) ? $input['interval'] : 3,
+            'interval' => isset($input['interval']) && !empty($input['interval']) ? ($input['interval'] < 5 ? 5 : $input['interval']) : 5,
             'messageType' => 11,
             'messageData' => isset($input['messageData']) && !empty($input['messageData']) ? $input['messageData'] : [
                 'contact' => $input['contact'],
@@ -731,7 +731,7 @@ class BulkControllers extends Controller {
         $forwardResponse = Http::post(env('URL_WA_SERVER').'/messages/sendGroupMessage?id='.$name, [
             'phones' => $input['phones'],
             'messageType' => 13,
-            'interval' => isset($input['interval']) && !empty($input['interval']) ? $input['interval'] : 3,
+            'interval' => isset($input['interval']) && !empty($input['interval']) ? ($input['interval'] < 5 ? 5 : $input['interval']) : 5,
             'messageData' => isset($input['messageData']) && !empty($input['messageData']) ? $input['messageData'] : [
                 'body' => $input['body'],
                 'footer' => $input['footer'],
@@ -832,7 +832,7 @@ class BulkControllers extends Controller {
         $forwardResponse = Http::post(env('URL_WA_SERVER').'/messages/sendGroupMessage?id='.$name, [
             'phones' => $input['phones'],
             'messageType' => 14,
-            'interval' => isset($input['interval']) && !empty($input['interval']) ? $input['interval'] : 3,
+            'interval' => isset($input['interval']) && !empty($input['interval']) ? ($input['interval'] < 5 ? 5 : $input['interval']) : 5,
             'messageData' => isset($input['messageData']) && !empty($input['messageData']) ? $input['messageData'] : [
                 'body' => $input['body'],
                 'footer' => $input['footer'],
@@ -932,7 +932,7 @@ class BulkControllers extends Controller {
         $forwardResponse = Http::post(env('URL_WA_SERVER').'/messages/sendGroupMessage?id='.$name, [
             'phones' => $input['phones'],
             'messageType' => 15,
-            'interval' => isset($input['interval']) && !empty($input['interval']) ? $input['interval'] : 3,
+            'interval' => isset($input['interval']) && !empty($input['interval']) ? ($input['interval'] < 5 ? 5 : $input['interval']) : 5,
             'messageData' => isset($input['messageData']) && !empty($input['messageData']) ? $input['messageData'] : [
                 'title' => $input['title'],
                 'body' => $input['body'],
@@ -996,7 +996,7 @@ class BulkControllers extends Controller {
         $forwardResponse = Http::post(env('URL_WA_SERVER').'/messages/sendGroupMessage?id='.$name, [
             'phones' => $input['phones'],
             'messageType' => 16,
-            'interval' => isset($input['interval']) && !empty($input['interval']) ? $input['interval'] : 3,
+            'interval' => isset($input['interval']) && !empty($input['interval']) ? ($input['interval'] < 5 ? 5 : $input['interval']) : 5,
             'messageData' => isset($input['messageData']) && !empty($input['messageData']) ? $input['messageData'] : [
                 'url' => $input['url'],
                 'title' => $input['title'],
@@ -1052,7 +1052,7 @@ class BulkControllers extends Controller {
         $forwardResponse = Http::post(env('URL_WA_SERVER').'/messages/sendGroupMessage?id='.$name, [
             'phones' => $input['phones'],
             'messageType' => 17,
-            'interval' => isset($input['interval']) && !empty($input['interval']) ? $input['interval'] : 3,
+            'interval' => isset($input['interval']) && !empty($input['interval']) ? ($input['interval'] < 5 ? 5 : $input['interval']) : 5,
             'messageData' => isset($input['messageData']) && !empty($input['messageData']) ? $input['messageData'] : [
                 'groupId' => $input['groupId'],
             ],
@@ -1106,7 +1106,7 @@ class BulkControllers extends Controller {
         $forwardResponse = Http::post(env('URL_WA_SERVER').'/messages/sendGroupMessage?id='.$name, [
             'phones' => $input['phones'],
             'messageType' => 18,
-            'interval' => isset($input['interval']) && !empty($input['interval']) ? $input['interval'] : 3,
+            'interval' => isset($input['interval']) && !empty($input['interval']) ? ($input['interval'] < 5 ? 5 : $input['interval']) : 5,
             'messageData' => isset($input['messageData']) && !empty($input['messageData']) ? $input['messageData'] : [
                 'productId' => $input['productId'],
             ],
@@ -1152,7 +1152,7 @@ class BulkControllers extends Controller {
 
         $forwardResponse = Http::post(env('URL_WA_SERVER').'/messages/sendGroupMessage?id='.$name, [
             'phones' => $input['phones'],
-            'interval' => isset($input['interval']) && !empty($input['interval']) ? $input['interval'] : 3,
+            'interval' => isset($input['interval']) && !empty($input['interval']) ? ($input['interval'] < 5 ? 5 : $input['interval']) : 5,
             'messageType' => 19,
             'messageData' => "{}",
         ]);
@@ -1216,7 +1216,7 @@ class BulkControllers extends Controller {
 
         $forwardResponse = Http::post(env('URL_WA_SERVER').'/messages/sendGroupMessage?id='.$name, [
             'phones' => $input['phones'],
-            'interval' => isset($input['interval']) && !empty($input['interval']) ? $input['interval'] : 3,
+            'interval' => isset($input['interval']) && !empty($input['interval']) ? ($input['interval'] < 5 ? 5 : $input['interval']) : 5,
             'messageType' => 20,
             'messageData' => isset($input['messageData']) && !empty($input['messageData']) ? $input['messageData'] : [
                 'body' => $input['body'],
