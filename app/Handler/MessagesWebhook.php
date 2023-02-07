@@ -220,7 +220,7 @@ class MessagesWebhook extends ProcessWebhookJob{
         	}
         }
         if(isset($chatObj['unreadCount'])){
-            $myData['unreadCount'] = abs($chatObj['unreadCount']);
+            $myData['unreadCount'] = $chatObj['unreadCount'];
         }
         if(array_key_exists('mute', $chatObj)){
         	$myData['muted'] = (int)$chatObj['mute'];
