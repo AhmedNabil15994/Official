@@ -206,8 +206,8 @@ class MessagesWebhook extends ProcessWebhookJob{
 		if(isset($chatObj['id'])){
             $myData['chatId'] = str_replace('s.whatsapp.net','c.us',$chatObj['id']);
         }
-   		if(isset($chatObj['conversationTimestamp'])){
-            $myData['last_time'] = $chatObj['conversationTimestamp'];
+   		if(isset($chatObj['conversationTimestamp']) && $chatObj['conversationTimestamp'] > 0){
+            $myData['last_time'] = $chatObj['conversationTimestamp'] / 1000;
         }
         if(isset($chatObj['archive'])){
             $myData['archived'] = $chatObj['archive'] == 'true' ? true : false;
