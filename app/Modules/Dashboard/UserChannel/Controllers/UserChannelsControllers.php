@@ -125,7 +125,7 @@ class UserChannelsControllers extends Controller {
         }
 
         try {
-            $find = Http::delete(env('URL_WA_SERVER').'/sessions/clearInstance/'.$channelObj->name);
+            $find = Http::post(env('URL_WA_SERVER').'/sessions/clearInstance',['id'=>$channelObj->name]);
             $channelObj->status = '';
             $channelObj->image = null;
             $channelObj->save();
