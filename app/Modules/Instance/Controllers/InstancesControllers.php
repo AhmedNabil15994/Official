@@ -52,7 +52,7 @@ class InstancesControllers extends Controller {
             $data['status'] = \TraitsFunc::SuccessResponse();
             return \Response::json((object) $data);        
         }
-        
+        dd($cek );
         $deviceObj = Device::NotDeleted()->where('name',$name)->first();
         if($deviceObj->multidevice == "YES"){
             $islegacy = "false"; 
