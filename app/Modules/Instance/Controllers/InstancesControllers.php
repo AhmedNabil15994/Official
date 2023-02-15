@@ -61,7 +61,6 @@ class InstancesControllers extends Controller {
         }
         $response = Http::post(env('URL_WA_SERVER').'/sessions/add', ['id' => $name, 'isLegacy' => $islegacy]);
         $res = json_decode($response->getBody());
-        dd($res);
         if(!$res->success){
             $image = $deviceObj->image;
         }else{
