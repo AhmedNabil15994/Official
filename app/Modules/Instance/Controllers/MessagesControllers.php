@@ -1346,7 +1346,7 @@ class MessagesControllers extends Controller {
         $data['data'] = [
             'success' => true,
             'chatId' => str_replace('@s.whatsapp.net','@c.us',$input['phone']),
-            'id' => 'true_'.str_replace('@s.whatsapp.net','@c.us',$input['phone']).'_'.(isset($res->data->key)? $res->data->key->id : $res->data),
+            'id' => 'true_'.str_replace('@s.whatsapp.net','@c.us',$res->data->key->remoteJid).'_'.$res->data->key->id,
         ];
         $data['status'] = \TraitsFunc::SuccessResponse($messageText);
         return \Response::json((object) $data);        
