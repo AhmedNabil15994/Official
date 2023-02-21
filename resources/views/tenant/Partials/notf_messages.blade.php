@@ -18,7 +18,7 @@
             "hideMethod": "fadeOut",
             "icon" : false,
         };
-        toastr.success('واتس لووب | Whats Loop', "{{ Session::get('success') }}" );
+        toastr.success('', "{{ Session::get('success') }}" );
     @endif
     @if(Session::has('error'))
         toastr.options = {
@@ -39,6 +39,6 @@
             "hideMethod": "fadeOut",
             "icon" : false,
         };
-        toastr.error('واتس لووب | Whats Loop', "{{ Session::get('error') }}" );
+        toastr.error('', "{{ Session::get('error') }}" );
     @endif
 </script>

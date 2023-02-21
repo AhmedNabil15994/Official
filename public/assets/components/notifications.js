@@ -22,7 +22,7 @@ function successNotification(message) {
         "hideMethod": "fadeOut",
         "icon" : false,
     };
-    toastr.success('واتس لووب | Whats Loop', message);
+    toastr.success('', message);
 }
 
 function errorNotification(message) {
@@ -44,5 +44,5 @@ function errorNotification(message) {
         "hideMethod": "fadeOut",
         "icon" : false,
     };
-    toastr.error('واتس لووب | Whats Loop', message);
+    toastr.error('', message);
 }
