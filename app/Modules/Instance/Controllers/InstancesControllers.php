@@ -88,6 +88,7 @@ class InstancesControllers extends Controller {
         $deviceObj->save();
         
         $data['data']['qr'] = $image;        
+        $data['data']['url'] = $url;        
         $data['status'] = \TraitsFunc::SuccessResponse();
         return \Response::json((object) $data);        
     }
